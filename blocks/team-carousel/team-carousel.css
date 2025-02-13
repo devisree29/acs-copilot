@@ -1,0 +1,107 @@
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slides-wrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+  scroll-behavior: smooth;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+.team-carousel-card {
+  min-width: 100%;
+  scroll-snap-align: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.team-carousel-card-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-carousel-card-content {
+  flex: 2;
+  padding: 20px;
+}
+
+.team-carousel-card-content h2,
+.team-carousel-card-content h3 {
+  margin: 10px 0;
+}
+
+.team-carousel-card-content p {
+  margin: 5px 0;
+}
+
+.team-carousel-card-content .team-carousel-card-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.carousel-nav-container {
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; */
+  position: absolute;
+  bottom: 20%;
+  float: right;
+  right: 0px;
+}
+
+.carousel-nav {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-indicators {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.carousel-indicator {
+  width: 35px;
+  height: 35px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.carousel-indicator.active {
+  background: white;
+}
+
+@media (min-width: 900px) {
+  .team-carousel-card {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .team-carousel-card-image,
+  .team-carousel-card-content {
+    flex: 1;
+  }
+
+  .team-carousel-card-content {
+    padding-left: 20px;
+  }
+}
