@@ -1,30 +1,65 @@
 .banner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #000; /* Black background */
   padding: 20px;
-  background-color:aquamarine;
+  text-align: center;
 }
 
 .banner-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  color: #fff; /* White text */
 }
 
-.banner-link {
-  margin-bottom: 10px;
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.text-container h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Adjust spacing between 'Banner Section' and 'Try it now' */
+}
+
+.white-text {
+  color: #fff; /* White text for Banner and Section */
+}
+
+.multi-color-text {
+  background: linear-gradient(90deg, rgba(255,0,119,1) 0%, rgba(0,119,255,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.banner p {
+  color: #fff; /* White text */
+  font-size: 1em;
+  margin: 0.5em 0;
+}
+
 
 .banner-link a {
-  color: #0073e6;
+  color: #fff;
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 0.9em; /* Reduced font size */
+  border-radius: 8px; /* Reduced border radius */
+  background: linear-gradient(90deg, rgba(255,0,119,1) 0%, rgba(0,119,255,1) 100%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  position: relative;
+  transition: background 0.3s ease;
 }
 
-.banner-text {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #333;
+.banner-link a:hover {
+  background: linear-gradient(90deg, rgba(0,119,255,1) 0%, rgba(255,0,119,1) 100%);
+}
+
+.banner-link a .cta-icon {
+  display: inline-block;
+  font-size: 0.8em; /* Reduce the icon size if needed */
 }
