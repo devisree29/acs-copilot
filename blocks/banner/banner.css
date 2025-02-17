@@ -29,7 +29,7 @@
 }
 
 .multi-color-text {
-  background: linear-gradient(90deg, rgba(255,0,119,1) 0%, rgba(0,119,255,1) 100%);
+  background: linear-gradient(90deg, rgb(243, 140, 188) 0%, rgb(143, 188, 240) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -40,13 +40,12 @@
   margin: 0.5em 0;
 }
 
-
 .banner-link a {
   color: #fff;
   text-decoration: none;
   font-size: 0.9em; /* Reduced font size */
   border-radius: 8px; /* Reduced border radius */
-  background: linear-gradient(90deg, rgba(255,0,119,1) 0%, rgba(0,119,255,1) 100%);
+  background: linear-gradient(90deg, rgba(255,0,119,1) 0%, rgb(83, 48, 208) 100%);
   display: inline-flex;
   align-items: center;
   justify-content: center;
