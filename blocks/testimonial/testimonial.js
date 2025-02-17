@@ -23,8 +23,8 @@ export default function decorate(block) {
     <div class="testimonial-wrapper">
       <div class="testimonial-scroll top">
         ${testimonials
-          .slice(0, 4)
-          .map((test) => `
+    .slice(0, 4)
+    .map((test) => `
             <div class="testimonial-card">
               <div class="testimonial-header">
                 ${createOptimizedPicture(test.src, test.alt).outerHTML}
@@ -38,12 +38,12 @@ export default function decorate(block) {
               </div>
             </div>
           `)
-          .join('')}
+    .join('')}
       </div>
       <div class="testimonial-scroll bottom">
         ${testimonials
-          .slice(4)
-          .map((test) => `
+    .slice(4)
+    .map((test) => `
             <div class="testimonial-card">
               <div class="testimonial-header">
                 ${createOptimizedPicture(test.src, test.alt).outerHTML}
@@ -57,7 +57,7 @@ export default function decorate(block) {
               </div>
             </div>
           `)
-          .join('')}
+    .join('')}
       </div>
     </div>
   `;
