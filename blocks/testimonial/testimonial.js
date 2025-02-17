@@ -20,48 +20,43 @@ export default function decorate(block) {
   });
 
   block.innerHTML = `
-    
     <div class="testimonial-wrapper">
       <div class="testimonial-scroll top">
         ${testimonials
           .slice(0, 4)
-          .map(
-            (test) => `
-          <div class="testimonial-card">
-            <div class="testimonial-header">
-              ${createOptimizedPicture(test.src, test.alt).outerHTML}
-              <div class="testimonial-info">
-                <h3>${test.title}</h3>
-                ${test.link}
+          .map((test) => `
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                ${createOptimizedPicture(test.src, test.alt).outerHTML}
+                <div class="testimonial-info">
+                  <h3>${test.title}</h3>
+                  ${test.link}
+                </div>
+              </div>
+              <div class="testimonial-content">
+                <p>${test.description}</p>
               </div>
             </div>
-            <div class="testimonial-content">
-              <p>${test.description}</p>
-            </div>
-          </div>
-        `
-          )
+          `)
           .join('')}
       </div>
       <div class="testimonial-scroll bottom">
         ${testimonials
           .slice(4)
-          .map(
-            (test) => `
-          <div class="testimonial-card">
-            <div class="testimonial-header">
-              ${createOptimizedPicture(test.src, test.alt).outerHTML}
-              <div class="testimonial-info">
-                <h3>${test.title}</h3>
-                ${test.link}
+          .map((test) => `
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                ${createOptimizedPicture(test.src, test.alt).outerHTML}
+                <div class="testimonial-info">
+                  <h3>${test.title}</h3>
+                  ${test.link}
+                </div>
+              </div>
+              <div class="testimonial-content">
+                <p>${test.description}</p>
               </div>
             </div>
-            <div class="testimonial-content">
-              <p>${test.description}</p>
-            </div>
-          </div>
-        `
-          )
+          `)
           .join('')}
       </div>
     </div>
