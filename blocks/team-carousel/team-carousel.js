@@ -1,5 +1,3 @@
-import { createOptimizedPicture, decorateIcons } from '../../scripts/aem.js';
-
 export default function decorate(block) {
   // Gather all slide data from the initial block content
   const slidesData = Array.from(block.querySelectorAll(':scope > div')).map((slide) => ({
