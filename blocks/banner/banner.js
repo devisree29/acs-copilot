@@ -5,7 +5,7 @@ export default function decorate(block) {
     title: 'Banner <span class="white-text">Section</span> <span class="multi-color-text">Try it now</span>',
     description: "Use Project Helix's serverless architecture to meet any traffic need. Use Project Helix's PageSpeed Insights Github action to evaluate every Pull-Request for Lighthouse Score.",
     buttonText: 'Try now link with Installer',
-    buttonLink: 'https://www.amazon.in/'
+    buttonLink: 'https://www.amazon.in/',
   };
 
   const bannerContent = document.createElement('div');
