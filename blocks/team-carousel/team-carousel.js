@@ -41,18 +41,6 @@ export default function decorate(block) {
     if (slideData.paragraphs[1]) contentContainer.appendChild(slideData.paragraphs[1]);
     if (slideData.paragraphs[2]) contentContainer.appendChild(slideData.paragraphs[2]);
 
-    const socialContainer = document.createElement('div');
-    socialContainer.className = 'team-carousel-card-social';
-    slideData.icons.forEach((icon) => {
-      const link = document.createElement('a');
-      link.href = '#';
-      link.setAttribute('aria-label', `Follow on ${icon.className.split(' ')[1].split('-')[1]}`);
-      decorateIcons(icon);
-      link.appendChild(icon.querySelector('img'));
-      socialContainer.appendChild(link);
-    });
-
-    contentContainer.appendChild(socialContainer);
     card.appendChild(imageContainer);
     card.appendChild(contentContainer);
 

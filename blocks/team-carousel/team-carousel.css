@@ -44,8 +44,9 @@
   margin: 5px 0;
 }
 
-.team-carousel-card-content .team-carousel-card-social {
+.team-carousel-card-content {
   display: flex;
+  flex-direction: column;
   gap: 10px;
   margin-top: 15px;
 }
