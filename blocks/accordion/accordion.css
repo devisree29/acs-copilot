@@ -4,11 +4,11 @@
   overflow: hidden;
   margin: 10px 0;
 }
- 
+
 .accordion-item:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
- 
+
 .accordion-header {
   background-color: rgb(2, 11, 6);
   color: white;
@@ -24,26 +24,24 @@
   justify-content: space-between;
   align-items: center;
 }
- 
+
 .accordion-header:hover,
 .accordion-header[aria-expanded="true"] {
-  background-color: #1a1414;
+  background-color: rgb(26, 20, 20);
 }
- 
+
 .accordion-content {
   padding: 15px;
   display: none;
   background-color: black;
   color: white;
 }
- 
+
 .accordion-title {
   flex: 1;
 }
- 
+
 .accordion-icon {
   margin-left: 10px;
   transition: transform 0.2s;
 }
- 
- 
