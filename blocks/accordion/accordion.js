@@ -18,37 +18,30 @@ export default function decorate(block) {
       // The rest are accordion items
       const item = document.createElement('div');
       item.classList.add('accordion-item');
- 
       const headers = child.querySelectorAll('div[data-valign="middle"]');
       if (headers.length === 2) {
         const itemHeader = document.createElement('div');
         itemHeader.classList.add('accordion-header');
         itemHeader.innerHTML = `<span class="accordion-title">${headers[0].innerHTML}</span><span class="accordion-icon">+</span>`;
         item.appendChild(itemHeader);
- 
         const itemContent = document.createElement('div');
         itemContent.classList.add('accordion-content');
         itemContent.innerHTML = headers[1].innerHTML;
         item.appendChild(itemContent);
       }
- 
       accordionContainer.appendChild(item);
     }
   });
- 
   // Replace original block content with the new accordion structure
   block.innerHTML = '';
   block.appendChild(accordionContainer);
- 
   // Add event listeners for accordion functionality
   accordionContainer.addEventListener('click', (event) => {
     const header = event.target.closest('.accordion-header');
     if (!header) return;
- 
     const item = header.parentElement;
     const content = item.querySelector('.accordion-content');
     const icon = item.querySelector('.accordion-icon');
- 
     const isExpanded = content.style.display === 'block';
     content.style.display = isExpanded ? 'none' : 'block';
     icon.textContent = isExpanded ? '+' : '-';
