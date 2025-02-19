@@ -1,5 +1,5 @@
 .logo {
-  background-color: rgb(15, 4, 4);
+  background-color: color(display-p3 0.0588 0.0157 0.0157);
   padding: 20px;
   text-align: center;
   overflow: hidden;
@@ -36,8 +36,7 @@
   height: 100px;
   object-fit: contain;
 }
-
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .logo {
     padding: 10px;
   }
