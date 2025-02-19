@@ -1,5 +1,3 @@
-import { toClassName } from '../../scripts/aem.js';
- 
 export default function decorate(block) {
   // Create a container for the accordion
   const accordionContainer = document.createElement('div');
@@ -56,5 +54,3 @@ export default function decorate(block) {
     icon.textContent = isExpanded ? '+' : '-';
   });
 }
- 
- 
