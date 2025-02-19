@@ -2,7 +2,7 @@ export default function decorate(block) {
   // Create a container for the accordion
   const accordionContainer = document.createElement('div');
   accordionContainer.classList.add('accordion-container');
- 
+
   // Loop through each child element of the block
   [...block.children].forEach((child, index) => {
     if (index === 0) {
