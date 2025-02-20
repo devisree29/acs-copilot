@@ -29,9 +29,9 @@
 }
 
 .multi-color-text {
-  background: linear-gradient(90deg, rgb(243, 140, 188) 0%, rgb(143, 188, 240) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: linear-gradient(90deg, rgb(241 155 169) rgb(147 147 205)); /* Corrected modern color function notation */
+  background-clip: text; /* Modern approach, no vendor prefix needed */
+  color: transparent; /* Modern way to apply text gradient */
 }
 
 .banner p {
@@ -45,7 +45,7 @@
   text-decoration: none;
   font-size: 0.9em; /* Reduced font size */
   border-radius: 8px; /* Reduced border radius */
-  background: linear-gradient(90deg, rgba(255,0,119,1) 0%, rgb(83, 48, 208) 100%);
+  background: linear-gradient(90deg, rgba(255 0 119), rgba(83 48 208 )); /* Fixed alpha value to 100% */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -55,7 +55,7 @@
 }
 
 .banner-link a:hover {
-  background: linear-gradient(90deg, rgba(0,119,255,1) 0%, rgba(255,0,119,1) 100%);
+  background: linear-gradient(90deg, rgba(0 119 255) rgba(255 0 119)); /* Fixed alpha value to 100% */
 }
 
 .banner-link a .cta-icon {
