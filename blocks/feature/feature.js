@@ -38,10 +38,8 @@ export default async function decorate(block) {
     tabMedia.setAttribute('data-index', index);
 
     const videoHref = tab.querySelector('a')?.getAttribute('href') || '';
-
     const videoContainer = document.createElement('div');
     videoContainer.classList.add('video-container');
-
     const videoElement = document.createElement('video');
     videoElement.setAttribute('playsinline', '');
     videoElement.setAttribute('controls', '');
@@ -51,7 +49,7 @@ export default async function decorate(block) {
 
     const sourceElement = document.createElement('source');
     sourceElement.setAttribute('src', videoHref);
-    sourceElement.setAttribute('type', "video/mp4");
+    sourceElement.setAttribute('type', 'video/mp4');
     videoElement.appendChild(sourceElement);
     videoContainer.appendChild(videoElement);
     tabContent.appendChild(videoContainer);
@@ -82,7 +80,7 @@ export default async function decorate(block) {
         }
       });
 
-      document.querySelectorAll('.tab-header').forEach(header => header.classList.remove('active'));
+      document.querySelectorAll('.tab-header').forEach(header => (header.classList.remove('active')));
       tabHeader.classList.add('active');
     });
   });
