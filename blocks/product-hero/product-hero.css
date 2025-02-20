@@ -1,3 +1,241 @@
-p{
-    background-color: blue;
+.product-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #f4f4f4;
+    padding: 20px;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.product-hero > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    background: rgba(0 0 0 ); /* #000000e4 updated to rgba with 90% opacity */
+    padding: 50px;
+    border-radius: 15px;
+    color: white;
+}
+
+.hero-title {
+    font-size: 2em;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.hero-description {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.hero-image,
+video {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0 0 0 50);
+}
+
+.hero-video {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 4px 10px black;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #f0f; /* shortened hex for #ff00ff */
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    font-size: var(--body-font-size-m);
+    position: relative;
+    box-shadow: 0 0 10px rgba(255 0 255 );
+}
+
+.cta-button:hover {
+    background-color: rgba(144 0 255);
+    border-color: #80f; /* shortened hex for #8800ff */
+    box-shadow: 0 0 20px rgba(76 0 255);
+}
+
+.product-hero-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* .product-hero {
+    display: flex;
+    align-items: center;
+    
+} */
+
+.product-hero.left {
+    flex-direction: row;
+}
+
+.product-hero.right {
+    flex-direction: row-reverse;
+}
+
+/* Box around image */
+.product-hero picture,
+video {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #1f0c2e, #3b1442, #7b2653, #a23744, #d6543e);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover effect */
+.product-hero picture:hover,
+video:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0 0 0);
+}
+
+a.button:any-link,
+button {
+    background-color: #a63bfb1f;
+}
+
+a.button:any-link,
+button:hover {
+    background-color: rgba(144 0 255);
+    border-color: #80f;
+    box-shadow: 0 0 20px rgba(157 0 255);
+}
+
+.product-hero video {
+    width: 500px;
+}
+
+.product-hero.reverse > div {
+    flex-direction: row-reverse;
+}
+
+.product-hero-wrapper .product-hero > div .hero-video {
+    background-color: white;
+}
+
+/* .product-hero.vidbg video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+} */
+
+.product-hero.vidbg {
+    position: relative; /* create a stacking context */
+    overflow: hidden;
+    background: none; /* ensure no background color is hiding the video */
+}
+
+/* Background video styling */
+.product-hero.vidbg video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -1; /* set to 0 so it's behind content */
+    filter: brightness(50%);
+}
+
+/* Content overlay styling */
+.product-hero.vidbg .content {
+    position: relative;
+    z-index: 1;
+    color: #fff; /* Adjust color for visibility */
+    text-align: center;
+    padding: 20px;
+    background: transparent;
+}
+
+/* More specific selector comes first */
+.product-hero.picbg h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* Adjusting specificity: place .picbg rule before the general content rule */
+.product-hero.picbg .content,
+.product-hero.picbg > div:first-child {
+    position: relative;
+    z-index: 1;
+    color: #fff; /* Adjust text color for visibility */
+    text-align: center;
+    padding: 20px;
+    background: transparent;
+}
+
+.product-hero.vidbg .content h1 {
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* Optional button styling */
+.product-hero.vidbg .button-container .button {
+    background: black;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.product-hero.vidbg > div:first-child {
+    background: transparent;
+}
+
+.product-hero.picbg {
+    position: relative; /* create a stacking context */
+    overflow: hidden;
+    background: none; /* no default background */
+}
+
+
+/* Background image styling */
+.product-hero.picbg picture,
+.product-hero.picbg picture img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Example heading and button adjustments for picbg */
+.product-hero.picbg .button-container .button {
+    background: rgba(0 0 0);
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
 }
