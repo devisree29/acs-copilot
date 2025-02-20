@@ -1,5 +1,5 @@
 .logo {
-  background-color: rgb(18, 11, 11);
+  background-color: rgb(18 11 11);
   padding: 20px;
   text-align: center;
   overflow: hidden;
@@ -37,10 +37,11 @@
   object-fit: contain;
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .logo {
     padding: 10px;
   }
+
   .logo .logo-card img {
     width: 50px;
     height: 50px;
@@ -51,6 +52,7 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
