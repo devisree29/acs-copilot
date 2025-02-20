@@ -1,0 +1,26 @@
+.summary {
+  background-color:grey;
+  color:black;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+ 
+ 
+/* Specific styles for summary positions */
+.summary-container .summary-wrapper .summary.centre {
+  background-color:grey; /* Light cyan background */
+  text-align: center;
+}
+ 
+.summary-container .summary-wrapper .summary.left {
+  background-color:grey; /* Light red background */
+  text-align: left;
+}
+ 
+.summary-container .summary-wrapper .summary.right {
+  background-color: grey; /* Light green background */
+  text-align: right;
+}
