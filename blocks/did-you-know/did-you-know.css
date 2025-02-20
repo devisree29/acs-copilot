@@ -1,0 +1,19 @@
+.optimized-did-you-know {
+  display: none; /* Initially hidden */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #140808;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0 0 0 / 10%);
+}
+
+.optimized-did-you-know picture {
+  max-width: 100%;
+}
+
+.optimized-did-you-know img {
+  border-radius: 8px;
+  max-width: 100%;
+  height: auto;
+}
