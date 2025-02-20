@@ -29,21 +29,17 @@ export default async function decorate(block) {
 
     const tabMedia = document.createElement('div');
     tabMedia.className = 'tab-Media';
-    
     // Corrected code to locate the picture element correctly within the tab itself
     const pic = tab.querySelector('picture');
     if (pic) {
       tabMedia.append(pic);
       hasMedia = true;
     }
-    
     tabMedia.setAttribute('data-index', index);
 
     const videoHref = tab.querySelector('a')?.getAttribute('href') || '';
-
     const videoContainer = document.createElement('div');
     videoContainer.classList.add('video-container');
-
     const videoElement = document.createElement('video');
     videoElement.setAttribute('playsinline', '');
     videoElement.setAttribute('controls', '');
@@ -52,15 +48,12 @@ export default async function decorate(block) {
     videoElement.style.cursor = 'pointer';
 
     const sourceElement = document.createElement('source');
-    sourceElement.setAttribute("src", videoHref);
-    sourceElement.setAttribute("type", "video/mp4");
-
+    sourceElement.setAttribute('src', videoHref);
+    sourceElement.setAttribute('type', 'video/mp4');
     videoElement.appendChild(sourceElement);
     videoContainer.appendChild(videoElement);
     tabContent.appendChild(videoContainer);
-
     tabsContainer.appendChild(tabHeader);
-    
     // Correcting the condition to avoid appending empty divs
     if ((block.classList.contains('media-right') || block.classList.contains('media-left')) && pic) {
       mediaContainer.appendChild(tabMedia);
@@ -71,7 +64,7 @@ export default async function decorate(block) {
 
     tabHeader.addEventListener('click', () => {
       document.querySelectorAll('.tab-content').forEach((content, contentIndex) => {
-        if (contentIndex == index) {
+        if (contentIndex === index) {
           content.style.display = 'block';
           const video = content.querySelector('video');
           if (video) {
@@ -87,7 +80,9 @@ export default async function decorate(block) {
         }
       });
 
-      document.querySelectorAll('.tab-header').forEach(header => header.classList.remove('active'));
+      document.querySelectorAll('.tab-header').forEach((header) => {
+        header.classList.remove('active');
+      });
       tabHeader.classList.add('active');
     });
   });
