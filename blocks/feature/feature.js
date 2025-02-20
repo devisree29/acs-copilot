@@ -39,7 +39,7 @@ export default async function decorate(block) {
 
     const videoHref = tab.querySelector('a')?.getAttribute('href') || '';
     const videoContainer = document.createElement('div');
-    const vC = videoContainer.classList.add('video-container');
+    videoContainer.classList.add('video-container');
     const videoElement = document.createElement('video');
     videoElement.setAttribute('playsinline', '');
     videoElement.setAttribute('controls', '');
