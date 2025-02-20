@@ -1,4 +1,4 @@
-export default function decorate(block) {// Add decoration class
+export default function decorate(block) { // Add decoration class
     block.classList.add('decorated');
     try {
       // Get containers using destructuring
@@ -10,7 +10,7 @@ export default function decorate(block) {// Add decoration class
       if (!videoContainer) {
         throw new Error('Video container not found');
       }
-  // Only proceed if there's no picture element already present
+      // Only proceed if there's no picture element already present
       if (!block.querySelector('picture')) {
         // Get video URL from anchor tag
         const videoLink = videoContainer.querySelector('a');
@@ -43,17 +43,17 @@ export default function decorate(block) {// Add decoration class
       console.error('Error in block decoration:', error);
     }
     // Center the content overlay on the video background
-    document.addEventListener("DOMContentLoaded", function() {
-      const content = document.querySelector(".product-hero.vidbg .content");
-      const container = document.querySelector(".product-hero.vidbg");
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.product-hero.vidbg .content');
+      const container = document.querySelector('.product-hero.vidbg');
       function centerContent() {
         const containerHeight = container.clientHeight;
         const contentHeight = content.clientHeight;
-        content.style.top = ((containerHeight - contentHeight) / 2) + "px";
-        content.style.position = "relative";
+        content.style.top = `${(containerHeight - contentHeight) / 2}px`;
+        content.style.position = 'relative';
       }
       centerContent();
-      window.addEventListener("resize", centerContent);
+      window.addEventListener('resize', centerContent);
     });
   }
   
