@@ -1,6 +1,6 @@
 .note-container {
   background-color: black;
-  color: rgb(204, 116, 116);
+  color: rgb(204 116 116);
   padding: 20px;
   border-radius: 5px;
   margin-bottom: 20px;
@@ -12,7 +12,7 @@
   width: 20px;
   height: 20px;
 }
- 
+
 .note-content {
   background-color: #fff; /* White background */
   color: #000; /* Black text */
@@ -21,15 +21,15 @@
   align-items: center;
   border: 1px solid #ddd;
   border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0 0 0 0.1);
   position: relative;
 }
- 
+
 .icon-container {
   flex: 0 0 24px;
   margin-right: 15px;
 }
- 
+
 .text-container {
   flex: 1;
   display: flex;
