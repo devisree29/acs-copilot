@@ -9,7 +9,7 @@ export default function decorate(block) {
         throw new Error('Container div not found');
       }
   
-      const [contentContainer, videoContainer] = Array.from(containerDiv.children);
+      const [, videoContainer] = Array.from(containerDiv.children);
       if (!videoContainer) {
         throw new Error('Video container not found');
       }
