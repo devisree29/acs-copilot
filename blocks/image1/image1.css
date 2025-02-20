@@ -1,0 +1,32 @@
+.image1-structure {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-wrapper {
+  max-width: 33%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+}
+
+.image-wrapper.right {
+  order: 1;
+}
+
+.image-wrapper.left {
+  order: 2;
+  height: 300px;
+}
+
+.image-wrapper.center {
+  order: 3;
+  max-width: 100%;
+  text-align: center;
+}
