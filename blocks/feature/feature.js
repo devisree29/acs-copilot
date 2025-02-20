@@ -80,7 +80,9 @@ export default async function decorate(block) {
         }
       });
 
-      document.querySelectorAll('.tab-header').forEach(header => (header.classList.remove('active')));
+      document.querySelectorAll('.tab-header').forEach((header) => {
+        header.classList.remove('active');
+      });
       tabHeader.classList.add('active');
     });
   });
