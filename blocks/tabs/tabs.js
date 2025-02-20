@@ -15,7 +15,6 @@ export default async function decorate(block) {
   // Create the content container
   const contentContainer = document.createElement('div');
   contentContainer.className = 'content-container';
-
   // Iterate over each tab element and set up the structure
   [...block.children].forEach((tab, index) => {
     // Create the tab button
@@ -86,7 +85,7 @@ export default async function decorate(block) {
     // Add click functionality for tab buttons
     tabButton.addEventListener('click', () => {
       document.querySelectorAll('.tab-button').forEach((button, btnIndex) => {
-        if (btnIndex == index) {
+        if (btnIndex === index) {
           button.classList.add('active');
         } else {
           button.classList.remove('active');
@@ -94,7 +93,7 @@ export default async function decorate(block) {
       });
 
       document.querySelectorAll('.tab-content').forEach((content, contentIndex) => {
-        if (contentIndex == index) {
+        if (contentIndex === index) {
           content.style.display = 'block';
           const video = content.querySelector('video');
           if (video) {
