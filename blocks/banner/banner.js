@@ -1,6 +1,5 @@
 import { decorateButtons } from '../../scripts/aem.js';
-
-//Main decorate function 
+// Main decorate function 
 export default function decorate(block) {
   // Extract the title, description, and button data from the block's child elements
   const titleElement = block.querySelector('p:nth-of-type(1)');
