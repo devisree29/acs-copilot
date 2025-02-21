@@ -3,43 +3,43 @@
   padding: 20px;
   text-align: center;
 }
-
+ 
 .banner-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   color: #fff; /* White text */
 }
-
+ 
 .banner .text-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
+ 
 .banner .text-container h1 {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px; /* Adjust spacing between 'Banner Section' and 'Try it now' */
 }
-
+ 
 .banner .white-text {
   color: #fff; /* White text for Banner and Section */
 }
-
+ 
 .banner  .multi-color-text{
   background: linear-gradient(90deg, pink ,blue); /* Corrected modern color function notation */
   background-clip: text; /* Modern approach, no vendor prefix needed */
   color: transparent; /* Modern way to apply text gradient */
 }
-
+ 
 .banner p {
   color: #fff; /* White text */
   font-size: 1em;
   margin: 0.5em 0;
 }
-
+ 
 .banner-link a {
   color: #fff;
   text-decoration: none;
@@ -53,11 +53,11 @@
   position: relative;
   transition: background 0.3s ease;
 }
-
+ 
 .banner-link a:hover {
   background: linear-gradient(90deg, rgba(0 119 255) rgba(255 0 119)); /* Fixed alpha value to 100% */
 }
-
+ 
 .banner-link a .cta-icon {
   display: inline-block;
   font-size: 0.8em; /* Reduce the icon size if needed */
