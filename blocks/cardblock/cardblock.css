@@ -1,0 +1,124 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000; /* Black Background */
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+/* Background Effect */
+.cardblock-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: radial-gradient(circle, #1c1c1c 30%, #000 100%);
+}
+
+/* Slideshow Container */
+.slideshow-container {
+  position: relative;
+  max-width: 80%;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #000; /* Ensures black background behind slides */
+  padding: 20px;
+}
+
+/* Slide Group (Displays 3 images per slide) */
+.mySlides {
+  display: none;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Individual Cards (Inside Slide) */
+.cardblock-content {
+  flex: 1;
+  background: #121212;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(200, 50, 250, 0.5);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+.cardblock-content:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(200, 50, 250, 0.8);
+  background: rgba(200, 50, 250, 0.15);
+}
+
+/* Image Styling */
+.cardblock-content picture img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Navigation Buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  transition: 0.6s ease;
+  border-radius: 50%;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.next {
+  right: 10px;
+}
+
+.prev {
+  left: 10px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Dots for Slide Navigation */
+.dots {
+  text-align: center;
+  padding: 20px;
+  background: #000; /* Black background for dots section */
+  border-radius: 0 0 10px 10px;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .mySlides {
+    flex-direction: column;
+  }
+}
