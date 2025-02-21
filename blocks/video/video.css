@@ -1,0 +1,105 @@
+/* Align entire video block to the left */
+.video {
+  text-align: left;
+  max-width: 900px;
+  margin: 24px auto 24px 0; /* margin-right auto and left 0 pushes block to left */
+}
+
+/* Reserve a 16:9 space if video embed is not loaded yet */
+.video[data-embed-loaded='false']:not(.placeholder) {
+  aspect-ratio: 16 / 9;
+}
+
+/* Align all inner elements to left */
+.video > div {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Ensure native video elements don’t exceed container width */
+.video video {
+  max-width: 100%;
+}
+
+/* Placeholder container for the video */
+.video .video-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+}
+
+/* Center inner content of the placeholder but align overall to left */
+.video .video-placeholder > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+}
+
+/* Hide placeholder once the embed is loaded */
+.video[data-embed-loaded='true'] .video-placeholder,
+.video[data-embed-loaded='false'] .video-placeholder + * {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+
+/* Make sure the placeholder image fills its container */
+.video .video-placeholder picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Styling for the play button overlay */
+.video .video-placeholder-play button {
+  position: relative;
+  display: block;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  outline: 2px solid;
+  padding: 0;
+}
+
+/* Create a triangle inside the play button */
+.video .video-placeholder-play button::before {
+  content: '';
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 0;
+  height: 24px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 18px solid;
+  top: 50%;
+  left: calc(50% + 2px);
+  transform: translate(-50%, -50%);
+}
+
+/* Optional: Style for the heading if needed */
+.video h1 {
+  text-align: left;
+  margin: 20px;
+}
+
+/* Variations for video block */
+.right.video {
+  text-align: right;
+  margin: 24px 0 24px auto; /* margin-left auto and right 0 pushes block to right */
+}
+
+.right.video > div {
+  justify-content: flex-end;
+}
+
+.centre.video {
+  text-align: center;
+  margin: 24px auto; /* center the block */
+}
+
+.centre.video > div {
+  justify-content: center;
+}
