@@ -18,7 +18,7 @@ export default function decorate(block) {
   textContainer.className = 'text-container';
   // Create the title element and insert the extracted title HTML
   const header = document.createElement('h1');
-  header.innerHTML = title; 
+  header.innerHTML = title;
   textContainer.appendChild(header);
   // Create the description paragraph and insert the extracted text content
   const descriptionParagraph = document.createElement('p');
@@ -40,8 +40,8 @@ export default function decorate(block) {
   // Append the text container to the banner content
   bannerContent.appendChild(textContainer);
   // Clear the original block content and append the new banner content
-  block.innerHTML = ''; 
-  block.appendChild(bannerContent); 
+  block.innerHTML = '';
+  block.appendChild(bannerContent);
   // Call the decorateButtons function to potentially enhance any buttons
-  decorateButtons(block); 
+  decorateButtons(block);
 }
