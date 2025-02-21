@@ -60,8 +60,10 @@ async function handleSubmit(form) {
       throw new Error(error);
     }
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.error(e);
-  } finally {
+  }
+  finally {
     form.setAttribute('data-submitting', 'false');
     submit.disabled = false;
   }
