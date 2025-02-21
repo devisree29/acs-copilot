@@ -23,7 +23,7 @@ export default function decorate(block) {
     </div>
   `;
 
-  const cardsContainer = block.querySelector('.cardblock-cards');
+  // const cardsContainer = block.querySelector('.cardblock-cards');
   let currentIndex = 0;
 
   function updateCards() {
