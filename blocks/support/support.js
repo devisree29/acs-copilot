@@ -14,6 +14,7 @@ async function createForm(formHref) {
 
   return form;
 }
+
 function generatePayload(form) {
   const payload = {};
 
@@ -33,6 +34,7 @@ function generatePayload(form) {
 
   return payload;
 }
+
 async function handleSubmit(form) {
   if (form.getAttribute('data-submitting') === 'true') return;
 
@@ -59,16 +61,15 @@ async function handleSubmit(form) {
       const error = await response.text();
       throw new Error(error);
     }
-  } 
-  catch (e) {
+  } catch (e) {
     // eslint-disable-next-line no-console
     console.error(e);
-  }
-  finally {
+  } finally {
     form.setAttribute('data-submitting', 'false');
     submit.disabled = false;
   }
 }
+
 export default async function decorate(block) {
   const links = [...block.querySelectorAll('a')].map((a) => a.href);
   const formLink = links.find((link) => link.startsWith(window.location.origin) && link.endsWith('.json'));
