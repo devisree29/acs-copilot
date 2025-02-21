@@ -1,0 +1,155 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0;
+  background: radial-gradient(circle, #1c1c1c 30%, #000 100%);
+  width: 100%;
+  justify-content: center;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 60px 0 40px;
+  width: 80%;
+  position: relative;
+}
+
+/* Video styling */
+.feature video {
+  width: 30%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(200, 50, 250, 0.5); /* Neon glow effect */
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(200, 50, 250, 0.5); /* Neon glow effect */
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Swap text and media position for even-numbered feature sections */
+.feature:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.feature:nth-child(even) .feature-content {
+  text-align: right;
+}
+
+/* Text content styling */
+.feature-content {
+  width: 45%;
+  padding: 20px;
+  text-align: left;
+}
+
+.feature-content h2 {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #f8f8f8;
+}
+
+.feature-content p {
+  font-size: 1.3em;
+  line-height: 1.8;
+  color: #ccc;
+  font-style: italic;
+}
+
+/* Hover effect on video */
+.feature video:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(200, 50, 250, 0.8);
+}
+
+/* Hover effect on image */
+.feature img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(200, 50, 250, 0.8);
+}
+
+/* Video alignment classes */
+.feature.video-left {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  gap: 70px;
+}
+
+.feature.video-right {
+  display: flex;
+  justify-content: space-between;
+  gap: 70px;
+}
+
+/* Media alignment classes */
+.feature.media-left {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  gap: 70px;
+}
+
+.feature.media-right {
+  display: flex;
+  justify-content: space-between;
+  gap: 70px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .feature {
+    flex-direction: column;
+    text-align: center;
+    margin: 80px 0 40px;
+  }
+
+  .feature video,
+  .feature img {
+    width: 85%;
+    margin-bottom: 20px;
+  }
+
+  .feature-content {
+    width: 90%;
+    text-align: center;
+  }
+}
+
+/* Ensure videos and images in <main> are fully responsive */
+main video,
+main img {
+  max-width: 100%;
+  width: 90%;
+  height: auto;
+}
+
+.media-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
