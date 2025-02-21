@@ -4,8 +4,8 @@ export default async function decorate(block) {
   // Load the CSS file for tabs
   loadCSS('/blocks/feature/feature.css');
 
-  const tabsContainer = document.createElement('div');
-  tabsContainer.className = 'tabs-container';
+  const textContainer = document.createElement('div');
+  textContainer.className = 'text-container';
 
   const contentContainer = document.createElement('div');
   contentContainer.className = 'content-container';
@@ -53,7 +53,7 @@ export default async function decorate(block) {
     videoElement.appendChild(sourceElement);
     videoContainer.appendChild(videoElement);
     tabContent.appendChild(videoContainer);
-    tabsContainer.appendChild(tabHeader);
+    textContainer.appendChild(tabHeader); // Changed this line to append to textContainer
     // Correcting the condition to avoid appending empty divs
     if ((block.classList.contains('media-right') || block.classList.contains('media-left')) && pic) {
       mediaContainer.appendChild(tabMedia);
@@ -88,7 +88,7 @@ export default async function decorate(block) {
   });
 
   block.innerHTML = '';
-  block.appendChild(tabsContainer);
+  block.appendChild(textContainer); // Changed this line to append to textContainer
 
   if (hasContent) {
     block.appendChild(contentContainer);
@@ -98,7 +98,7 @@ export default async function decorate(block) {
     block.appendChild(mediaContainer);
   }
 
-  const firstTabHeader = tabsContainer.querySelector('.tab-header');
+  const firstTabHeader = textContainer.querySelector('.tab-header'); // Changed this line to query from textContainer
   const firstTabContent = contentContainer.querySelector('.tab-content');
   const firstTabMedia = mediaContainer.querySelector('.tab-Media');
 
