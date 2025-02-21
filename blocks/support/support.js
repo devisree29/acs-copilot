@@ -59,7 +59,8 @@ async function handleSubmit(form) {
       const error = await response.text();
       throw new Error(error);
     }
-  } catch (e) {
+  } 
+  catch (e) {
     // eslint-disable-next-line no-console
     console.error(e);
   }
