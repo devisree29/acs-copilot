@@ -221,8 +221,9 @@ header nav .nav-sections ul > li > ul > li {
     content: '';
     position: absolute;
     left: -25px;
-    font-size: 2rem;
-    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+    width: 0; /* Initially no width */
+    height: 40px;
+    transition: width 0.3s ease-in-out;
   }
   
   header nav .nav-sections .default-content-wrapper > ul > li:hover::before{
