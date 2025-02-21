@@ -4,8 +4,6 @@ async function createForm(formHref) {
   const { pathname } = new URL(formHref);
   const resp = await fetch(pathname);
   const json = await resp.json();
-
-
   const form = document.createElement('form');
 
   const fields = await Promise.all(json.data.map((fd) => createField(fd, form)));
