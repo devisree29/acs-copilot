@@ -106,7 +106,6 @@ export default async function decorate(block) {
   // Extract the placeholder (picture) and link for the video.
   const placeholder = block.querySelector('picture');
   const link = block.querySelector('a').href;
-  
   // Clear existing content.
   block.textContent = '';
   block.dataset.embedLoaded = false;
