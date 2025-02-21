@@ -58,6 +58,10 @@ footer .footer .default-content-wrapper > ul li:hover::before {
     padding: 20px 32px 24px;
   }
 
+  footer .footer ul {
+    font-size: 1.8rem;
+  }
+  
   footer .footer .default-content-wrapper > ul {
     flex-direction: row;
     justify-content: center;
@@ -67,10 +71,6 @@ footer .footer .default-content-wrapper > ul li:hover::before {
 
   footer .footer .default-content-wrapper > ul li {
     padding-left: 2%;
-  }
-
-  footer .footer ul {
-    font-size: 1.8rem;
   }
 
   footer .footer p {
