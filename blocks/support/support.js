@@ -5,7 +5,6 @@ async function createForm(formHref) {
   const resp = await fetch(pathname);
   const json = await resp.json();
   const form = document.createElement('form');
-
   const fields = await Promise.all(json.data.map((fd) => createField(fd, form)));
   fields.forEach((field) => {
     if (field) {
@@ -34,7 +33,6 @@ function generatePayload(form) {
 
   return payload;
 }
-
 async function handleSubmit(form) {
   if (form.getAttribute('data-submitting') === 'true') return;
 
@@ -68,7 +66,6 @@ async function handleSubmit(form) {
     submit.disabled = false;
   }
 }
-
 export default async function decorate(block) {
   const links = [...block.querySelectorAll('a')].map((a) => a.href);
   const formLink = links.find((link) => link.startsWith(window.location.origin) && link.endsWith('.json'));
