@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #fff; /* White text */
+  color: white; /* White text */
 }
  
 .banner .text-container {
