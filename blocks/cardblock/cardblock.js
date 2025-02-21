@@ -28,18 +28,29 @@ export default function decorate(block) {
 
   function updateCards() {
     const cards = block.querySelectorAll('.cardblock-card');
+    const totalCards = cards.length;
+
     cards.forEach((card, index) => {
-      card.style.display = index >= currentIndex && index < currentIndex + 3 ? 'block' : 'none';
+      if (totalCards <= 3) {
+        card.style.display = 'block';
+      } else if (currentIndex >= totalCards - 3) {
+        card.style.display = (index >= totalCards - 3) ? 'block' : 'none';
+      } else if (currentIndex === 0) {
+        card.style.display = (index < 3) ? 'block' : 'none';
+      } else {
+        card.style.display = (index >= currentIndex && index < currentIndex + 3) ? 'block' : 'none';
+      }
     });
   }
 
   block.querySelector('.carousel-prev').addEventListener('click', () => {
-    currentIndex = (currentIndex === 0) ? cardData.length - 1 : currentIndex - 1;
+    currentIndex = (currentIndex === 0) ? cardData.length - 3 : currentIndex - 1;
+    if (currentIndex < 0) currentIndex = 0;
     updateCards();
   });
 
   block.querySelector('.carousel-next').addEventListener('click', () => {
-    currentIndex = (currentIndex + 3 >= cardData.length) ? 0 : currentIndex + 1;
+    currentIndex = (currentIndex + 1 >= cardData.length) ? 0 : currentIndex + 1;
     updateCards();
   });
 
