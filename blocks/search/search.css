@@ -28,17 +28,7 @@
   border: 1px solid var(--text-color);
 }
 
-/* no results */
-.search.minimal ul.search-results.no-results {
-  display: block;
-  margin-left: 34px;
-}
-
 /* minimal variant */
-.search.minimal ul.search-results.no-results > li {
-  border: none;
-}
-
 .search.minimal ul.search-results {
   display: block;
   list-style: none;
@@ -67,3 +57,12 @@
   cursor: pointer;
 }
 
+/* no results */
+.search.minimal ul.search-results.no-results {
+  display: block;
+  margin-left: 34px;
+}
+
+.search.minimal ul.search-results.no-results > li {
+  border: none;
+}
