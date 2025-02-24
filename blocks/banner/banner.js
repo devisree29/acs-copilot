@@ -37,11 +37,9 @@ export default function decorate(block) {
   if (buttonText && buttonLink) {
     const linkContainer = document.createElement('p');
     linkContainer.className = 'banner-link';
-    
     const link = document.createElement('a');
     link.href = buttonLink;
     link.appendChild(document.createTextNode(` ${buttonText}`));
-    
     linkContainer.appendChild(link);
     textContainer.appendChild(linkContainer);
   }
