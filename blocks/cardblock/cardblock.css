@@ -97,7 +97,7 @@ a.cardblock {
   background-color: #2b1055;
 }
 
-/* Media Queries */
+/* Media Queries
 @media (max-width: 768px) {
   .cardblock .cardblock-cards {
     flex-direction: column;
@@ -107,4 +107,4 @@ a.cardblock {
   .cardblock .cardblock-card {
     max-width: 100%;
   }
-}
+} */
