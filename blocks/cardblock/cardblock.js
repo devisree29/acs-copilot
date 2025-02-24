@@ -7,8 +7,12 @@ export default function decorate(block) {
     description: card.querySelector('p + p').textContent,
   }));
 
-  // Get authored content from <h2>, fallback to default text
-  const authoredContent = block.querySelector('h2')?.textContent || 'Default Author Content';
+  // Get authored content from <h2>
+  const authoredContent = block.querySelector('h2')?.textContent || '';
+
+  // Get CTA content
+  const ctaText = block.querySelector('.cta-button')?.textContent || '';
+  const ctaUrl = block.querySelector('.cta-button')?.href || '#';
 
   // Generate HTML structure for the carousel
   block.innerHTML = `
@@ -18,14 +22,18 @@ export default function decorate(block) {
       <div class="cardblock-cards">
         ${cardData.map(({ imgSrc, imgAlt, title, description }) => `
           <div class="cardblock-card">
-            <img src="${imgSrc}" alt="${imgAlt}" />
+            <a href="${ctaUrl}">
+              <img src="${imgSrc}" alt="${imgAlt}" />
+            </a>
             <h3>${title}</h3>
             <p>${description}</p>
           </div>
         `).join('')}
       </div>
       <button class="carousel-next" aria-label="Next card">▶</button>
-    </div> `;
+    </div>
+    ${ctaText ? `<a href="${ctaUrl}" class="cta-button">${ctaText}</a>` : ''}
+  `;
 
   let currentIndex = 0;
 

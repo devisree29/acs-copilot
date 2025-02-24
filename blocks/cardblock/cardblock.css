@@ -71,6 +71,22 @@
 .cardblock .carousel-next {
   right: -40px;
 }
+
+.cardblock .cta-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #7597de;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cardblock .cta-button:hover {
+  background-color: #2b1055;
+}
  
 @media (width <= 768px) {
   .cardblock .cardblock-cards {
