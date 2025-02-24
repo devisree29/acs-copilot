@@ -6,12 +6,12 @@ export default function decorate(block) {
   // Loop through each child element of the block
   [...block.children].forEach((child, index) => {
     if (index === 0) {
-      // The first child is the header
+      // The first child is the header (e.g., FAQ section)
       const header = document.createElement('div');
       header.classList.add('accordion-header');
-      const title = child.querySelector('h3');
-      if (title) {
-        header.innerHTML = `<span class="accordion-title">${title.innerHTML}</span><span class="accordion-icon">+</span>`;
+      const titleElement = child.querySelector('h1, h2, h3, h4, h5, h6');
+      if (titleElement) {
+        header.innerHTML = `<span class="accordion-title">${titleElement.innerHTML}</span>`;
       }
       accordionContainer.appendChild(header);
     } else {
@@ -32,9 +32,11 @@ export default function decorate(block) {
       accordionContainer.appendChild(item);
     }
   });
+
   // Replace original block content with the new accordion structure
   block.innerHTML = '';
   block.appendChild(accordionContainer);
+
   // Add event listeners for accordion functionality
   accordionContainer.addEventListener('click', (event) => {
     const header = event.target.closest('.accordion-header');
