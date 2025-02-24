@@ -46,7 +46,6 @@ export default async function decorate(block) {
     videoElement.style.width = '100%';
     videoElement.style.borderRadius = '10px';
     videoElement.style.cursor = 'pointer';
-
     const sourceElement = document.createElement('source');
     sourceElement.setAttribute('src', videoHref);
     sourceElement.setAttribute('type', 'video/mp4');
@@ -61,7 +60,6 @@ export default async function decorate(block) {
       contentContainer.appendChild(tabContent);
       hasContent = true;
     }
-
     tabHeader.addEventListener('click', () => {
       document.querySelectorAll('.tab-content').forEach((content, contentIndex) => {
         if (contentIndex === index) {
@@ -86,22 +84,17 @@ export default async function decorate(block) {
       tabHeader.classList.add('active');
     });
   });
-
   block.innerHTML = '';
   block.appendChild(textContainer); // Changed this line to append to textContainer
-
   if (hasContent) {
     block.appendChild(contentContainer);
   }
-
   if (hasMedia) {
     block.appendChild(mediaContainer);
   }
-
   const firstTabHeader = textContainer.querySelector('.tab-header'); // Changed this line to query from textContainer
   const firstTabContent = contentContainer.querySelector('.tab-content');
   const firstTabMedia = mediaContainer.querySelector('.tab-Media');
-
   if (firstTabHeader && firstTabContent) {
     firstTabHeader.classList.add('active');
     firstTabContent.style.display = 'block';

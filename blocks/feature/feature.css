@@ -32,7 +32,7 @@ body {
   width: 30%;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(200, 50, 250, 0.5); /* Neon glow effect */
+  box-shadow: 0 10px 30px rgba(200 50 250); /* Neon glow effect */
   position: relative;
   z-index: 2;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -42,7 +42,7 @@ body {
   width: 100%;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(200, 50, 250, 0.5); /* Neon glow effect */
+  box-shadow: 0 10px 30px rgba(200 50 250); /* Neon glow effect */
   position: relative;
   z-index: 2;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -51,14 +51,15 @@ body {
 /* Swap text and media position for even-numbered feature sections */
 .feature:nth-child(even) {
   flex-direction: row-reverse;
-}
-
-.feature:nth-child(even) .feature-content {
   text-align: right;
 }
 
+/* .feature:nth-child(even) .feature-content {
+  text-align: right;
+} */
+
 /* Text content styling */
-.feature-content {
+.feature:nth-child(even) .feature-content {
   width: 45%;
   padding: 20px;
   text-align: left;
@@ -83,13 +84,13 @@ body {
 /* Hover effect on video */
 .feature video:hover {
   transform: scale(1.05);
-  box-shadow: 0 15px 40px rgba(200, 50, 250, 0.8);
+  box-shadow: 0 15px 40px rgba(200 50 250);
 }
 
 /* Hover effect on image */
 .feature img:hover {
   transform: scale(1.05);
-  box-shadow: 0 15px 40px rgba(200, 50, 250, 0.8);
+  box-shadow: 0 15px 40px rgba(200 50 250);
 }
 
 /* Video alignment classes */
@@ -121,7 +122,8 @@ body {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+
+/* @media (max-width: 768px) {
   .feature {
     flex-direction: column;
     text-align: center;
@@ -138,11 +140,11 @@ body {
     width: 90%;
     text-align: center;
   }
-}
+} */
 
 /* Ensure videos and images in <main> are fully responsive */
-main video,
-main img {
+.feature video:hover .feature video main video,
+.feature img main img .feature img:hover {
   max-width: 100%;
   width: 90%;
   height: auto;
