@@ -6,7 +6,6 @@ export default function decorate(block) {
   const titleElement = block.querySelector('h1');
   const descriptionElement = block.querySelector('p:nth-of-type(1)');
   const buttonElement = block.querySelector('p:nth-of-type(2) a');
-
   const bannerTitle = titleElement?.innerHTML || '';
   const bannerDescription = descriptionElement?.textContent || '';
   const ctaText = buttonElement?.textContent || '';
@@ -38,11 +37,9 @@ export default function decorate(block) {
   if (ctaText && ctaUrl) {
     const linkContainer = document.createElement('p');
     linkContainer.className = 'banner-link';
-
     const link = document.createElement('a');
     link.href = ctaUrl;
     link.textContent = ctaText;
-
     linkContainer.appendChild(link);
     textContainer.appendChild(linkContainer);
   }
