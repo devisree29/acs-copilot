@@ -1,9 +1,9 @@
 export default function decorate(block) {
   // Get the heading element inside the block
-  const headingElement = block.querySelector('h2');
+  const logoTitle = block.querySelector('h2');
 
   // Extract all logo images from <picture> elements
-  const logos = [...block.querySelectorAll('picture')].map((picture) => ({
+  const logoImages = [...block.querySelectorAll('picture')].map((picture) => ({
     src: picture.querySelector('img').src, // Get image source
     alt: picture.querySelector('img').alt || 'Logo', // Set alt text or default to 'Logo'
   }));
@@ -11,9 +11,9 @@ export default function decorate(block) {
   // Reconstruct the block's inner HTML with structured layout
   block.innerHTML = `
     <div class="logo-content">
-      ${headingElement.outerHTML} <!-- Retains the heading element -->
+      ${logoTitle.outerHTML} <!-- Retains the heading element -->
       <div class="logo-slideshow">
-        ${logos.map((logo) => `
+        ${logoImages.map((logo) => `
           <div class="logo-card">
             <img src="${logo.src}" alt="${logo.alt}">
           </div>
@@ -61,7 +61,7 @@ export default function decorate(block) {
   slideLogos(); // Call function to start the animation
 
   // Add a click event to the heading to toggle a class for styling
-  headingElement.addEventListener('click', () => {
-    headingElement.classList.toggle('clicked'); // Toggle 'clicked' class
+  logoTitle.addEventListener('click', () => {
+    logoTitle.classList.toggle('clicked'); // Toggle 'clicked' class
   });
 }
