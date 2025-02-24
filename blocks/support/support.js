@@ -78,9 +78,7 @@ export default async function decorate(block) {
 
   // List of valid sections
   const validSections = ['contact-us', 'feedback', 'featurerequest', 'bugreport'];
-  const hash = window.location.hash.substring(1) 
-    (window.location.pathname === '/draft/support' ? 'contact-us' : '');
-
+  const hash = window.location.hash.substring(1) || (window.location.pathname === '/draft/support' ? 'contact-us' : '');
   if (!validSections.includes(hash) || !formLink.includes(hash)) {
     block.textContent = '';
     return;
