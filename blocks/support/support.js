@@ -9,7 +9,11 @@ async function createForm(formHref) {
   const response = await fetch(new URL(formHref).pathname);
   const { data } = await response.json();
   const form = document.createElement('form');
-  (await Promise.all(data.map((fd) => createField(fd, form)))).forEach((field) => field && form.append(field));
+
+  (await Promise.all(data.map((fd) => createField(fd, form)))).forEach((field) => {
+    if (field) form.append(field);
+  });
+
   return form;
 }
 
@@ -71,16 +75,23 @@ export default async function decorate(block) {
   const formLink = links.find((link) => link.startsWith(window.location.origin) && link.endsWith('.json'));
   const submitLink = links.find((link) => link !== formLink);
   if (!formLink || !submitLink) return;
- // List of valid sections
+
+  // List of valid sections
   const validSections = ['contact-us', 'feedback', 'featurerequest', 'bugreport'];
-  let hash = window.location.hash.substring(1) || (window.location.pathname === '/draft/support' ? 'contact-us' : '');
-  if (!validSections.includes(hash) || !formLink.includes(hash)) return (block.textContent = '');
+  const hash = window.location.hash.substring(1) ||
+    (window.location.pathname === '/draft/support' ? 'contact-us' : '');
+
+  if (!validSections.includes(hash) || !formLink.includes(hash)) {
+    block.textContent = '';
+    return;
+  }
 
   const form = await createForm(formLink, submitLink);
+
   // Create and append heading and paragraph elements
-  form.prepend(Object.assign(document.createElement('p'), { textContent: block.querySelector('p').textContent}));
-  form.prepend(Object.assign(document.createElement('h1'), { textContent: block.querySelector('h1').textContent}));
-  
+  form.prepend(Object.assign(document.createElement('p'), { textContent: block.querySelector('p').textContent }));
+  form.prepend(Object.assign(document.createElement('h1'), { textContent: block.querySelector('h1').textContent }));
+
   block.replaceChildren(form);
 
   form.addEventListener('submit', (e) => {
