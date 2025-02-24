@@ -1,30 +1,37 @@
 export default function decorate(block) {
+  // Extract card data from the block
   const cardData = Array.from(block.querySelectorAll(':scope > div')).map((card) => ({
     imgSrc: card.querySelector('picture source[type="image/jpeg"]').srcset,
     imgAlt: card.querySelector('img').alt,
-    title: card.querySelector('p strong').textContent,
+    title: card.querySelector('h3') ? card.querySelector('h3').textContent : card.querySelector('p').textContent,
     description: card.querySelector('p + p').textContent,
   }));
 
+  // Get authored content from <h2>, fallback to default text
+  const authoredContent = block.querySelector('h2')?.textContent || 'Default Author Content';
+
+  // Generate HTML structure for the carousel
   block.innerHTML = `
-    <h2>Card Block Section for All Products ACS Co Pilot</h2>
+    <p class="authored-content">${authoredContent}</p>
     <div class="cardblock-carousel">
       <button class="carousel-prev" aria-label="Previous card">◀</button>
       <div class="cardblock-cards">
-      ${cardData.map((card) => `
-        <div class="cardblock-card">
-          <img src="${card.imgSrc}" alt="${card.imgAlt}" />
-          <h3>${card.title}</h3>
-          <p>${card.description}</p>
-        </div>
-      `).join('')}
+        ${cardData.map(({ imgSrc, imgAlt, title, description }) => `
+          <div class="cardblock-card">
+            <img src="${imgSrc}" alt="${imgAlt}" />
+            <h3>${title}</h3>
+            <p>${description}</p>
+          </div>
+        `).join('')}
       </div>
       <button class="carousel-next" aria-label="Next card">▶</button>
-    </div>
-  `;
+    </div> `;
 
   let currentIndex = 0;
 
+  /**
+   * Updates the visibility of cards in the carousel
+   */
   function updateCards() {
     const cards = block.querySelectorAll('.cardblock-card');
     const totalCards = cards.length;
@@ -42,16 +49,23 @@ export default function decorate(block) {
     });
   }
 
+  /**
+   * Moves the carousel to the previous set of cards
+   */
   block.querySelector('.carousel-prev').addEventListener('click', () => {
     currentIndex = (currentIndex === 0) ? cardData.length - 3 : currentIndex - 1;
     if (currentIndex < 0) currentIndex = 0;
     updateCards();
   });
 
+  /**
+   * Moves the carousel to the next set of cards
+   */
   block.querySelector('.carousel-next').addEventListener('click', () => {
     currentIndex = (currentIndex + 1 >= cardData.length) ? 0 : currentIndex + 1;
     updateCards();
   });
 
+  // Initialize carousel display
   updateCards();
 }

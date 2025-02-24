@@ -6,17 +6,17 @@
   color: white;
   font-family: Arial, sans-serif;
 }
-
+ 
 .cardblock h2 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
 }
-
+ 
 .cardblock .cardblock-carousel {
   position: relative;
 }
-
+ 
 .cardblock .cardblock-cards {
   display: flex;
   gap: 20px;
@@ -24,7 +24,7 @@
   flex-wrap: nowrap;
   overflow: hidden;
 }
-
+ 
 .cardblock .cardblock-card {
   background: black;
   padding: 20px;
@@ -33,23 +33,23 @@
   flex: 1;
   display: none;
 }
-
+ 
 .cardblock .cardblock-card img {
   width: 100%;
   border-radius: 10px;
 }
-
+ 
 .cardblock .cardblock-card h3 {
   font-size: 18px;
   font-weight: bold;
   margin: 10px 0;
 }
-
+ 
 .cardblock .cardblock-card p {
   font-size: 14px;
   color: #d3d3d3;
 }
-
+ 
 .cardblock .carousel-prev,
 .cardblock .carousel-next {
   position: absolute;
@@ -63,21 +63,21 @@
   height: 30px;
   cursor: pointer;
 }
-
+ 
 .cardblock .carousel-prev {
   left: -40px;
 }
-
+ 
 .cardblock .carousel-next {
   right: -40px;
 }
-
+ 
 @media (width <= 768px) {
   .cardblock .cardblock-cards {
     flex-direction: column;
     align-items: center;
   }
-
+ 
   .cardblock .cardblock-card {
     max-width: 100%;
   }
