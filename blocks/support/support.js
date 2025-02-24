@@ -1,5 +1,4 @@
 import createField from './form-fields.js';
-
 /**
  * Asynchronously creates a form element based on JSON data retrieved from a URL.
  * @param {string} formHref - The URL containing form field definitions in JSON format.
@@ -49,7 +48,7 @@ async function handleSubmit(form) {
     if (!response.ok) throw new Error(await response.text());
     if (form.dataset.confirmation) window.location.href = form.dataset.confirmation;
   } catch (e) {
-    console.error(e);
+    console.error(e); // eslint-disable-line no-console
   } finally {
     form.dataset.submitting = 'false';
     submit.disabled = false;
@@ -64,14 +63,17 @@ export default async function decorate(block) {
   const formLink = links.find((link) => link.startsWith(window.location.origin) && link.endsWith('.json'));
   const submitLink = links.find((link) => link !== formLink);
   if (!formLink || !submitLink) return;
- // List of valid sections
+  // List of valid sections
   const validSections = ['contact-us', 'feedback', 'featurerequest', 'bugreport'];
-  let hash = window.location.hash.substring(1) || (window.location.pathname === '/draft/support' ? 'contact-us' : '');
-  if (!validSections.includes(hash) || !formLink.includes(hash)) return (block.textContent = '');
+  const hash = window.location.hash.substring(1) || (window.location.pathname === '/draft/support' ? 'contact-us' : '');
+  if (!validSections.includes(hash) || !formLink.includes(hash)) {
+    block.textContent = '';
+    return;
+  }
   const form = await createForm(formLink, submitLink);
   // Create and append heading and paragraph elements
-  form.prepend(Object.assign(document.createElement('p'), { textContent: block.querySelector('p').textContent}));
-  form.prepend(Object.assign(document.createElement('h1'), { textContent: block.querySelector('h1').textContent}));
+  form.prepend(Object.assign(document.createElement('p'), { textContent: block.querySelector('p').textContent }));
+  form.prepend(Object.assign(document.createElement('h1'), { textContent: block.querySelector('h1').textContent }));
   block.replaceChildren(form);
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -82,4 +84,3 @@ export default async function decorate(block) {
     }
   });
 }
- 
