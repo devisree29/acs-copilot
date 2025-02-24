@@ -121,26 +121,6 @@ body {
   gap: 70px;
 }
 
-/* Responsive adjustments */
-
-/* @media (max-width: 768px) {
-  .feature {
-    flex-direction: column;
-    text-align: center;
-    margin: 80px 0 40px;
-  }
-
-  .feature video,
-  .feature img {
-    width: 85%;
-    margin-bottom: 20px;
-  }
-
-  .feature-content {
-    width: 90%;
-    text-align: center;
-  }
-} */
 
 /* Ensure videos and images in <main> are fully responsive */
 .feature video:hover .feature video main video,
