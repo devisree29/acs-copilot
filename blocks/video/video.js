@@ -1,6 +1,6 @@
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 // Helper function to create URL query parameters
-function createEmbed(url, params) {
+function createEmbed(_url, params) {
   return Object.entries(params)
     .map(([k, v]) => `${k}=${encodeURIComponent(v)}`)
     .join('&');
@@ -119,4 +119,3 @@ export default function decorate(block) {
     }).observe(block);
   }
 }
-
