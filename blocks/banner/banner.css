@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white; 
+  color: white;
 }
 
 .banner .text-container {
@@ -17,12 +17,12 @@
   align-items: center;
 }
 
-.banner .text-container h2 {
+.banner .text-container h1 {
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
-  gap: 10px; 
+  gap: 10px;
 }
 
 .banner .white-text {
@@ -30,13 +30,13 @@
 }
 
 .banner .multi-color-text {
-  background: linear-gradient(90deg, pink, blue); 
-  background-clip: text; 
-  color: transparent; 
+  background: linear-gradient(90deg, pink, blue);
+  background-clip: text;
+  color: transparent;
 }
 
 .banner p {
-  color: #fff; 
+  color: #fff;
   font-size: 1em;
   margin: 0.5em 0;
 }
@@ -44,9 +44,9 @@
 .banner-link a {
   color: #fff;
   text-decoration: none;
-  font-size: 0.9em; 
-  border-radius: 8px; 
-  background: linear-gradient(90deg, rgba(255 0 119), rgba(83 48 208)); 
+  font-size: 0.9em;
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(255, 0, 119), rgba(83, 48, 208));
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -56,10 +56,10 @@
 }
 
 .banner-link a:hover {
-  background: linear-gradient(90deg, rgba(0 119 255), rgba(255 0 119)); 
+  background: linear-gradient(90deg, rgba(0, 119, 255), rgba(255, 0, 119));
 }
 
 .banner-link a .cta-icon {
   display: inline-block;
-  font-size: 0.8em; 
+  font-size: 0.8em;
 }
