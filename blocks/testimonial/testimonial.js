@@ -15,9 +15,9 @@ export default function decorate(block) {
     };
   });
 
-  // Generate HTML structure for testimonials
-  const createTestimonialHTML = (items) => {
-    return items
+  // Generate HTML structure for testimonials (fixed arrow-body-style)
+  const createTestimonialHTML = (items) =>
+    items
       .map(
         (test) => `
         <div class="testimonial-card">
@@ -35,7 +35,6 @@ export default function decorate(block) {
       `,
       )
       .join('');
-  };
 
   // Update block content
   block.innerHTML = `
