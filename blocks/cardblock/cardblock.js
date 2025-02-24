@@ -23,13 +23,13 @@ export default function decorate(block) {
       <button class="carousel-prev" aria-label="Previous card">◀</button>
       <div class="cardblock-cards">
         ${cardData
-          .map(
-            ({
-              imgSrc,
-              imgAlt,
-              title,
-              description,
-            }) => `
+    .map(
+      ({
+        imgSrc,
+        imgAlt,
+        title,
+        description,
+      }) => `
           <div class="cardblock-card">
             <a href="${ctaUrl}">
               <img src="${imgSrc}" alt="${imgAlt}" />
@@ -38,8 +38,8 @@ export default function decorate(block) {
             <p>${description}</p>
           </div>
         `,
-          )
-          .join('')}
+    )
+    .join('')}
       </div>
       <button class="carousel-next" aria-label="Next card">▶</button>
     </div>
@@ -63,8 +63,7 @@ export default function decorate(block) {
       } else if (currentIndex === 0) {
         card.style.display = index < 3 ? 'block' : 'none';
       } else {
-        card.style.display =
-          index >= currentIndex && index < currentIndex + 3 ? 'block' : 'none';
+        card.style.display = index >= currentIndex && index < currentIndex + 3 ? 'block' : 'none';
       }
     });
   }
