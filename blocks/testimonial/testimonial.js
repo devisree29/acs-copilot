@@ -15,26 +15,22 @@ export default function decorate(block) {
     };
   });
 
-  // Generate HTML structure for testimonials (fixed arrow-body-style)
-  const createTestimonialHTML = (items) =>
-    items
-      .map(
-        (test) => `
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            ${createOptimizedPicture(test.src, test.alt).outerHTML}
-            <div class="testimonial-info">
-              <h3>${test.testimonialTitle}</h3>
-              ${test.link}
-            </div>
-          </div>
-          <div class="testimonial-content">
-            <p>${test.testimonialText}</p>
+  // Generate HTML structure for testimonials (fixed implicit-arrow-linebreak)
+  const createTestimonialHTML = (items) => items
+    .map((test) => `
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          ${createOptimizedPicture(test.src, test.alt).outerHTML}
+          <div class="testimonial-info">
+            <h3>${test.testimonialTitle}</h3>
+            ${test.link}
           </div>
         </div>
-      `,
-      )
-      .join('');
+        <div class="testimonial-content">
+          <p>${test.testimonialText}</p>
+        </div>
+      </div>
+    `).join('');
 
   // Update block content
   block.innerHTML = `
