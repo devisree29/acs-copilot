@@ -4,13 +4,16 @@
   max-width: 900px;
   margin: 24px auto 24px 0; /* margin-right auto and left 0 pushes block to left */
 }
+
 .video[data-embed-loaded='false']:not(.placeholder) {
   aspect-ratio: 16 / 9;
 }
+
 .video > div {
   display: flex;
   justify-content: flex-start;
 }
+
 /* Ensure native video elements don’t exceed container width */
 .video video {
   max-width: 100%;
