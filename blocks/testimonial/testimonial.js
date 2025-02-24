@@ -5,7 +5,7 @@ export default function decorate(block) {
   const testimonialsData = [...block.children].map((row) => {
     const pictureElement = row.querySelector('picture');
     const imgElement = pictureElement.querySelector('img');
-    
+
     return {
       src: imgElement.getAttribute('src'),
       alt: imgElement.getAttribute('alt'),
@@ -16,8 +16,8 @@ export default function decorate(block) {
   });
 
   // Generate HTML structure for testimonials
-  const createTestimonialHTML = (items) =>
-    items
+  const createTestimonialHTML = (items) => {
+    return items
       .map(
         (test) => `
         <div class="testimonial-card">
@@ -35,6 +35,7 @@ export default function decorate(block) {
       `,
       )
       .join('');
+  };
 
   // Update block content
   block.innerHTML = `
