@@ -12,7 +12,7 @@ export default function decorate(block) {
 
   // Get CTA content
   const ctaText = block.querySelector('.cta-button')?.textContent || '';
-  const ctaUrl = block.querySelector('.cta-button')?.href || '#';
+  const ctaUrl = block.querySelector('.cta-button')?.href || '';
 
   // Generate HTML structure for the carousel
   block.innerHTML = `
@@ -20,7 +20,12 @@ export default function decorate(block) {
     <div class="cardblock-carousel">
       <button class="carousel-prev" aria-label="Previous card">◀</button>
       <div class="cardblock-cards">
-        ${cardData.map(({ imgSrc, imgAlt, title, description }) => `
+        ${cardData.map(({ 
+          imgSrc, 
+          imgAlt, 
+          title, 
+          description 
+        }) => `
           <div class="cardblock-card">
             <a href="${ctaUrl}">
               <img src="${imgSrc}" alt="${imgAlt}" />
