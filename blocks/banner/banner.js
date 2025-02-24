@@ -5,7 +5,8 @@ export default function decorate(block) {
   // Helper function to extract content with fallback values
   const extractContent = (selector, attribute = false) => {
     const element = block.querySelector(selector);
-    return element ? (attribute ? element.getAttribute('href') : element.textContent) : '';
+    if (!element) return '';
+    return attribute ? element.getAttribute('href') : element.textContent;
   };
 
   // Extract title, description, and button link/text
