@@ -9,7 +9,6 @@
 .video[data-embed-loaded='false']:not(.placeholder) {
   aspect-ratio: 16 / 9;
 }
-
 /* Align all inner elements to left */
 .video > div {
   display: flex;
