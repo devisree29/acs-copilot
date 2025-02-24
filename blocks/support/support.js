@@ -1,122 +1,98 @@
 import createField from './form-fields.js';
 
+/**
+ * Asynchronously creates a form element based on JSON data retrieved from a URL.
+ * @param {string} formHref - The URL containing form field definitions in JSON format.
+ * @returns {Promise<HTMLFormElement>} - The generated form element.
+ */
 async function createForm(formHref) {
-  const { pathname } = new URL(formHref);
-  const resp = await fetch(pathname);
-  const json = await resp.json();
+  const response = await fetch(new URL(formHref).pathname);
+  const { data } = await response.json();
+  
   const form = document.createElement('form');
-  const fields = await Promise.all(json.data.map((fd) => createField(fd, form)));
-  fields.forEach((field) => {
-    if (field) {
-      form.append(field);
-    }
-  });
-
+  
+  (await Promise.all(data.map((fd) => createField(fd, form)))).forEach((field) => field && form.append(field));
+  
   return form;
 }
 
+/**
+ * Generates a payload object containing form data.
+ * @param {HTMLFormElement} form - The form element to extract data from.
+ * @returns {Object} - The form data as an object.
+ */
 function generatePayload(form) {
-  const payload = {};
-
-  [...form.elements].forEach((field) => {
+  return [...form.elements].reduce((payload, field) => {
     if (field.name && field.type !== 'submit' && !field.disabled) {
-      if (field.type === 'radio') {
-        if (field.checked) payload[field.name] = field.value;
-      } else if (field.type === 'checkbox') {
-        if (field.checked) {
-          payload[field.name] = payload[field.name] ? `${payload[field.name]},${field.value}` : field.value;
-        }
-      } else {
+      if (field.type === 'radio' && field.checked) {
+        payload[field.name] = field.value;
+      } else if (field.type === 'checkbox' && field.checked) {
+        payload[field.name] = payload[field.name] ? `${payload[field.name]},${field.value}` : field.value;
+      } else if (field.type !== 'radio' && field.type !== 'checkbox') {
         payload[field.name] = field.value;
       }
     }
-  });
-
-  return payload;
+    return payload;
+  }, {});
 }
 
+/**
+ * Handles form submission, sends the form data as a JSON payload via a POST request.
+ * @param {HTMLFormElement} form - The form element being submitted.
+ */
 async function handleSubmit(form) {
-  if (form.getAttribute('data-submitting') === 'true') return;
+  if (form.dataset.submitting === 'true') return;
 
   const submit = form.querySelector('button[type="submit"]');
-  try {
-    form.setAttribute('data-submitting', 'true');
-    submit.disabled = true;
+  form.dataset.submitting = 'true';
+  submit.disabled = true;
 
-    // Create payload
-    const payload = generatePayload(form);
+  try {
     const response = await fetch(form.dataset.action, {
       method: 'POST',
-      body: JSON.stringify({ data: payload }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      body: JSON.stringify({ data: generatePayload(form) }),
+      headers: { 'Content-Type': 'application/json' },
     });
 
-    if (response.ok) {
-      if (form.dataset.confirmation) {
-        window.location.href = form.dataset.confirmation;
-      }
-    } else {
-      const error = await response.text();
-      throw new Error(error);
-    }
+    if (!response.ok) throw new Error(await response.text());
+
+    if (form.dataset.confirmation) window.location.href = form.dataset.confirmation;
   } catch (e) {
-    // eslint-disable-next-line no-console
     console.error(e);
   } finally {
-    form.setAttribute('data-submitting', 'false');
+    form.dataset.submitting = 'false';
     submit.disabled = false;
   }
 }
 
+/**
+ * Initializes and decorates the form block by fetching form data and handling its submission.
+ * @param {HTMLElement} block - The block element containing the form-related links.
+ */
 export default async function decorate(block) {
   const links = [...block.querySelectorAll('a')].map((a) => a.href);
   const formLink = links.find((link) => link.startsWith(window.location.origin) && link.endsWith('.json'));
   const submitLink = links.find((link) => link !== formLink);
-  let hash = window.location.hash.substring(1);
-  const path = window.location.pathname;
-
   if (!formLink || !submitLink) return;
-
-  // List of valid sections
+ // List of valid sections
   const validSections = ['contact-us', 'feedback', 'featurerequest', 'bugreport'];
+  let hash = window.location.hash.substring(1) || (window.location.pathname === '/draft/support' ? 'contact-us' : '');
+  if (!validSections.includes(hash) || !formLink.includes(hash)) return (block.textContent = '');
 
-  // If no hash is present on /draft/support, force it to #contact-us
-  if (path === '/draft/support' && !hash) {
-    hash = 'contact-us';
-    window.location.hash = '#contact-us';
-  }
+  const form = await createForm(formLink, submitLink);
+  // Create and append heading and paragraph elements
+  form.prepend(Object.assign(document.createElement('p'), { textContent: block.querySelector('p').textContent}));
+  form.prepend(Object.assign(document.createElement('h1'), { textContent: block.querySelector('h1').textContent}));
+  
+  block.replaceChildren(form);
 
-  // Load the appropriate form if the hash is valid
-  if (validSections.includes(hash) && formLink.includes(hash)) {
-    const form = await createForm(formLink, submitLink);
-
-    // Create and append heading and paragraph elements
-    const heading = document.createElement('h1');
-    heading.textContent = block.querySelector('h1')?.textContent || 'Support Form';
-
-    const paragraph = document.createElement('p');
-    paragraph.textContent = block.querySelector('p')?.textContent || 'Please fill out the form below.';
-
-    form.prepend(paragraph);
-    form.prepend(heading);
-
-    block.replaceChildren(form);
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (form.checkValidity()) {
-        handleSubmit(form);
-      } else {
-        const firstInvalidEl = form.querySelector(':invalid:not(fieldset)');
-        if (firstInvalidEl) {
-          firstInvalidEl.focus();
-          firstInvalidEl.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    });
-  } else {
-    block.textContent = ''; // Clear content if an invalid section is detected
-  }
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (form.checkValidity()) {
+      handleSubmit(form);
+    } else {
+      form.querySelector(':invalid:not(fieldset)')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
 }
+ 
