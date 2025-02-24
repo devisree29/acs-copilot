@@ -1,14 +1,16 @@
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 // Helper function to create URL query parameters
 function createEmbed(url, params) {
   return Object.entries(params)
     .map(([k, v]) => `${k}=${encodeURIComponent(v)}`)
     .join('&');
 }
+
 // Function to generate YouTube embed HTML
 function embedYoutube(url, autoplay, background) {
   const usp = new URLSearchParams(url.search);
-  let vid = usp.get('v') || url.pathname.split('/')[1] || '';
+  const vid = usp.get('v') || url.pathname.split('/')[1] || '';
   const suffixParams = background || autoplay ? {
     autoplay: autoplay ? '1' : '0',
     mute: background ? '1' : '0',
@@ -24,6 +26,7 @@ function embedYoutube(url, autoplay, background) {
       allowfullscreen loading="lazy"></iframe>
     </div>`;
 }
+
 // Function to generate Vimeo embed HTML
 function embedVimeo(url, autoplay, background) {
   const video = url.pathname.split('/')[1];
@@ -37,6 +40,7 @@ function embedVimeo(url, autoplay, background) {
       frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
     </div>`;
 }
+
 // Function to create and configure a video element for self-hosted videos
 function getVideoElement(source, autoplay, background) {
   const video = document.createElement('video');
@@ -48,15 +52,19 @@ function getVideoElement(source, autoplay, background) {
     video.loop = true;
     video.playsInline = true;
     video.muted = true;
-    video.addEventListener('canplay', () => autoplay && video.play());
+    video.addEventListener('canplay', () => {
+      if (autoplay) video.play();
+    });
   }
   return video;
 }
+
 // Function to load the appropriate video embed type
 function loadVideoEmbed(block, link, autoplay, background) {
   if (block.dataset.embedLoaded === 'true') return;
   const url = new URL(link);
   let embedHTML;
+
   // Determine video platform and create embed accordingly
   if (link.includes('youtube') || link.includes('youtu.be')) {
     embedHTML = embedYoutube(url, autoplay, background);
@@ -65,29 +73,38 @@ function loadVideoEmbed(block, link, autoplay, background) {
   } else {
     const videoEl = getVideoElement(link, autoplay, background);
     block.append(videoEl);
-    videoEl.addEventListener('canplay', () => block.dataset.embedLoaded = 'true');
+    videoEl.addEventListener('canplay', () => {
+      block.dataset.embedLoaded = 'true';
+    });
     return;
   }
+
   // Append the embed HTML to the block
   const embedWrapper = document.createElement('div');
   embedWrapper.innerHTML = embedHTML;
   block.append(embedWrapper);
-  embedWrapper.querySelector('iframe').addEventListener('load', () => block.dataset.embedLoaded = 'true');
+  embedWrapper.querySelector('iframe').addEventListener('load', () => {
+    block.dataset.embedLoaded = 'true';
+  });
 }
+
 // Main function to decorate the video block
 export default function decorate(block) {
   // Extract and remove the heading (if any)
   const heading = block.querySelector('h1');
   heading?.remove();
+
   // Extract the placeholder image and video link
   const placeholder = block.querySelector('picture');
   const link = block.querySelector('a')?.href;
   if (!link) return;
+
   // Clear block content and reset embed state
   block.textContent = '';
   block.dataset.embedLoaded = 'false';
   if (heading) block.append(heading);
   const autoplay = block.classList.contains('autoplay');
+
   // Handle video placeholder with play button
   if (placeholder) {
     block.classList.add('placeholder');
@@ -103,13 +120,15 @@ export default function decorate(block) {
     }
     block.append(wrapper);
   }
+
   // Load video when block enters viewport
   if (!placeholder || autoplay) {
-    new IntersectionObserver(entries => {
-      if (entries.some(e => e.isIntersecting)) {
+    new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
         entries[0].target.disconnect?.();
         loadVideoEmbed(block, link, autoplay && !prefersReducedMotion.matches, autoplay);
       }
     }).observe(block);
   }
 }
+
