@@ -20,9 +20,7 @@ export default function decorate(block) {
     <div class="cardblock-carousel">
       <button class="carousel-prev" aria-label="Previous card">◀</button>
       <div class="cardblock-cards">
-        ${cardData.map(({
-          imgSrc, imgAlt, title, description,
-            }) => `
+        ${cardData.map(({imgSrc,imgAlt,title,description}) => `
           <div class="cardblock-card">
             <a href="${ctaUrl}">
               <img src="${imgSrc}" alt="${imgAlt}" />
