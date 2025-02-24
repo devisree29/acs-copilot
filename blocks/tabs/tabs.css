@@ -1,23 +1,28 @@
+/* Main container styles */
 main {
-  height: 800px;
+  height: 1200px;
   background: linear-gradient(135deg, black, purple, violet, purple, black);
 }
 
+/* Tab block styles */
 .tab-block {
   background-color: black;
 }
 
+/* Tabs wrapper styles */
 .tabs-wrapper {
   padding: 20px;
   border-radius: 10px;
 }
 
+/* Tabs container styles */
 .tabs-container {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
 
+/* Tab button styles */
 .tab-button {
   background-color: transparent;
   color: black;
@@ -34,7 +39,7 @@ main {
   overflow: hidden;
 }
 
-.tab-button .icon-image {
+.tab-button .tab-media {
   width: 24px;
   height: 24px;
   margin-right: 10px;
@@ -48,7 +53,7 @@ main {
   left: -2px;
   right: -2px;
   border-radius: 50px;
-  background: linear-gradient(45deg, red purple blue yellow);
+  background: linear-gradient(45deg, red, purple, blue, yellow);
   background-size: 400% 400%;
   z-index: -1;
   transition: opacity 0.3s;
@@ -62,7 +67,7 @@ main {
   box-shadow: 5px 8px 10px rgba(255 0 0), 0 0 10px rgba(0 255 0), 0 0 10px rgba(0 0 255);
 }
 
-.tab-button:hover .icon-image {
+.tab-button:hover .tab-media {
   filter: brightness(0) invert(1);
 }
 
@@ -77,7 +82,7 @@ main {
   border-color: transparent;
 }
 
-.tab-button.active .icon-image {
+.tab-button.active .tab-media {
   filter: brightness(0) invert(1);
 }
 
@@ -90,6 +95,7 @@ main {
   background-color: rgba(0 0 0) !important;
 }
 
+/* Glowing border animation */
 @keyframes glowing-border {
   0% {
     background-position: 0% 50%;
@@ -100,11 +106,13 @@ main {
   }
 }
 
+/* Content container styles */
 .content-container {
   display: flex;
   justify-content: center;
 }
 
+/* Tab content styles */
 .tab-content {
   width: 100%;
   max-width: 1000px;
@@ -116,22 +124,8 @@ main {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0 0 0);
   transition: all 0.3s ease-in-out;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
   position: relative;
-}
-
-.tab-content video::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  border-radius: 10px;
-  background: linear-gradient(45deg, red, purple, blue, yellow);
-  background-size: 400% 400%;
-  z-index: -1;
-  transition: opacity 0.3s;
-  opacity: 0;
 }
 
 .tab-content video.video-start-animation {
@@ -150,12 +144,8 @@ main {
   }
 }
 
-.tab-content video:hover::before {
-  opacity: 1;
-  animation: glowing-border 2s linear infinite;
-}
-
-.tabs .cta-link {
+/* CTA link styles */
+.cta-url {
   display: inline-block;
   margin-top: 10px;
   text-align: center;
@@ -171,7 +161,7 @@ main {
   transition: opacity 0.5s ease-in-out, background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
-.cta-link.cta-link-show {
+.cta-url.cta-link-show {
   animation: cta-link-start 0.5s forwards;
 }
 
@@ -187,7 +177,7 @@ main {
   }
 }
 
-.tabs .cta-link:hover {
+.cta-url:hover {
   background-color: black;
   transform: translateY(-5px);
   box-shadow: 5px 7px 10px rgba(255 0 0), 0 0 10px rgba(0 255 0), 0 0 10px rgba(0 0 255);
