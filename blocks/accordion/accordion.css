@@ -10,7 +10,7 @@
 }
 
 .accordion-header {
-  background-color:  color(display-p3 0.0078 0.0431 0.0235);
+  background-color: color(display-p3 0.0078 0.0431 0.0235);
   color: white;
   cursor: pointer;
   padding: 15px;
@@ -27,7 +27,7 @@
 
 .accordion-header:hover,
 .accordion-header[aria-expanded="true"] {
-  background-color:  color(display-p3 0.0078 0.0431 0.0235);
+  background-color: color(display-p3 0.0078 0.0431 0.0235);
 }
 
 .accordion-content {
