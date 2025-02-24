@@ -8,11 +8,8 @@ import createField from './form-fields.js';
 async function createForm(formHref) {
   const response = await fetch(new URL(formHref).pathname);
   const { data } = await response.json();
-  
   const form = document.createElement('form');
-  
   (await Promise.all(data.map((fd) => createField(fd, form)))).forEach((field) => field && form.append(field));
-  
   return form;
 }
 
