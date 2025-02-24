@@ -4,7 +4,6 @@
   max-width: 900px;
   margin: 24px auto 24px 0; /* margin-right auto and left 0 pushes block to left */
 }
-
 /* Reserve a 16:9 space if video embed is not loaded yet */
 .video[data-embed-loaded='false']:not(.placeholder) {
   aspect-ratio: 16 / 9;

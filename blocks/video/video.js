@@ -115,7 +115,6 @@ export default function decorate(block) {
     }
     block.append(wrapper);
   }
-
   // Load video when block enters viewport
   if (!placeholder || autoplay) {
     new IntersectionObserver((entries, observer) => {
