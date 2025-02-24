@@ -75,7 +75,6 @@ export default function decorate(block) {
     currentIndex = (currentIndex + 1 >= cardData.length) ? 0 : currentIndex + 1;
     updateCards();
   });
-
   // Initialize carousel display
   updateCards();
 }
