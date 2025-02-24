@@ -33,7 +33,8 @@ export default function decorate(block) {
   const content = document.createElement('div');
   content.className = 'summary-content';
 
-  // Extract the div with the data-align attribute,then append all<p>elements except for the summary description
+  /* Extract the div with the data-align attribute,then append all<p>elements except 
+  for the summary description */
   const align = block.querySelector('div[data-align]');
   if (align) {
     // For each paragraph<p>that is not the summary description,create a new<p>element and append it
