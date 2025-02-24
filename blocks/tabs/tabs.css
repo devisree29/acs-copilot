@@ -1,23 +1,28 @@
+/* Main container styles */
 main {
-  height: 800px;
+  height: 1200px;
   background: linear-gradient(135deg, black, purple, violet, purple, black);
 }
 
+/* Tab block styles */
 .tab-block {
   background-color: black;
 }
 
+/* Tabs wrapper styles */
 .tabs-wrapper {
   padding: 20px;
   border-radius: 10px;
 }
 
+/* Tabs container styles */
 .tabs-container {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
 
+/* Tab button styles */
 .tab-button {
   background-color: transparent;
   color: black;
@@ -34,7 +39,7 @@ main {
   overflow: hidden;
 }
 
-.tab-button .icon-image {
+.tab-button .tab-media {
   width: 24px;
   height: 24px;
   margin-right: 10px;
@@ -48,7 +53,7 @@ main {
   left: -2px;
   right: -2px;
   border-radius: 50px;
-  background: linear-gradient(45deg, red purple blue yellow);
+  background: linear-gradient(45deg, red, purple, blue, yellow);
   background-size: 400% 400%;
   z-index: -1;
   transition: opacity 0.3s;
@@ -62,7 +67,7 @@ main {
   box-shadow: 5px 8px 10px rgba(255 0 0), 0 0 10px rgba(0 255 0), 0 0 10px rgba(0 0 255);
 }
 
-.tab-button:hover .icon-image {
+.tab-button:hover .tab-media {
   filter: brightness(0) invert(1);
 }
 
@@ -77,19 +82,20 @@ main {
   border-color: transparent;
 }
 
-.tab-button.active .icon-image {
+.tab-button.active .tab-media {
   filter: brightness(0) invert(1);
 }
 
 .tab-button.hovered {
-  background-color: transparent !important;
-  color: black !important;
+  background-color: black !important;
+  color: white !important;
 }
 
 .tab-button.active-hover {
   background-color: rgba(0 0 0) !important;
 }
 
+/* Glowing border animation */
 @keyframes glowing-border {
   0% {
     background-position: 0% 50%;
@@ -100,11 +106,13 @@ main {
   }
 }
 
+/* Content container styles */
 .content-container {
   display: flex;
   justify-content: center;
 }
 
+/* Tab content styles */
 .tab-content {
   width: 100%;
   max-width: 1000px;
@@ -155,7 +163,8 @@ main {
   animation: glowing-border 2s linear infinite;
 }
 
-.tabs .cta-link {
+/* CTA link styles */
+.cta-url {
   display: inline-block;
   margin-top: 10px;
   text-align: center;
@@ -167,28 +176,12 @@ main {
   border: 5px solid transparent;
   background: linear-gradient(black, black) padding-box,
               linear-gradient(to right, red, blue, green, yellow) border-box;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out, background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  opacity: 1;
 }
 
-.cta-link.cta-link-show {
-  animation: cta-link-start 0.5s forwards;
-}
-
-@keyframes cta-link-start {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.tabs .cta-link:hover {
+.cta-url:hover {
   background-color: black;
   transform: translateY(-5px);
-  box-shadow: 5px 7px 10px rgba(255 0 0), 0 0 10px rgba(0 255 0), 0 0 10px rgba(0 0 255);
+  box-shadow: 5px 7px 10px rgba(255 0 0 ), 0 0 10px rgba(0 255 0 ), 0 0 10px rgba(0 0 255);
 }
