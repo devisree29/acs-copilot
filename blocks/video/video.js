@@ -84,7 +84,7 @@ function loadVideoEmbed(block, link, autoplay, background) {
 export default function decorate(block) {
   // Extract and remove the heading (if any)
   const heading = block.querySelector('h1');
-  heading?.remove();
+  if (heading) heading.remove();
   // Extract the placeholder image and video link
   const placeholder = block.querySelector('picture');
   const link = block.querySelector('a')?.href;
@@ -111,9 +111,9 @@ export default function decorate(block) {
   }
   // Load video when block enters viewport
   if (!placeholder || autoplay) {
-    new IntersectionObserver((entries) => {
+    new IntersectionObserver((entries, observer) => {
       if (entries.some((e) => e.isIntersecting)) {
-        entries[0].target.disconnect?.();
+        observer.disconnect();
         loadVideoEmbed(block, link, autoplay && !prefersReducedMotion.matches, autoplay);
       }
     }).observe(block);
