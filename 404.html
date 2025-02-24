@@ -3,66 +3,60 @@
 
 <head>
   <title>Page not found</title>
-  <script type="text/javascript">
-    window.isErrorPage = true;
-    window.errorCode = '404';
-  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="Page not found">
-  <script src="/scripts/scripts.js" type="module" crossorigin="use-credentials"></script>
-  <script type="module">
-    window.addEventListener('load', () => {
-      if (document.referrer) {
-        const { origin, pathname } = new URL(document.referrer);
-        if (origin === window.location.origin) {
-          const backBtn = document.createElement('a');
-          backBtn.classList.add('button', 'error-button-back');
-          backBtn.href = pathname;
-          backBtn.textContent = 'Go back';
-          backBtn.title = 'Go back';
-          const btnContainer = document.querySelector('.button-container');
-          btnContainer.append(backBtn);
-        }
-      }
-    });
-  </script>
-  <script type="module">
-    import { sampleRUM } from '/scripts/aem.js';
-    sampleRUM('404', { source: document.referrer });
-  </script>
   <link rel="stylesheet" href="/styles/styles.css">
   <style>
-    main.error {
-      min-height: calc(100vh - var(--nav-height));
+    body {
+      background-color: #2d2d2d;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
       display: flex;
+      justify-content: center;
       align-items: center;
+      height: 100vh;
     }
 
-    main.error .error-number {
-      width: 100%;
+    main.error {
+      text-align: center;
     }
 
-    main.error .error-number text {
-      font-family: monospace;
+    main.error .error-image {
+      max-width: 100%;
+      height: 400px;
+      width: 550px;
+    }
+
+    main.error .error-message {
+      font-size: 34px;
+      margin-top: 20px;
+      font-weight: bold;
+      
+    }
+
+    main.error .error-description {
+      font-size: 16px;
+      margin-top: 10px;
+      color: #ccc;
+      text-align:center;
+      max-width: 600px;
+      margin: 10px auto 0;
+      line-height: 1.5;
     }
   </style>
-  <link rel="stylesheet" href="/styles/lazy-styles.css">
 </head>
 
 <body>
-  <header></header>
   <main class="error">
     <div class="section">
-      <svg viewBox="1 0 38 18" class="error-number">
-        <text x="0" y="17">404</text>
-      </svg>
-      <h2 class="error-message">Page Not Found</h2>
-      <p class="button-container">
-        <a href="/" class="button secondary error-button-home">Go home</a>
+      <img src="/icons/photo.jpg/lost-img.jpg" alt="Error Image" class="error-image">
+      <h2 class="error-message">Uh-oh! Lost in Space?</h2>
+      <p class="error-description">
+        Recheck the URL, or better yet, explore ACS Co-Pilot. Craft instant workflows and mind maps, automate any tasks with AI agents, and 10x your productivity with AI.
       </p>
     </div>
   </main>
-  <footer></footer>
 </body>
 
 </html>
