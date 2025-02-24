@@ -1,10 +1,12 @@
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 // Helper function to create URL query parameters
 function createEmbed(_url, params) {
   return Object.entries(params)
     .map(([k, v]) => `${k}=${encodeURIComponent(v)}`)
     .join('&');
 }
+
 // Function to generate YouTube embed HTML
 function embedYoutube(url, autoplay, background) {
   const usp = new URLSearchParams(url.search);
@@ -24,6 +26,7 @@ function embedYoutube(url, autoplay, background) {
       allowfullscreen loading="lazy"></iframe>
     </div>`;
 }
+
 // Function to generate Vimeo embed HTML
 function embedVimeo(url, autoplay, background) {
   const video = url.pathname.split('/')[1];
@@ -37,6 +40,7 @@ function embedVimeo(url, autoplay, background) {
       frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
     </div>`;
 }
+
 // Function to create and configure a video element for self-hosted videos
 function getVideoElement(source, autoplay, background) {
   const video = document.createElement('video');
@@ -54,6 +58,7 @@ function getVideoElement(source, autoplay, background) {
   }
   return video;
 }
+
 // Function to load the appropriate video embed type
 function loadVideoEmbed(block, link, autoplay, background) {
   if (block.dataset.embedLoaded === 'true') return;
@@ -80,6 +85,7 @@ function loadVideoEmbed(block, link, autoplay, background) {
     block.dataset.embedLoaded = 'true';
   });
 }
+
 // Main function to decorate the video block
 export default function decorate(block) {
   // Extract and remove the heading (if any)
@@ -109,7 +115,7 @@ export default function decorate(block) {
     }
     block.append(wrapper);
   }
-  
+
   // Load video when block enters viewport
   if (!placeholder || autoplay) {
     new IntersectionObserver((entries, observer) => {
