@@ -39,12 +39,14 @@ export default function decorate(block) {
   block.appendChild(accordionContainer);
   // Add event listeners only to the accordion items (not the main heading)
   accordionContainer.addEventListener('click', (event) => {
-  const header = event.target.closest('.accordion-header'); 
+    const header = event.target.closest('.accordion-header');
     if (!header) return; // Ignore clicks outside accordion items
+
     const content = header.nextElementSibling;
     const icon = header.querySelector('.accordion-icon');
     const isExpanded = content.style.display === 'block';
+
     content.style.display = isExpanded ? 'none' : 'block';
     icon.textContent = isExpanded ? '+' : '-';
-  });
+});
 }
