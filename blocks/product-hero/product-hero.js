@@ -1,17 +1,3 @@
-export default function decorate(block) {
-  block.classList.add('decorated');
-
-  // Process the video embedding if no <picture> element exists
-  handleVideoEmbedding(block);
-  
-  // Center the content within the product hero section
-  document.addEventListener('DOMContentLoaded', centerContentOnLoad);
-}
-
-/**
- * Handles embedding a video inside the given block if a <picture> element is not present.
- * @param {HTMLElement} block - The block element to process.
- */
 function handleVideoEmbedding(block) {
   const container = block.querySelector('div');
   if (!container) return;
@@ -33,11 +19,6 @@ function handleVideoEmbedding(block) {
   videoWrapper.appendChild(videoElement);
 }
 
-/**
- * Creates a video element with given source URL.
- * @param {string} videoSrc - The URL of the video.
- * @returns {HTMLVideoElement} The configured video element.
- */
 function createVideoElement(videoSrc) {
   const videoElement = document.createElement('video');
   videoElement.setAttribute('autoplay', '');
@@ -54,9 +35,6 @@ function createVideoElement(videoSrc) {
   return videoElement;
 }
 
-/**
- * Centers content inside the product hero section on page load and resize.
- */
 function centerContentOnLoad() {
   const heroContainer = document.querySelector('.product-hero.vidbg');
   const contentBlock = heroContainer?.querySelector('.content');
@@ -71,4 +49,10 @@ function centerContentOnLoad() {
 
   centerContent();
   window.addEventListener('resize', centerContent);
+}
+
+export default function decorate(block) {
+  block.classList.add('decorated');
+  handleVideoEmbedding(block);
+  document.addEventListener('DOMContentLoaded', centerContentOnLoad);
 }
