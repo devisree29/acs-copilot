@@ -20,10 +20,14 @@ function handleVideoEmbedding(block) {
   const container = block.querySelector('div'); // Select the first div inside the block
   if (!container) return;
 
-  const videoWrapper = [...container.children][1]; // Get the second child, expected to be the video container
-  if (!videoWrapper || block.querySelector('picture')) return; // Exit if a picture element exists
+  // Get the second child, expected to be the video container
+  const videoWrapper = [...container.children][1]; 
+  
+  // Exit if a picture element exists
+  if (!videoWrapper || block.querySelector('picture')) return; 
 
-  const videoAnchor = videoWrapper.querySelector('a'); // Get the anchor tag inside video wrapper
+  // Get the anchor tag inside video wrapper
+  const videoAnchor = videoWrapper.querySelector('a'); 
   if (!videoAnchor) return;
 
   const videoUrl = videoAnchor.getAttribute('href'); // Extract the video URL
