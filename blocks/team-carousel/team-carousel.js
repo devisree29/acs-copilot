@@ -61,6 +61,8 @@ export default function decorate(block) {
       left: currentScroll - slidesWrapper.offsetWidth,
       behavior: 'smooth',
     });
+    // eslint-disable-next-line no-use-before-define
+    updateIndicators();
   });
 
   const nextButton = document.createElement('button');
@@ -72,6 +74,8 @@ export default function decorate(block) {
       left: currentScroll + slidesWrapper.offsetWidth,
       behavior: 'smooth',
     });
+    // eslint-disable-next-line no-use-before-define
+    updateIndicators();
   });
 
   // Create slide indicators
@@ -88,14 +92,31 @@ export default function decorate(block) {
         left: index * slidesWrapper.offsetWidth,
         behavior: 'smooth',
       });
+      // eslint-disable-next-line no-use-before-define
+      updateIndicators();
     });
     indicatorsContainer.appendChild(indicator);
   });
+
+  function updateIndicators() {
+    const activeIndex = Math.round(slidesWrapper.scrollLeft / slidesWrapper.offsetWidth)
+      ? Math.round(slidesWrapper.scrollLeft / slidesWrapper.offsetWidth) : 0;
+    const start = Math.max(0, Math.min(activeIndex - 2, slidesData.length - 4));
+    const end = Math.min(slidesData.length, start + 4);
+
+    indicatorsContainer.childNodes.forEach((indicator, index) => {
+      indicator.style.display = (index >= start && index < end) ? 'inline-block' : 'none';
+      indicator.classList.toggle('active', index === activeIndex);
+    });
+  }
 
   navContainer.appendChild(prevButton);
   navContainer.appendChild(indicatorsContainer);
   navContainer.appendChild(nextButton);
   carouselContainer.appendChild(navContainer);
+
+  // Initialize indicators display immediately
+  updateIndicators();
 
   // Auto slide functionality
   let autoSlideInterval = setInterval(() => {
@@ -112,6 +133,7 @@ export default function decorate(block) {
         behavior: 'smooth',
       });
     }
+    updateIndicators();
   }, 5000);
 
   // Pause auto slide on hover
@@ -134,14 +156,12 @@ export default function decorate(block) {
           behavior: 'smooth',
         });
       }
+      updateIndicators();
     }, 5000);
   });
 
   // Update indicators on scroll
   slidesWrapper.addEventListener('scroll', () => {
-    const activeIndex = Math.round(slidesWrapper.scrollLeft / slidesWrapper.offsetWidth);
-    indicatorsContainer.querySelectorAll('.carousel-indicator').forEach((indicator, index) => {
-      indicator.classList.toggle('active', index === activeIndex);
-    });
+    updateIndicators();
   });
 }

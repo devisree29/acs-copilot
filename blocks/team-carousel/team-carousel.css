@@ -8,7 +8,7 @@
   display: flex;
   transition: transform 0.5s ease;
   scroll-behavior: smooth;
-  overflow-x: scroll;
+  overflow-x: hidden;
   scroll-snap-type: x mandatory;
 }
 
@@ -28,6 +28,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.team-carousel-card-image img {
+  width: 288px;
+  height: 224.25px;
 }
 
 .team-carousel-card-content {
@@ -109,5 +114,10 @@
 
   .carousel-indicators {
     flex-direction: column;
+  }
+
+  .team-carousel-card-image img {
+    width: 530px;
+    height: 412.69px;
   }
 }
