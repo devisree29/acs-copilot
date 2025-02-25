@@ -2,7 +2,6 @@ export default async function decorate(block) {
   // Create containers
   const tabsWrapper = document.createElement('div');
   tabsWrapper.className = 'tabs-wrapper';
-  
   const tabsContainer = document.createElement('div');
   tabsContainer.className = 'tabs-container';
   const contentContainer = document.createElement('div');
@@ -79,7 +78,6 @@ export default async function decorate(block) {
       tabsContainer.querySelectorAll('.tab-button').forEach((btn, i) => {
         btn.classList.toggle('active', i === index);
       });
-
       // Update content visibility
       contentContainer.querySelectorAll('.tab-content').forEach((content, i) => {
         const isActive = i === index;
