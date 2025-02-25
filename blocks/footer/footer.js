@@ -25,9 +25,7 @@ export default async function decorate(block) {
   if (lastPara) {
     lastPara.insertAdjacentHTML('beforeend', `
       <span class="icon icon-up-arrow-dark-theme">
-        <a href="#" class="back-to-top-link">
-          <img src="../../icons/up-arrow-dark-theme.png" class="back-to-top-icon" alt="Back to Top">
-        </a>
+        <a href="#" class="back-to-top-link"> </a>
       </span>
     `);
   }

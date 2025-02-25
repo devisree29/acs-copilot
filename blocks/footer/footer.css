@@ -53,6 +53,19 @@ footer .footer .default-content-wrapper > ul li:hover::before {
   border-radius: 50%;
 }
 
+footer .footer .back-to-top-link {
+  display: inline-block;
+  position: relative;
+  top: -22px;
+  width: 20px; /* Adjust size as needed */
+  height: 20px;
+  background-image: url('../../icons/up-arrow-dark-theme.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  left: 320px;
+}
+
 @media (width >= 900px) {
   footer .footer > div {
     padding: 20px 32px 24px;
@@ -77,5 +90,12 @@ footer .footer .default-content-wrapper > ul li:hover::before {
     margin-top: 2%;
     display: block;
     font-size: 1.6rem;
+  }
+
+  footer .footer .back-to-top-link {
+    width: 24px;
+    height: 24px;
+    top: 4px;
+    left: auto;
   }
 }
