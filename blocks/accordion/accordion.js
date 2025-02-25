@@ -2,7 +2,6 @@ export default function decorate(block) {
   // Create a container for the accordion
   const accordionContainer = document.createElement('div');
   accordionContainer.classList.add('accordion-container');
-
   // Loop through each child element of the block
   Array.from(block.children).forEach((child, index) => {
     if (index === 0) {
@@ -26,18 +25,15 @@ export default function decorate(block) {
           <span class="accordion-title">${headers[0].innerHTML}</span>
           <span class="accordion-icon">+</span>
         `;
-
         const itemContent = document.createElement('div');
         itemContent.classList.add('accordion-content');
         itemContent.innerHTML = headers[1].innerHTML;
-
         item.appendChild(itemHeader);
         item.appendChild(itemContent);
       }
       accordionContainer.appendChild(item);
     }
   });
-
   // Replace original block content with the new accordion structure
   block.innerHTML = '';
   block.appendChild(accordionContainer);
