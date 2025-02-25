@@ -12,7 +12,6 @@ export default function decorate(block) {
 
     // Extract paragraphs
     const paragraphs = row.querySelectorAll('p');
-    
     // Extract hyperlink from the first <p>
     const linkElement = paragraphs.length > 0 ? paragraphs[0].querySelector('a') : null;
     const testimonialLink = linkElement ? `<a href="${linkElement.href}" class="testimonial-link">${linkElement.textContent}</a>` : '';
