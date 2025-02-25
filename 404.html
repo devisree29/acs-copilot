@@ -5,44 +5,87 @@
   <title>Page not found</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="Page not found">
-  <link rel="stylesheet" href="/styles/styles.css">
+  <script type="text/javascript">
+    window.isErrorPage = true;
+    window.errorCode = '404';
+  </script>
+  <script src="scripts/scripts.js" type="module"></script>
+  <link rel="stylesheet" href="styles/styles.css">
   <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
     body {
       background-color: #2d2d2d;
       color: #fff;
       font-family: Arial, sans-serif;
-      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
     }
 
     main.error {
       text-align: center;
+      padding: 30px;
+      max-width: 800px;
+      width: 90%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    main.error .section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     main.error .error-image {
       max-width: 100%;
-      height: 400px;
-      width: 550px;
+      height: auto;
+      max-height: 500px;
+      width: 600px;
+      margin-bottom: 30px;
+      display: block;
     }
 
     main.error .error-message {
       font-size: 34px;
-      margin-top: 20px;
+      margin-top: 0;
+      margin-bottom: 20px;
       font-weight: bold;
-      
+      width: 100%;
+      text-align: center;
     }
 
     main.error .error-description {
       font-size: 16px;
-      margin-top: 10px;
       color: #ccc;
-      text-align:center;
+      text-align: center;
       max-width: 600px;
-      margin: 10px auto 0;
+      margin: 0 auto;
       line-height: 1.5;
+    }
+    
+    @media (max-width: 768px) {
+      main.error {
+        padding: 20px;
+      }
+      
+      main.error .error-message {
+        font-size: 28px;
+      }
+      
+      main.error .error-image {
+        max-height: 300px;
+      }
     }
   </style>
 </head>
@@ -50,7 +93,7 @@
 <body>
   <main class="error">
     <div class="section">
-      <img src="/icons/photo.jpg/lost-img.jpg" alt="Error Image" class="error-image">
+      <img src="icons/error.png" alt="Error Image" class="error-image">
       <h2 class="error-message">Uh-oh! Lost in Space?</h2>
       <p class="error-description">
         Recheck the URL, or better yet, explore ACS Co-Pilot. Craft instant workflows and mind maps, automate any tasks with AI agents, and 10x your productivity with AI.
