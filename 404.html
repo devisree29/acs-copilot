@@ -29,19 +29,10 @@
     }
 
     main.error {
-      text-align: center;
       padding: 30px;
       max-width: 800px;
       width: 90%;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    main.error .section {
-      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -49,19 +40,14 @@
 
     main.error .error-image {
       max-width: 100%;
-      height: 500px;
-      max-height: 100%;
-      width: 600px;
+      max-height: 400px;
       margin-bottom: 30px;
-      display: block;
     }
 
-    main.error .error-message {
+    main.error .error-title {
       font-size: 34px;
-      margin-top: 0;
-      margin-bottom: 20px;
+      margin: 0 0 20px 0;
       font-weight: bold;
-      width: 100%;
       text-align: center;
     }
 
@@ -79,7 +65,7 @@
         padding: 20px;
       }
       
-      main.error .error-message {
+      main.error .error-title {
         font-size: 28px;
       }
       
@@ -92,13 +78,11 @@
 
 <body>
   <main class="error">
-    <div class="section">
-      <img src="icons/error.png" alt="Error Image" class="error-image">
-      <h2 class="error-message">Uh-oh! Lost in Space?</h2>
-      <p class="error-description">
-        Recheck the URL, or better yet, explore ACS Co-Pilot. Craft instant workflows and mind maps, automate any tasks with AI agents, and 10x your productivity with AI.
-      </p>
-    </div>
+    <img src="icons/error.png" alt="Error Image" class="error-image">
+    <h2 class="error-title">Uh-oh! Lost in Space?</h2>
+    <p class="error-description">
+      Recheck the URL, or better yet, explore ACS Co-Pilot. Craft instant workflows and mind maps, automate any tasks with AI agents, and 10x your productivity with AI.
+    </p>
   </main>
 </body>
 </html>
