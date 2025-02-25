@@ -84,7 +84,6 @@ export default async function decorate(block) {
         }
       });
     });
-
     // Hover effects
     tabButton.addEventListener('mouseover', () => {
       if (!tabButton.classList.contains('active')) {
@@ -94,18 +93,15 @@ export default async function decorate(block) {
     tabButton.addEventListener('mouseout', () => {
       tabButton.classList.remove('hovered');
     });
-
     // Add to containers
     tabsContainer.appendChild(tabButton);
     contentContainer.appendChild(tabContent);
   });
-
   // Build final structure
   block.innerHTML = '';
   tabsWrapper.appendChild(tabsContainer);
   block.appendChild(tabsWrapper);
   block.appendChild(contentContainer);
-
   // Activate first tab
   const firstTabButton = tabsContainer.querySelector('.tab-button');
   if (firstTabButton) {
