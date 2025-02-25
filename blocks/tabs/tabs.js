@@ -72,6 +72,8 @@ export default async function decorate(block) {
     ctaLink.textContent = 'CTALink';
     tabContent.appendChild(ctaLink);
 
+    
+
     // Append the tab button to the tabs container
     tabsContainer.appendChild(tabButton);
 
