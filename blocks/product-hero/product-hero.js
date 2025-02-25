@@ -1,12 +1,12 @@
 // Main function to decorate the block by adding styling and embedding video
-export default function decorate(block) {
+const decorate = (block) => {
   block.classList.add('decorated'); // Add a class for styling purposes
   handleVideoEmbedding(block); // Embed video if applicable
   document.addEventListener('DOMContentLoaded', centerContentOnLoad); // Ensure content is centered on page load
-}
+};
 
 // Function to create and configure a video element
-function createVideoElement(videoSrc) {
+const createVideoElement = (videoSrc) => {
   const videoElement = document.createElement('video');
   videoElement.setAttribute('autoplay', '');
   videoElement.setAttribute('muted', '');
@@ -18,10 +18,10 @@ function createVideoElement(videoSrc) {
   sourceElement.setAttribute('type', 'video/mp4');
   videoElement.appendChild(sourceElement);
   return videoElement;
-}
+};
 
 // Function to handle video embedding inside the given block
-function handleVideoEmbedding(block) {
+const handleVideoEmbedding = (block) => {
   const container = block.querySelector('div'); // Select the first div inside the block
   if (!container) return;
   // Get the second child, expected to be the video container
@@ -38,19 +38,21 @@ function handleVideoEmbedding(block) {
   // Replace existing content in the video wrapper with the new video element
   videoWrapper.innerHTML = '';
   videoWrapper.appendChild(videoElement);
-}
+};
 
 // Function to center the content within the product hero section
-function centerContentOnLoad() {
+const centerContentOnLoad = () => {
   const heroContainer = document.querySelector('.product-hero.vidbg'); // Select the product hero container
   const contentBlock = heroContainer?.querySelector('.content'); // Select the content block inside it
   if (!heroContainer || !contentBlock) return;
-  function centerContent() {
+  const centerContent = () => {
     const containerHeight = heroContainer.clientHeight;
     const contentHeight = contentBlock.clientHeight;
     contentBlock.style.position = 'relative';
     contentBlock.style.top = `${(containerHeight - contentHeight) / 2}px`; // Adjust content position to center it
-  }
+  };
   centerContent(); // Center the content initially
   window.addEventListener('resize', centerContent); // Recalculate positioning on window resize
-}
+};
+
+export default decorate;
