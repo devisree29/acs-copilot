@@ -48,7 +48,7 @@
   padding: 5%;
   margin: 0;
   font-size: var(--body-font-size-m);
-  color: black;
+  color: white;
 }
 
 .search.minimal ul.search-results > li > a:hover a,
