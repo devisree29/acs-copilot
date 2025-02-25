@@ -71,7 +71,6 @@ export default async function decorate(block) {
     }
 
     tabContent.appendChild(ctaLink);
-
     // Tab interaction
     tabButton.addEventListener('click', () => {
       // Update active state
