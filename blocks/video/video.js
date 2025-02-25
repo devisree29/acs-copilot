@@ -7,10 +7,16 @@ function createEmbed(_url, params) {
     .join('&');
 }
 
+// Function to extract filename from a URL
+function getFileName(url) {
+  return url.pathname.split('/').pop() || 'Video';
+}
+
 // Function to generate YouTube embed HTML
 function embedYoutube(url, autoplay, background) {
   const usp = new URLSearchParams(url.search);
   const vid = usp.get('v') || url.pathname.split('/')[1] || '';
+  const fileName = getFileName(url);
   const suffixParams = background || autoplay ? {
     autoplay: autoplay ? '1' : '0',
     mute: background ? '1' : '0',
@@ -21,6 +27,7 @@ function embedYoutube(url, autoplay, background) {
   } : {};
   return `<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
       <iframe src="https://www.youtube.com/embed/${vid}?rel=0&v=${vid}&${createEmbed(url, suffixParams)}"
+      title="${fileName}"
       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
       allow="autoplay; fullscreen; picture-in-picture; encrypted-media; accelerometer; gyroscope;"
       allowfullscreen loading="lazy"></iframe>
@@ -30,12 +37,14 @@ function embedYoutube(url, autoplay, background) {
 // Function to generate Vimeo embed HTML
 function embedVimeo(url, autoplay, background) {
   const video = url.pathname.split('/')[1];
+  const fileName = getFileName(url);
   const suffixParams = background || autoplay ? {
     autoplay: autoplay ? '1' : '0',
     background: background ? '1' : '0',
   } : {};
   return `<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
       <iframe src="https://player.vimeo.com/video/${video}?${createEmbed(url, suffixParams)}"
+      title="${fileName}"
       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
       frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
     </div>`;
@@ -47,6 +56,7 @@ function getVideoElement(source, autoplay, background) {
   video.src = source;
   video.type = `video/${source.split('.').pop()}`;
   video.controls = !background;
+  video.title = getFileName(new URL(source));
   if (autoplay) video.autoplay = true;
   if (background) {
     video.loop = true;
