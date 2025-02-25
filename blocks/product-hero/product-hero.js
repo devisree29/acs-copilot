@@ -1,3 +1,10 @@
+// Main function to decorate the block by adding styling and embedding video
+export default function decorate(block) {
+  block.classList.add('decorated'); // Add a class for styling purposes
+  handleVideoEmbedding(block); // Embed video if applicable
+  document.addEventListener('DOMContentLoaded', centerContentOnLoad); // Ensure content is centered on page load
+}
+
 // Function to create and configure a video element
 function createVideoElement(videoSrc) {
   const videoElement = document.createElement('video');
@@ -46,11 +53,4 @@ function centerContentOnLoad() {
   }
   centerContent(); // Center the content initially
   window.addEventListener('resize', centerContent); // Recalculate positioning on window resize
-}
-
-// Main function to decorate the block by adding styling and embedding video
-export default function decorate(block) {
-  block.classList.add('decorated'); // Add a class for styling purposes
-  handleVideoEmbedding(block); // Embed video if applicable
-  document.addEventListener('DOMContentLoaded', centerContentOnLoad); // Ensure content is centered on page load
 }
