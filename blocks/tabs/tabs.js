@@ -5,7 +5,6 @@ export default async function decorate(block) {
   
   const tabsContainer = document.createElement('div');
   tabsContainer.className = 'tabs-container';
-  
   const contentContainer = document.createElement('div');
   contentContainer.className = 'content-container';
 
@@ -46,17 +45,14 @@ export default async function decorate(block) {
       video.loop = true;
       video.className = 'tab-video';
       video.muted = true;
-      
       // Video event listeners
       video.addEventListener('play', () => {
         video.classList.add('video-start-animation');
         const ctaLink = tabContent.querySelector('.cta-url');
         if (ctaLink) ctaLink.classList.add('cta-link-show');
       });
-      
       video.addEventListener('pause', () => video.classList.remove('video-start-animation'));
       video.addEventListener('ended', () => video.classList.remove('video-start-animation'));
-      
       tabContent.appendChild(video);
     }
 
@@ -87,8 +83,7 @@ export default async function decorate(block) {
       // Update content visibility
       contentContainer.querySelectorAll('.tab-content').forEach((content, i) => {
         const isActive = i === index;
-        content.style.display = isActive ? 'block' : 'none';
-        
+        content.style.display = isActive ? 'block' : 'none'; 
         // Handle video
         const video = content.querySelector('video');
         if (video) {
@@ -108,7 +103,6 @@ export default async function decorate(block) {
         tabButton.classList.add('hovered');
       }
     });
-    
     tabButton.addEventListener('mouseout', () => {
       tabButton.classList.remove('hovered');
     });
