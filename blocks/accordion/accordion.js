@@ -19,7 +19,6 @@ export default function decorate(block) {
       const item = document.createElement('div');
       item.classList.add('accordion-item');
       const headers = child.querySelectorAll('div[data-valign="middle"]');
-      
       if (headers.length >= 2) {
         const itemHeader = document.createElement('div');
         itemHeader.classList.add('accordion-header'); // Clickable header for items
@@ -47,11 +46,9 @@ export default function decorate(block) {
   accordionContainer.addEventListener('click', (event) => {
     const header = event.target.closest('.accordion-header'); 
     if (!header) return; // Ignore clicks outside accordion items
-
     const content = header.nextElementSibling;
     const icon = header.querySelector('.accordion-icon');
     const isExpanded = content.style.display === 'block';
-    
     content.style.display = isExpanded ? 'none' : 'block';
     icon.textContent = isExpanded ? '+' : '-';
   });
