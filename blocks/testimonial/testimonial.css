@@ -1,0 +1,119 @@
+/* Testimonial Section - Background */
+.testimonial {
+  background: linear-gradient(135deg, #380a6b 30%, #4a0a46 70%); /* Black to dark gray gradient */
+  padding: 30px 15px;
+  text-align: center;
+}
+
+.testimonial h2 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xl);
+  color: #fff; /* White text */
+  margin-bottom: 30px;
+}
+
+/* Scroll Wrapper */
+.testimonial-wrapper {
+  overflow: hidden;
+  position: relative;
+  padding: 15px 0;
+}
+
+/* Scroll Container */
+.testimonial-scroll {
+  display: flex;
+  white-space: nowrap;
+}
+
+/* Testimonial Card */
+.testimonial-card {
+  background-color: white; /* White card */
+  padding: 20px;
+  margin: 12px;
+  border-radius: 10px;
+  min-width: 300px; /* Increased width */
+  max-width: 360px; /* More space for text */
+  min-height: auto; /* Dynamic height */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures content spacing */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Header (Image + Info) */
+.testimonial-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Image */
+.testimonial-card picture {
+  flex-shrink: 0;
+}
+
+.testimonial-card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+/* Title & Link beside Image */
+.testimonial-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-info h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.testimonial-info a {
+  color: lightskyblue; 
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.testimonial-info a:hover {
+  text-decoration: underline;
+}
+
+/* Description Below */
+.testimonial-content {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  white-space: normal; /* Allow text wrapping */
+  overflow: visible; /* Ensure full text is visible */
+  text-overflow: initial; /* No cutting off */
+  word-wrap: break-word; /* Wrap long words */
+}
+
+/* Scroll Animation Containers */
+.testimonial-scroll .testimonial-content-wrapper {
+  display: flex;
+  animation: scroll-left 15s linear infinite;
+}
+
+.testimonial-scroll.bottom .testimonial-content-wrapper {
+  animation: scroll-right 15s linear infinite;
+}
+
+/* Smooth Scrolling Animations */
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
