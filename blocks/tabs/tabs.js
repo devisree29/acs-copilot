@@ -6,14 +6,12 @@ export default async function decorate(block) {
   tabsContainer.className = 'tabs-container';
   const contentContainer = document.createElement('div');
   contentContainer.className = 'content-container';
-
   // Process tabs
   [...block.children].forEach((tab, index) => {
     // Create tab button
     const tabButton = document.createElement('button');
     tabButton.className = 'tab-button';
     tabButton.setAttribute('data-index', index);
-
     // Add icon
     const img = tab.querySelector('img');
     if (img) {
@@ -22,19 +20,16 @@ export default async function decorate(block) {
       iconImage.src = img.src;
       tabButton.appendChild(iconImage);
     }
-
     // Add title
     const titleElement = document.createElement('span');
     titleElement.className = 'tab-title';
     titleElement.textContent = tab.children[0]?.textContent || '';
     tabButton.appendChild(titleElement);
-
     // Create content section
     const tabContent = document.createElement('div');
     tabContent.className = 'tab-content';
     tabContent.setAttribute('data-index', index);
     tabContent.style.display = 'none';
-
     // Add video if present
     const videoLink = tab.querySelector('a');
     if (videoLink) {
@@ -54,14 +49,11 @@ export default async function decorate(block) {
       video.addEventListener('ended', () => video.classList.remove('video-start-animation'));
       tabContent.appendChild(video);
     }
-
     // Create CTA link
     const ctaLink = document.createElement('a');
     ctaLink.className = 'cta-url';
-
     // Find the second link in the second div - this contains your CTA text and link
     const ctaAnchor = tab.querySelectorAll('div[data-valign="middle"]')[1]?.querySelectorAll('p a')[1];
-
     if (ctaAnchor) {
       ctaLink.href = ctaAnchor.href;
       ctaLink.textContent = ctaAnchor.textContent;
@@ -69,7 +61,6 @@ export default async function decorate(block) {
       ctaLink.href = videoLink?.href || '#';
       ctaLink.textContent = 'Learn More';
     }
-
     tabContent.appendChild(ctaLink);
     // Tab interaction
     tabButton.addEventListener('click', () => {
