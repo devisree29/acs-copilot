@@ -41,7 +41,6 @@ export default function decorate(block) {
   // Replace original block content with the new accordion structure
   block.innerHTML = '';
   block.appendChild(accordionContainer);
-
   // Add event listeners only to the accordion items (not the main heading)
   accordionContainer.addEventListener('click', (event) => {
     const header = event.target.closest('.accordion-header'); 
