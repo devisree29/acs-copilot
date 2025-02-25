@@ -48,5 +48,5 @@ export default function decorate(block) {
 
     content.style.display = isExpanded ? 'none' : 'block';
     icon.textContent = isExpanded ? '+' : '-';
-});
+  });
 }
