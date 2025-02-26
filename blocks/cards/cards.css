@@ -1,22 +1,13 @@
-.cards {
-  background: black;
-  padding: 20px;
-  border-radius: 10px;
+.cards-container {
   text-align: center;
+  padding: 20px;
+  background: black;
+  border-radius: 10px;
   color: white;
   font-family: Arial, sans-serif;
 }
 
-a.cards {
-  background: black;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  color: white;
-  font-family: Arial, sans-serif;
-}
-
-.cards h2 {
+.cards-container .authored-content {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
@@ -48,17 +39,26 @@ a.cards {
   transform: scale(1.05);
 }
 
+/* Navigation button styles - Moved above to avoid specificity error */
+.cards .carousel-prev img,
+.cards .carousel-next img {
+  width: 100%;  /* Match the image size to the button size */
+  height: 100%;
+  object-fit: contain;
+  filter: invert(1);  /* Makes white icons visible on black background */
+}
+
 /* Glow effect for image border */
 .cards .cards-card img {
   width: 100%;
   border-radius: 10px;
   border: 3px solid transparent;
-  box-shadow: 0 0 15px 3px rgba(155 48 255);
+  box-shadow: 0 0 15px 3px color(display-p3 0.61 0.19 1 / 80%);
   transition: box-shadow 0.3s ease;
 }
 
 .cards .cards-card img:hover {
-  box-shadow: 0 0 25px 5px rgba(155 48 255);
+  box-shadow: 0 0 25px 5px color(display-p3 0.61 0.19 1 / 100%);
 }
 
 .cards .cards-card h3 {
@@ -87,53 +87,15 @@ a.cards {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 10px rgba(255 255 255);
+  box-shadow: 0 0 10px color(display-p3 1 1 1 / 50%);
   transition: background 0.3s ease, transform 0.3s ease;
   padding: 0;
 }
 
 .cards .carousel-prev {
-  left: 10px;
+  left: -40px;
 }
 
 .cards .carousel-next {
-  right: 10px;
+  right: -40px;
 }
-
-.cards .carousel-prev img.cards .cards-card img:hover,
-.cards .carousel-next img .cards .cards-card img:hover{
-  width: 100%;  /* Match the image size to the button size */
-  height: 100%;
-  object-fit: contain;
-  filter: invert(1); /* Makes white icons visible on black background */
-}
-
-/* Call-to-action button */
-.cards .cta-button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #9b30ff;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.cards .cta-button:hover {
-  background-color: #4b0082;
-  transform: scale(1.1);
-}
-
-/* Mobile Responsiveness
-@media (max-width: 768px) {
-  .cards .cards-cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .cards .cards-card {
-    max-width: 100%;
-  }
-} */

@@ -1,152 +1,118 @@
 export default function decorate(block) {
   // Extract card data from the block
-  const cardData = Array.from(block.querySelectorAll(':scope > div')).map((card) => {
-    const imgElement = card.querySelector('img');
-    return {
-      cardImage: card.querySelector('picture source[type="image/jpeg"]')?.srcset || '',
-      imgAlt: imgElement?.alt || '',
-      cardHeading: card.querySelector('h3')?.textContent || card.querySelector('p')?.textContent || '',
-      cardDescription: card.querySelector('p:nth-of-type(2)')?.textContent || '',
-    };
-  });
+  const cardData = Array.from(block.querySelectorAll(':scope > div')).map((card) => ({
+    cardImage: card.querySelector('picture source[type="image/jpeg"]')?.srcset || '',
+    cardHeading: card.querySelector('h3')?.textContent || card.querySelector('p')?.textContent || '',
+    cardDescription: card.querySelector('p + p')?.textContent || '',
+  }));
 
   // Get authored content from <h2>
-  const cardTitle = block.querySelector('h2')?.textContent || '';
+  const cardTitle = block.querySelector('h2')?.textContent || 'Card Block Section for All Products ACS Co Pilot';
 
   // Get CTA content
   const ctaText = block.querySelector('.cta-button')?.textContent || '';
   const ctaUrl = block.querySelector('.cta-button')?.href || '';
 
-  // Clear the block's inner HTML
-  block.innerHTML = '';
+  // Create the main container
+  const container = document.createElement('div');
+  container.className = 'cards-container';
 
-  // Create and append title element
+  // Add the authored content as a heading inside the container
   if (cardTitle) {
-    const titleElement = document.createElement('p');
-    titleElement.className = 'cards-title';
-    titleElement.textContent = cardTitle;
-    block.appendChild(titleElement);
+    const authoredContentElement = document.createElement('h2');
+    authoredContentElement.className = 'authored-content';
+    authoredContentElement.textContent = cardTitle;
+    container.appendChild(authoredContentElement);
   }
 
-  // Create carousel wrapper
+  // Create the main carousel wrapper
   const carouselWrapper = document.createElement('div');
   carouselWrapper.className = 'cards-carousel';
 
-  // Create previous button
-  const prevButton = document.createElement('button');
-  prevButton.className = 'carousel-prev';
-  prevButton.setAttribute('aria-label', 'Previous cards');
-  const prevImg = document.createElement('img');
-  prevImg.src = '/icons/left-arrow.svg';
-  prevImg.alt = 'Previous';
-  prevButton.appendChild(prevImg);
-  carouselWrapper.appendChild(prevButton);
+  // Create the cards container
+  const cardsContainer = document.createElement('div');
+  cardsContainer.className = 'cards-cards';
 
-  // Create cards wrapper
-  const cardsWrapper = document.createElement('div');
-  cardsWrapper.className = 'cards-cards';
+  // Populate the cards
+  cardData.forEach(({ cardImage, cardHeading, cardDescription }) => {
+    const card = document.createElement('div');
+    card.className = 'cards-card';
 
-  // Generate cards and append to cards wrapper
-  cardData.forEach(({
-    cardImage,
-    imgAlt,
-    cardHeading,
-    cardDescription,
-  }) => {
-    const cardDiv = document.createElement('div');
-    cardDiv.className = 'cards-card';
+    card.innerHTML = `
+      <a href="#">
+        <img src="${cardImage}" alt="${cardHeading}" />
+      </a>
+      <h3>${cardHeading}</h3>
+      <p>${cardDescription}</p>
+    `;
 
-    const cardLink = document.createElement('a');
-    cardLink.href = ctaUrl;
-
-    const cardImg = document.createElement('img');
-    cardImg.src = cardImage;
-    cardImg.alt = imgAlt;
-    cardLink.appendChild(cardImg);
-
-    const cardHeadingElement = document.createElement('h3');
-    cardHeadingElement.textContent = cardHeading;
-
-    const cardDescriptionElement = document.createElement('p');
-    cardDescriptionElement.textContent = cardDescription;
-
-    cardDiv.appendChild(cardLink);
-    cardDiv.appendChild(cardHeadingElement);
-    cardDiv.appendChild(cardDescriptionElement);
-
-    cardsWrapper.appendChild(cardDiv);
+    cardsContainer.appendChild(card);
   });
 
-  carouselWrapper.appendChild(cardsWrapper);
+  // Create previous button dynamically
+  const prevButton = document.createElement('button');
+  prevButton.className = 'carousel-prev';
+  prevButton.setAttribute('aria-label', 'Previous');
 
-  // Create next button
+  const prevImg = document.createElement('img');
+  prevImg.src = '/icons/left-arrow.svg'; // Make sure the path is correct
+  prevImg.alt = 'Previous';
+  prevButton.appendChild(prevImg);
+
+  // Create next button dynamically
   const nextButton = document.createElement('button');
   nextButton.className = 'carousel-next';
-  nextButton.setAttribute('aria-label', 'Next cards');
+  nextButton.setAttribute('aria-label', 'Next');
+
   const nextImg = document.createElement('img');
-  nextImg.src = '/icons/right-arrow.svg';
+  nextImg.src = '/icons/right-arrow.svg'; // Make sure the path is correct
   nextImg.alt = 'Next';
   nextButton.appendChild(nextImg);
+
+  // Append elements to the carousel wrapper
+  carouselWrapper.appendChild(prevButton);
+  carouselWrapper.appendChild(cardsContainer);
   carouselWrapper.appendChild(nextButton);
 
-  // Append carousel wrapper to block
-  block.appendChild(carouselWrapper);
+  // Append carousel wrapper to the main container
+  container.appendChild(carouselWrapper);
 
-  // Create and append CTA button if exists
-  if (ctaText) {
-    const ctaButton = document.createElement('a');
-    ctaButton.href = ctaUrl;
-    ctaButton.className = 'cta-button';
-    ctaButton.textContent = ctaText;
-    block.appendChild(ctaButton);
-  }
+  // Set the final HTML structure inside the block
+  block.innerHTML = '';
+  block.appendChild(container);
 
+  // Select all cards
+  const cards = block.querySelectorAll('.cards-card');
   let currentIndex = 0;
-  const totalCards = cardData.length;
+  const totalCards = cards.length;
 
   /**
    * Updates the visibility of cards in the carousel
    */
   function updateCards() {
-    const cards = block.querySelectorAll('.cards-card');
-    cards.forEach((card) => {
-      card.style.display = 'none';
-    });
+    cards.forEach((card) => (card.style.display = 'none'));
 
-    for (let i = 0; i < 3; i += 1) {
+    for (let i = 0; i < 3; i++) {
       const index = (currentIndex + i) % totalCards;
       cards[index].style.display = 'block';
     }
   }
 
   /**
-   * Moves the carousel to the previous set of 3 cards in a loop
+   * Moves the carousel to the previous set of cards
    */
   prevButton.addEventListener('click', () => {
-    currentIndex = (currentIndex - 3 + totalCards) % totalCards;
+    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
     updateCards();
   });
 
   /**
-   * Moves the carousel to the next set of 3 cards in a loop
+   * Moves the carousel to the next set of cards
    */
   nextButton.addEventListener('click', () => {
-    currentIndex = (currentIndex + 3) % totalCards;
+    currentIndex = (currentIndex + 1) % totalCards;
     updateCards();
   });
-
-  /**
-   * Show all cards when CTA button is clicked (3 per row)
-   */
-  const ctaButton = block.querySelector('.cta-button');
-  if (ctaButton) {
-    ctaButton.addEventListener('click', (event) => {
-      event.preventDefault();
-      block.querySelectorAll('.cards-card').forEach((card) => {
-        card.style.display = 'block';
-      });
-    });
-  }
 
   // Initialize carousel display
   updateCards();
