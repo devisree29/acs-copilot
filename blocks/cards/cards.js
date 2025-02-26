@@ -105,7 +105,6 @@ export default function decorate(block) {
 
   let currentIndex = 0;
   const totalCards = cardData.length;
-
   /**
    * Updates the visibility of cards in the carousel
    */
@@ -120,7 +119,6 @@ export default function decorate(block) {
       cards[index].style.display = 'block';
     }
   }
-
   /**
    * Moves the carousel to the previous set of 3 cards in a loop
    */
