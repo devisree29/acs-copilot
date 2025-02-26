@@ -71,7 +71,7 @@ export default async function decorate(block) {
       // Update content visibility
       contentContainer.querySelectorAll('.tab-content').forEach((content, i) => {
         const isActive = i === index;
-        content.style.display = isActive ? 'block' : 'none'; 
+        content.style.display = isActive ? 'block' : 'none';
         // Handle video
         const video = content.querySelector('video');
         if (video) {
