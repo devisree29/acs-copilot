@@ -48,6 +48,7 @@ export default function decorate(block) {
 
   // Generate cards and append to cards wrapper
   cardData.forEach(({ cardImage, imgAlt, cardHeading, cardDescription }) => {
+
     const cardDiv = document.createElement('div');
     cardDiv.className = 'cards-card';
 
@@ -71,6 +72,7 @@ export default function decorate(block) {
 
     cardsWrapper.appendChild(cardDiv);
   });
+
   carouselWrapper.appendChild(cardsWrapper);
 
   // Create next button
