@@ -2,13 +2,10 @@ export default function decorate(block) {
   // Extract card data from the block
   const cardData = Array.from(block.querySelectorAll(':scope > div')).map((card) => {
     const imgElement = card.querySelector('img');
-
     return {
-      cardImage:
-        card.querySelector('picture source[type="image/jpeg"]')?.srcset || '',
+      cardImage: card.querySelector('picture source[type="image/jpeg"]')?.srcset || '',
       imgAlt: imgElement?.alt || '',
-      cardHeading:
-        card.querySelector('h3')?.textContent || card.querySelector('p')?.textContent || '',
+      cardHeading: card.querySelector('h3')?.textContent || card.querySelector('p')?.textContent || '',
       cardDescription: card.querySelector('p:nth-of-type(2)')?.textContent || '',
     };
   });
@@ -39,11 +36,9 @@ export default function decorate(block) {
   const prevButton = document.createElement('button');
   prevButton.className = 'carousel-prev';
   prevButton.setAttribute('aria-label', 'Previous cards');
-
   const prevImg = document.createElement('img');
   prevImg.src = '/icons/left-arrow.svg';
   prevImg.alt = 'Previous';
-
   prevButton.appendChild(prevImg);
   carouselWrapper.appendChild(prevButton);
 
@@ -53,7 +48,6 @@ export default function decorate(block) {
 
   // Generate cards and append to cards wrapper
   cardData.forEach(({ cardImage, imgAlt, cardHeading, cardDescription }) => {
-    
     const cardDiv = document.createElement('div');
     cardDiv.className = 'cards-card';
 
@@ -84,11 +78,9 @@ export default function decorate(block) {
   const nextButton = document.createElement('button');
   nextButton.className = 'carousel-next';
   nextButton.setAttribute('aria-label', 'Next cards');
-
   const nextImg = document.createElement('img');
   nextImg.src = '/icons/right-arrow.svg';
   nextImg.alt = 'Next';
-
   nextButton.appendChild(nextImg);
   carouselWrapper.appendChild(nextButton);
 
@@ -106,6 +98,7 @@ export default function decorate(block) {
 
   let currentIndex = 0;
   const totalCards = cardData.length;
+
   /**
    * Updates the visibility of cards in the carousel
    */
@@ -120,6 +113,7 @@ export default function decorate(block) {
       cards[index].style.display = 'block';
     }
   }
+
   /**
    * Moves the carousel to the previous set of 3 cards in a loop
    */
@@ -140,7 +134,6 @@ export default function decorate(block) {
    * Show all cards when CTA button is clicked (3 per row)
    */
   const ctaButton = block.querySelector('.cta-button');
-
   if (ctaButton) {
     ctaButton.addEventListener('click', (event) => {
       event.preventDefault();
