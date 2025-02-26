@@ -26,9 +26,7 @@ export default function decorate(block) {
 
     const imageContainer = document.createElement('div');
     imageContainer.className = 'team-carousel-card-image';
-    if (slideData.picture) {
-      imageContainer.appendChild(slideData.picture);
-    }
+    if (slideData.picture) imageContainer.appendChild(slideData.picture);
 
     const contentContainer = document.createElement('div');
     contentContainer.className = 'team-carousel-card-content';
@@ -41,7 +39,6 @@ export default function decorate(block) {
 
     card.appendChild(imageContainer);
     card.appendChild(contentContainer);
-
     slidesWrapper.appendChild(card);
   });
 
@@ -52,52 +49,58 @@ export default function decorate(block) {
   const navContainer = document.createElement('div');
   navContainer.className = 'carousel-nav-container';
 
+  // Carousel sliding to previous slide using the arrow button
   const prevButton = document.createElement('button');
   prevButton.className = 'carousel-nav prev';
   prevButton.innerHTML = '&larr;';
   prevButton.addEventListener('click', () => {
-    const currentScroll = slidesWrapper.scrollLeft;
-    slidesWrapper.scrollTo({
-      left: currentScroll - slidesWrapper.offsetWidth,
-      behavior: 'smooth',
-    });
     // eslint-disable-next-line no-use-before-define
-    updateIndicators();
+    moveSlide(-1);
   });
 
+  // Carousel sliding to next slide using the arrow button
   const nextButton = document.createElement('button');
   nextButton.className = 'carousel-nav next';
   nextButton.innerHTML = '&rarr;';
   nextButton.addEventListener('click', () => {
-    const currentScroll = slidesWrapper.scrollLeft;
-    slidesWrapper.scrollTo({
-      left: currentScroll + slidesWrapper.offsetWidth,
-      behavior: 'smooth',
-    });
     // eslint-disable-next-line no-use-before-define
-    updateIndicators();
+    moveSlide(1);
   });
 
   // Create slide indicators
   const indicatorsContainer = document.createElement('div');
   indicatorsContainer.className = 'carousel-indicators';
 
+  // Carousel sliding based on the image icons
   slidesData.forEach((slideData, index) => {
     const indicator = document.createElement('img');
     indicator.src = slideData.picture.lastElementChild.src;
     indicator.className = 'carousel-indicator';
     indicator.setAttribute('data-slide-to', index);
     indicator.addEventListener('click', () => {
-      slidesWrapper.scrollTo({
-        left: index * slidesWrapper.offsetWidth,
-        behavior: 'smooth',
-      });
       // eslint-disable-next-line no-use-before-define
-      updateIndicators();
+      goToSlide(index);
     });
     indicatorsContainer.appendChild(indicator);
   });
 
+  // Determines the movement of the carousel slides in forward for positive values and
+  // backward for negative values
+  function moveSlide(direction) {
+    const newScroll = slidesWrapper.scrollLeft + direction * slidesWrapper.offsetWidth;
+    slidesWrapper.scrollTo({ left: newScroll, behavior: 'smooth' });
+    // eslint-disable-next-line no-use-before-define
+    updateIndicators();
+  }
+
+  // Determines the carousel slide based on index
+  function goToSlide(index) {
+    slidesWrapper.scrollTo({ left: index * slidesWrapper.offsetWidth, behavior: 'smooth' });
+    // eslint-disable-next-line no-use-before-define
+    updateIndicators();
+  }
+
+  // Detemines the 4 image icons present in the navigation based on the current carousel slide
   function updateIndicators() {
     const activeIndex = Math.round(slidesWrapper.scrollLeft / slidesWrapper.offsetWidth)
       ? Math.round(slidesWrapper.scrollLeft / slidesWrapper.offsetWidth) : 0;
@@ -114,54 +117,30 @@ export default function decorate(block) {
   navContainer.appendChild(indicatorsContainer);
   navContainer.appendChild(nextButton);
   carouselContainer.appendChild(navContainer);
-
-  // Initialize indicators display immediately
   updateIndicators();
 
   // Auto slide functionality
-  let autoSlideInterval = setInterval(() => {
-    const currentScroll = slidesWrapper.scrollLeft;
-    const maxScroll = slidesWrapper.scrollWidth - slidesWrapper.clientWidth;
-    if (currentScroll < maxScroll) {
-      slidesWrapper.scrollTo({
-        left: currentScroll + slidesWrapper.offsetWidth,
-        behavior: 'smooth',
-      });
-    } else {
-      slidesWrapper.scrollTo({
-        left: 0,
-        behavior: 'smooth',
-      });
-    }
-    updateIndicators();
-  }, 5000);
+  let autoSlideInterval;
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+      if (Math.ceil(slidesWrapper.scrollLeft) + slidesWrapper.offsetWidth
+            >= slidesWrapper.scrollWidth) {
+        slidesWrapper.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        moveSlide(1);
+      }
+    }, 5000);
+  }
 
   // Pause auto slide on hover
-  carouselContainer.addEventListener('mouseenter', () => {
+  function stopAutoSlide() {
     clearInterval(autoSlideInterval);
-  });
+  }
 
-  carouselContainer.addEventListener('mouseleave', () => {
-    autoSlideInterval = setInterval(() => {
-      const currentScroll = slidesWrapper.scrollLeft;
-      const maxScroll = slidesWrapper.scrollWidth - slidesWrapper.clientWidth;
-      if (currentScroll < maxScroll) {
-        slidesWrapper.scrollTo({
-          left: currentScroll + slidesWrapper.offsetWidth,
-          behavior: 'smooth',
-        });
-      } else {
-        slidesWrapper.scrollTo({
-          left: 0,
-          behavior: 'smooth',
-        });
-      }
-      updateIndicators();
-    }, 5000);
-  });
+  // Initialize indicators display immediately
+  startAutoSlide();
 
-  // Update indicators on scroll
-  slidesWrapper.addEventListener('scroll', () => {
-    updateIndicators();
-  });
+  carouselContainer.addEventListener('mouseenter', stopAutoSlide);
+  carouselContainer.addEventListener('mouseleave', startAutoSlide);
+  slidesWrapper.addEventListener('scroll', updateIndicators);
 }
