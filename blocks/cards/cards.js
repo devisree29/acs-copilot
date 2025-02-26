@@ -5,8 +5,9 @@ export default function decorate(block) {
     return {
       cardImage: card.querySelector('picture source[type="image/jpeg"]')?.srcset || '',
       imgAlt: imgElement?.alt || '',
-      cardHeading: card.querySelector('h3')?.textContent || card.querySelector('p')?.textContent || '',
-      cardDescription: card.querySelector('p:nth-of-type(2)')?.textContent || '', // More explicit selection
+      cardHeading:
+        card.querySelector('h3')?.textContent || card.querySelector('p')?.textContent || '',
+      cardDescription: card.querySelector('p:nth-of-type(2)')?.textContent || ''
     };
   });
 
@@ -48,7 +49,6 @@ export default function decorate(block) {
 
   // Generate cards and append to cards wrapper
   cardData.forEach(({ cardImage, imgAlt, cardHeading, cardDescription }) => {
-
     const cardDiv = document.createElement('div');
     cardDiv.className = 'cards-card';
 
@@ -105,10 +105,12 @@ export default function decorate(block) {
    */
   function updateCards() {
     const cards = block.querySelectorAll('.cards-card');
-    cards.forEach((card) => (card.style.display = 'none')); // Hide all cards first
+    cards.forEach((card) => {
+      card.style.display = 'none';
+    });
 
-    for (let i = 0; i < 3; i++) {
-      const index = (currentIndex + i) % totalCards; // Loop around when reaching the end
+    for (let i = 0; i < 3; i += 1) {
+      const index = (currentIndex + i) % totalCards;
       cards[index].style.display = 'block';
     }
   }
@@ -117,7 +119,7 @@ export default function decorate(block) {
    * Moves the carousel to the previous set of 3 cards in a loop
    */
   prevButton.addEventListener('click', () => {
-    currentIndex = (currentIndex - 3 + totalCards) % totalCards; // Loop when reaching start
+    currentIndex = (currentIndex - 3 + totalCards) % totalCards;
     updateCards();
   });
 
@@ -125,7 +127,7 @@ export default function decorate(block) {
    * Moves the carousel to the next set of 3 cards in a loop
    */
   nextButton.addEventListener('click', () => {
-    currentIndex = (currentIndex + 3) % totalCards; // Loop when reaching end
+    currentIndex = (currentIndex + 3) % totalCards;
     updateCards();
   });
 

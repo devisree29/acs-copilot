@@ -1,45 +1,139 @@
-.cards-carousel {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.cards {
+  background: black;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
-.carousel-prev,
-.carousel-next {
-  background: none;
-  border: none;
-  cursor: pointer;
+a.cards {
+  background: black;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
-.cards-cards {
-  display: flex;
-  overflow: hidden;
-  width: 100%;
-}
-
-.cards-card {
-  flex: 0 0 33.333%; /* Show 3 cards at a time */
-  box-sizing: border-box;
-  padding: 10px;
-  display: none; /* Initially hide all cards */
-}
-
-.cards-card img {
-  max-width: 100%;
-  height: auto;
-}
-
-.cards-title {
-  font-size: 1.5em;
+.cards h2 {
+  font-size: 24px;
+  font-weight: bold;
   margin-bottom: 20px;
 }
 
-.cta-button {
+.cards .cards-carousel {
+  position: relative;
+}
+
+.cards .cards-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.cards .cards-card {
+  background: black;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 300px;
+  flex: 1;
+  display: none;
+  transition: transform 0.3s ease;
+}
+
+.cards .cards-card:hover {
+  transform: scale(1.05);
+}
+
+/* Glow effect for image border */
+.cards .cards-card img {
+  width: 100%;
+  border-radius: 10px;
+  border: 3px solid transparent;
+  box-shadow: 0 0 15px 3px rgba(155, 48, 255, 0.8);
+  transition: box-shadow 0.3s ease;
+}
+
+.cards .cards-card img:hover {
+  box-shadow: 0 0 25px 5px rgba(155, 48, 255, 1);
+}
+
+.cards .cards-card h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.cards .cards-card p {
+  font-size: 14px;
+  color: #d3d3d3;
+}
+
+/* Navigation buttons */
+.cards .carousel-prev,
+.cards .carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: black;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transition: background 0.3s ease, transform 0.3s ease;
+  padding: 0;
+}
+
+.cards .carousel-prev {
+  left: 10px;
+}
+
+.cards .carousel-next {
+  right: 10px;
+}
+
+.cards .carousel-prev img,
+.cards .carousel-next img {
+  width: 100%;  /* Match the image size to the button size */
+  height: 100%;
+  object-fit: contain;
+  filter: invert(1); /* Makes white icons visible on black background */
+}
+
+/* Call-to-action button */
+.cards .cta-button {
   display: inline-block;
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #007BFF;
-  color: #fff;
+  background-color: #9b30ff;
+  color: white;
   text-decoration: none;
   border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cards .cta-button:hover {
+  background-color: #4b0082;
+  transform: scale(1.1);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .cards .cards-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cards .cards-card {
+    max-width: 100%;
+  }
 }
