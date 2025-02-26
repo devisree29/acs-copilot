@@ -2,8 +2,10 @@ export default function decorate(block) {
   // Extract card data from the block
   const cardData = Array.from(block.querySelectorAll(':scope > div')).map((card) => {
     const imgElement = card.querySelector('img');
+
     return {
-      cardImage: card.querySelector('picture source[type="image/jpeg"]')?.srcset || '',
+      cardImage:
+        card.querySelector('picture source[type="image/jpeg"]')?.srcset || '',
       imgAlt: imgElement?.alt || '',
       cardHeading:
         card.querySelector('h3')?.textContent || card.querySelector('p')?.textContent || '',
@@ -37,9 +39,11 @@ export default function decorate(block) {
   const prevButton = document.createElement('button');
   prevButton.className = 'carousel-prev';
   prevButton.setAttribute('aria-label', 'Previous cards');
+
   const prevImg = document.createElement('img');
   prevImg.src = '/icons/left-arrow.svg';
   prevImg.alt = 'Previous';
+
   prevButton.appendChild(prevImg);
   carouselWrapper.appendChild(prevButton);
 
@@ -79,9 +83,11 @@ export default function decorate(block) {
   const nextButton = document.createElement('button');
   nextButton.className = 'carousel-next';
   nextButton.setAttribute('aria-label', 'Next cards');
+
   const nextImg = document.createElement('img');
   nextImg.src = '/icons/right-arrow.svg';
   nextImg.alt = 'Next';
+
   nextButton.appendChild(nextImg);
   carouselWrapper.appendChild(nextButton);
 
@@ -135,6 +141,7 @@ export default function decorate(block) {
    * Show all cards when CTA button is clicked (3 per row)
    */
   const ctaButton = block.querySelector('.cta-button');
+
   if (ctaButton) {
     ctaButton.addEventListener('click', (event) => {
       event.preventDefault();
