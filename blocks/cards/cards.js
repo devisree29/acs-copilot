@@ -9,9 +9,8 @@ export default function decorate(block) {
   // Get authored content from <h2>
   const cardTitle = block.querySelector('h2')?.textContent || 'Card Block Section for All Products ACS Co Pilot';
 
-  // Get CTA content
-  const ctaText = block.querySelector('.cta-button')?.textContent || '';
-  const ctaUrl = block.querySelector('.cta-button')?.href || '';
+  // Get CTA content (but don't store unused variables)
+  block.querySelector('.cta-button');
 
   // Create the main container
   const container = document.createElement('div');
@@ -90,9 +89,11 @@ export default function decorate(block) {
    * Updates the visibility of cards in the carousel
    */
   function updateCards() {
-    cards.forEach((card) => (card.style.display = 'none'));
+    cards.forEach((card) => {
+      card.style.display = 'none';
+    });
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i += 1) {
       const index = (currentIndex + i) % totalCards;
       cards[index].style.display = 'block';
     }
