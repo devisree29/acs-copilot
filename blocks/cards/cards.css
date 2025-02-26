@@ -53,12 +53,12 @@ a.cards {
   width: 100%;
   border-radius: 10px;
   border: 3px solid transparent;
-  box-shadow: 0 0 15px 3px rgba(155, 48, 255, 0.8);
+  box-shadow: 0 0 15px 3px rgba(155 48 255);
   transition: box-shadow 0.3s ease;
 }
 
 .cards .cards-card img:hover {
-  box-shadow: 0 0 25px 5px rgba(155, 48, 255, 1);
+  box-shadow: 0 0 25px 5px rgba(155 48 255);
 }
 
 .cards .cards-card h3 {
@@ -87,7 +87,7 @@ a.cards {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(255 255 255);
   transition: background 0.3s ease, transform 0.3s ease;
   padding: 0;
 }
