@@ -51,7 +51,7 @@ export default function decorate(block) {
     cardImage,
     imgAlt,
     cardHeading,
-    cardDescription, 
+    cardDescription,
   }) => {
     const cardDiv = document.createElement('div');
     cardDiv.className = 'cards-card';
