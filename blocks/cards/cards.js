@@ -9,7 +9,7 @@ export default function decorate(block) {
       imgAlt: imgElement?.alt || '',
       cardHeading:
         card.querySelector('h3')?.textContent || card.querySelector('p')?.textContent || '',
-      cardDescription: card.querySelector('p:nth-of-type(2)')?.textContent || ''
+      cardDescription: card.querySelector('p:nth-of-type(2)')?.textContent || '',
     };
   });
 
@@ -53,6 +53,7 @@ export default function decorate(block) {
 
   // Generate cards and append to cards wrapper
   cardData.forEach(({ cardImage, imgAlt, cardHeading, cardDescription }) => {
+    
     const cardDiv = document.createElement('div');
     cardDiv.className = 'cards-card';
 
