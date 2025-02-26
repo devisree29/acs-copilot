@@ -1,0 +1,45 @@
+.cards-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.carousel-prev,
+.carousel-next {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cards-cards {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.cards-card {
+  flex: 0 0 33.333%; /* Show 3 cards at a time */
+  box-sizing: border-box;
+  padding: 10px;
+  display: none; /* Initially hide all cards */
+}
+
+.cards-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.cards-title {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
