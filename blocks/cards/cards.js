@@ -47,7 +47,12 @@ export default function decorate(block) {
   cardsWrapper.className = 'cards-cards';
 
   // Generate cards and append to cards wrapper
-  cardData.forEach(({ cardImage, imgAlt, cardHeading, cardDescription }) => {
+  cardData.forEach(({
+    cardImage,
+    imgAlt,
+    cardHeading,
+    cardDescription 
+  }) => {
     const cardDiv = document.createElement('div');
     cardDiv.className = 'cards-card';
 
