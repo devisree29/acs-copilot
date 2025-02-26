@@ -100,8 +100,8 @@ a.cards {
   right: 10px;
 }
 
-.cards .carousel-prev img,
-.cards .carousel-next img {
+.cards .carousel-prev img.cards .cards-card img:hover,
+.cards .carousel-next img .cards .cards-card img:hover{
   width: 100%;  /* Match the image size to the button size */
   height: 100%;
   object-fit: contain;
