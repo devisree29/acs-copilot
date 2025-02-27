@@ -1,18 +1,120 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-
 export default function decorate(block) {
-  /* change to ul, li */
-  const ul = document.createElement('ul');
-  [...block.children].forEach((row) => {
-    const li = document.createElement('li');
-    while (row.firstElementChild) li.append(row.firstElementChild);
-    [...li.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
-      else div.className = 'cards-card-body';
-    });
-    ul.append(li);
+  // Extract card data from the block
+  const cardData = Array.from(block.querySelectorAll(':scope > div')).map((card) => ({
+    cardImage: card.querySelector('picture source')?.srcset || card.querySelector('img')?.src || '',
+    cardHeading: card.querySelector('h3')?.textContent || card.querySelector('p')?.textContent || '',
+    cardDescription: card.querySelector('p:nth-of-type(2)')?.textContent || '',
+  }));
+
+  // Get authored content from <h2>
+  const cardTitle = block.querySelector('h2')?.textContent || '';
+
+  // Get CTA content (but don't store unused variables)
+  block.querySelector('.cta-button');
+
+  // Create the main container
+  const container = document.createElement('div');
+  container.className = 'cards-container';
+
+  // Add the authored content as a heading inside the container
+  if (cardTitle) {
+    const authoredContentElement = document.createElement('h2');
+    authoredContentElement.className = 'authored-content';
+    authoredContentElement.textContent = cardTitle;
+    container.appendChild(authoredContentElement);
+  }
+
+  // Create the main carousel wrapper
+  const carouselWrapper = document.createElement('div');
+  carouselWrapper.className = 'cards-carousel';
+
+  // Create the cards container
+  const cardsContainer = document.createElement('div');
+  cardsContainer.className = 'cards-cards';
+
+  // Populate the cards
+  cardData.forEach(({ cardImage, cardHeading, cardDescription }) => {
+    const card = document.createElement('div');
+    card.className = 'cards-card';
+
+    card.innerHTML = `
+      <a href="#">
+        <img src="${cardImage}" alt="${cardHeading}" />
+      </a>
+      <h3>${cardHeading}</h3>
+      <p>${cardDescription}</p>
+    `;
+
+    cardsContainer.appendChild(card);
   });
-  ul.querySelectorAll('picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
-  block.textContent = '';
-  block.append(ul);
+
+  // Create previous button dynamically
+  const prevButton = document.createElement('button');
+  prevButton.className = 'carousel-prev';
+  prevButton.setAttribute('aria-label', 'Previous');
+
+  const prevImg = document.createElement('img');
+  prevImg.src = '/icons/left-arrow.svg'; // Make sure the path is correct
+  prevImg.alt = 'Previous';
+  prevButton.appendChild(prevImg);
+
+  // Create next button dynamically
+  const nextButton = document.createElement('button');
+  nextButton.className = 'carousel-next';
+  nextButton.setAttribute('aria-label', 'Next');
+
+  const nextImg = document.createElement('img');
+  nextImg.src = '/icons/right-arrow.svg'; // Make sure the path is correct
+  nextImg.alt = 'Next';
+  nextButton.appendChild(nextImg);
+
+  // Append elements to the carousel wrapper
+  carouselWrapper.appendChild(prevButton);
+  carouselWrapper.appendChild(cardsContainer);
+  carouselWrapper.appendChild(nextButton);
+
+  // Append carousel wrapper to the main container
+  container.appendChild(carouselWrapper);
+
+  // Set the final HTML structure inside the block
+  block.innerHTML = '';
+  block.appendChild(container);
+
+  // Select all cards
+  const cards = block.querySelectorAll('.cards-card');
+  let currentIndex = 0;
+  const totalCards = cards.length;
+
+  /**
+   * Updates the visibility of cards in the carousel
+   */
+  function updateCards() {
+    cards.forEach((card) => {
+      card.style.display = 'none';
+    });
+
+    for (let i = 0; i < 3; i += 1) {
+      const index = (currentIndex + i) % totalCards;
+      cards[index].style.display = 'block';
+    }
+  }
+
+  /**
+   * Moves the carousel to the previous set of cards
+   */
+  prevButton.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+    updateCards();
+  });
+
+  /**
+   * Moves the carousel to the next set of cards
+   */
+  nextButton.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % totalCards;
+    updateCards();
+  });
+
+  // Initialize carousel display
+  updateCards();
 }
