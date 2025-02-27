@@ -1,6 +1,6 @@
 /* Testimonial Section - Background */
 .testimonial {
-  background: linear-gradient(135deg, #380a6b 30%, #4a0a46 70%); /* Black to dark gray gradient */
+  background: linear-gradient(135deg, #380a6b 30%, #4a0a46 70%);
   padding: 30px 15px;
   text-align: center;
 }
@@ -8,7 +8,7 @@
 .testimonial h2 {
   font-family: var(--heading-font-family);
   font-size: var(--heading-font-size-xl);
-  color: #fff; /* White text */
+  color: #fff;
   margin-bottom: 30px;
 }
 
@@ -27,17 +27,16 @@
 
 /* Testimonial Card */
 .testimonial-card {
-  background-color: white; /* White card */
+  background-color: white;
   padding: 20px;
   margin: 12px;
   border-radius: 10px;
-  min-width: 300px; /* Increased width */
-  max-width: 360px; /* More space for text */
-  min-height: auto; /* Dynamic height */
+  min-width: 300px;
+  max-width: 360px;
   text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Ensures content spacing */
+  justify-content: space-between;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -70,31 +69,37 @@
   flex-direction: column;
 }
 
-.testimonial-info h3 {
+.testimonial-info h5 {
   margin: 0;
   font-size: 14px;
   color: #333;
 }
 
+/* Ensure the hyperlink is plain and not a button */
+.testimonial-info p {
+  margin: 5px 0; /* Add spacing */
+}
+
 .testimonial-info a {
-  color: lightskyblue; 
-  text-decoration: none;
+  color: lightskyblue; /* Standard hyperlink color */
+  text-decoration: none; /* Remove default underline */
   font-size: 12px;
 }
 
 .testimonial-info a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /* Underline on hover */
 }
 
 /* Description Below */
-.testimonial-content {
+.testimonial-content p {
   font-size: 14px;
   line-height: 1.5;
   color: #333;
-  white-space: normal; /* Allow text wrapping */
-  overflow: visible; /* Ensure full text is visible */
-  text-overflow: initial; /* No cutting off */
-  word-wrap: break-word; /* Wrap long words */
+  white-space: normal;
+  overflow: visible;
+  text-overflow: initial;
+  word-wrap: break-word;
+  margin-top: 10px;
 }
 
 /* Scroll Animation Containers */
