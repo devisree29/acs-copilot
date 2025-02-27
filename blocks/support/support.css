@@ -1,0 +1,111 @@
+/* General styles */
+body {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Center the container */
+.section {
+    max-width: 500px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.support .section.support-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;  /* Ensure the container takes the full height of the viewport */
+}
+
+/* Title */
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Subheading */
+h1 + p {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+h1 + p a {
+    color: #ff4b4b;
+    text-decoration: none;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    align-items: center;
+}
+
+/* Input Fields */
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    background-color: #222;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    text-align: left;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #888;
+}
+
+/* Category Dropdown */
+.field-wrapper {
+    width: 100%;
+}
+
+.field-wrapper label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+/* Message Box */
+textarea {
+    height: 120px;
+    resize: none;
+}
+
+/* Submit Button */
+button {
+    background-color: #ff4b4b;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #e43d3d;
+}
