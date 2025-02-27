@@ -53,6 +53,7 @@ body {
   flex-direction: row-reverse;
   text-align: right;
 }
+
 /* Text content styling */
 .feature:nth-child(even) .feature-content {
   width: 45%;
