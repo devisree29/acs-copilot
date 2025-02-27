@@ -45,9 +45,6 @@ export default async function decorate(block) {
     const videoElement = document.createElement('video');
     videoElement.setAttribute('playsinline', '');
     videoElement.setAttribute('controls', '');
-    videoElement.style.width = '100%';
-    videoElement.style.borderRadius = '10px';
-    videoElement.style.cursor = 'pointer';
 
     const sourceElement = document.createElement('source');
     sourceElement.setAttribute('src', videoHref);
