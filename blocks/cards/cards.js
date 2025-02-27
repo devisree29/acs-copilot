@@ -1,13 +1,13 @@
 export default function decorate(block) {
   // Extract card data from the block
   const cardData = Array.from(block.querySelectorAll(':scope > div')).map((card) => ({
-    cardImage: card.querySelector('picture source[type="image/jpeg"]')?.srcset || '',
+    cardImage: card.querySelector('picture source')?.srcset || card.querySelector('img')?.src || '',
     cardHeading: card.querySelector('h3')?.textContent || card.querySelector('p')?.textContent || '',
-    cardDescription: card.querySelector('p + p')?.textContent || '',
+    cardDescription: card.querySelector('p:nth-of-type(2)')?.textContent || '',
   }));
 
   // Get authored content from <h2>
-  const cardTitle = block.querySelector('h2')?.textContent || 'Card Block Section for All Products ACS Co Pilot';
+  const cardTitle = block.querySelector('h2')?.textContent || '';
 
   // Get CTA content (but don't store unused variables)
   block.querySelector('.cta-button');
