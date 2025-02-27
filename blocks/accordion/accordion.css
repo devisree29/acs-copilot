@@ -1,0 +1,53 @@
+.accordion-container {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+/* Main heading (FAQ Section) - No event listener */
+.accordion-main-header {
+  font-size: var(--heading-font-size-xl);
+  font-weight: bold;
+  color: var(--background-color);
+  background: var(--dark-color);
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 20px; /* Adds space between FAQ heading and FAQ items */
+}
+
+.accordion-header {
+  font-size: var(--heading-font-size-l);
+  margin-bottom: 10px;
+  background: var(--dark-color);
+  color: var(--background-color);
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.accordion-item {
+  background: var(--light-color);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.accordion-content {
+  display: none;
+  padding: 15px 20px;
+  background: var(--light-color);
+  border-top: 1px solid var(--dark-color);
+}
+
+.accordion-icon {
+  font-size: 1.25em;
+}
+
+.accordion-title {
+  flex: 1;
+}
