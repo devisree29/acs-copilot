@@ -19,10 +19,8 @@ export default async function decorate(block) {
     videoElement.muted = true;
     videoElement.loop = true;
     videoElement.classList.add('video');
-    
     videoElement.addEventListener('mouseenter', () => videoElement.play()); // Play on hover
     videoElement.addEventListener('mouseleave', () => videoElement.pause()); // Pause when cursor leaves
-    
     return videoElement;
   }
 
