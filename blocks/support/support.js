@@ -91,7 +91,7 @@ export default async function decorate(block) {
 
   // Create and append heading and paragraph elements
   form.prepend(Object.assign(document.createElement('p'), { textContent: block.querySelector('p').textContent }));
-  form.prepend(Object.assign(document.createElement('h1'), { textContent: block.querySelector('h1').textContent }));
+  form.prepend(Object.assign(document.createElement('h1'), { textContent: block.querySelector(':scope > div > div').firstElementChild.textContent }));
 
   block.replaceChildren(form);
 

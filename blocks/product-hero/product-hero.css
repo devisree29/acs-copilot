@@ -1,7 +1,3 @@
-/* .product-hero-container .product-hero-wrapper {
-    margin: 20px;
-} */
-
 .product-hero > div {
     display: flex;
     align-items: center;
@@ -103,6 +99,7 @@
 a.button:any-link {
     background-color: #a63bfb1f;
     box-shadow: 0 0 10px rgba(255 0 255 );
+    color: var(--text-color);
 }
 
 a.button:hover {

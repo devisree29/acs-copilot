@@ -1,12 +1,6 @@
-/* Main container styles */
-main {
-  height: 1200px;
-  background: linear-gradient(135deg, black, purple, violet, purple, black);
-}
-
 /* Tab block styles */
-.tab-block {
-  background-color: black;
+.tabs.block {
+  margin-top: 20px;
 }
 
 /* Tabs wrapper styles */
@@ -25,8 +19,8 @@ main {
 /* Tab button styles */
 .tab-button {
   background-color: transparent;
-  color: black;
-  border: 2px solid transparent;
+  color: var(--text-color);
+  border: 2px solid white;
   padding: 15px 30px;
   margin: 0 10px;
   cursor: pointer;
@@ -44,6 +38,7 @@ main {
   height: 24px;
   margin-right: 10px;
   transition: filter 0.3s;
+  filter: brightness(1) invert(1);
 }
 
 .tab-button::before {
@@ -53,7 +48,7 @@ main {
   left: -2px;
   right: -2px;
   border-radius: 50px;
-  background: linear-gradient(45deg, red, purple, blue, yellow);
+  background: linear-gradient(45deg, black, grey white);
   background-size: 400% 400%;
   z-index: -1;
   transition: opacity 0.3s;
@@ -64,11 +59,11 @@ main {
   background-color: rgba(0 0 0);
   color: white;
   border-color: transparent;
-  box-shadow: 5px 8px 10px rgba(255 0 0), 0 0 10px rgba(0 255 0), 0 0 10px rgba(0 0 255);
+  box-shadow: 5px 8px 10px darkgrey, 0 0 10px grey, 0 0 10px white;
 }
 
 .tab-button:hover .tab-media {
-  filter: brightness(0) invert(1);
+  filter: brightness(1) invert(1);
 }
 
 .tab-button:hover::before {
@@ -79,11 +74,12 @@ main {
 .tab-button.active {
   background-color: black;
   color: white;
-  border-color: transparent;
+  border-color: white;
+  box-shadow: 5px 8px 10px darkgrey, 0 0 10px grey, 0 0 10px white;
 }
 
 .tab-button.active .tab-media {
-  filter: brightness(0) invert(1);
+  filter: brightness(1) invert(1);
 }
 
 .tab-button.hovered {
@@ -135,7 +131,7 @@ main {
   left: -2px;
   right: -2px;
   border-radius: 10px;
-  background: linear-gradient(45deg, red, purple, blue, yellow);
+  background: linear-gradient(45deg, black, grey, white);
   background-size: 400% 400%;
   z-index: -1;
   transition: opacity 0.3s;
@@ -174,9 +170,9 @@ main {
   padding: 12px 25px;
   border-radius: 50px;
   text-decoration: none;
-  border: 3px solid transparent;
+  border: 3px solid white;
   background: linear-gradient(black, black) padding-box,
-              linear-gradient(to right, red, blue, green, yellow) border-box;
+              linear-gradient(to right, darkgrey, grey, white) border-box;
   transition: all 0.3s ease;
   opacity: 0;
   transform: translateY(10px);
@@ -190,12 +186,16 @@ main {
 .cta-url:hover {
   background-color: black;
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(255 0 0), 
-              0 0 10px rgba(0 255 0), 
-              0 0 10px rgba(0 0 255);
+  box-shadow: 0 5px 15px darkgrey, 
+              0 0 10px grey, 
+              0 0 10px white;
   letter-spacing: 1px;
 }
 
 .cta-url:active {
   transform: translateY(-2px);
+}
+
+a:any-link {
+  color: var(--text-color);
 }

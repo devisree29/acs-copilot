@@ -99,7 +99,7 @@ function loadVideoEmbed(block, link, autoplay, background) {
 // Main function to decorate the video block
 export default function decorate(block) {
   // Extract and remove the heading (if any)
-  const heading = block.querySelector('h1');
+  const heading = block.querySelector(':scope > div > div').firstElementChild;
   if (heading) heading.remove();
   // Extract the placeholder image and video link
   const placeholder = block.querySelector('picture');
