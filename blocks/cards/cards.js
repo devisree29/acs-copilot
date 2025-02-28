@@ -23,7 +23,7 @@ export default function decorate(block) {
   cardData.forEach(({
     cardImage,
     cardHeading,
-    cardDescription
+    cardDescription,
   }) => {
     const card = document.createElement('div');
     card.className = 'cards-card';
