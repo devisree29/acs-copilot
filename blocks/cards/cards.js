@@ -4,7 +4,7 @@ export default function decorate(block) {
     cardImage: card.querySelector('picture source')?.srcset || card.querySelector('img')?.src || '',
     cardHeading: card.querySelector('h3')?.textContent || card.querySelector('p')?.textContent || '',
     cardDescription: card.querySelector('p:nth-of-type(2)')?.textContent || '',
-    cardLink: card.querySelector('a')?.href || '#' // Retrieve link from block data
+    cardLink: card.querySelector('a')?.href || '#', // Retrieve link from block data
   }));
 
   // Create the main container
@@ -20,18 +20,18 @@ export default function decorate(block) {
   cardsContainer.className = 'cards-cards';
 
   // Populate the cards
-  cardData.forEach(({ cardImage, cardHeading, cardDescription, cardLink }) => {
+  cardData.forEach(({ 
+    cardImage, 
+    cardHeading, 
+    cardDescription
+  }) => {
     const card = document.createElement('div');
     card.className = 'cards-card';
-
-    const link = document.createElement('a');
-    link.href = cardLink; // Use the retrieved link
 
     const image = document.createElement('img');
     image.src = cardImage;
     image.alt = cardHeading;
     image.className = 'card-image'; // Apply CSS class instead of inline styles
-    link.appendChild(image);
 
     const heading = document.createElement('h3');
     heading.textContent = cardHeading;
@@ -39,7 +39,7 @@ export default function decorate(block) {
     const description = document.createElement('p');
     description.textContent = cardDescription;
 
-    card.appendChild(link);
+    card.appendChild(image);
     card.appendChild(heading);
     card.appendChild(description);
     cardsContainer.appendChild(card);

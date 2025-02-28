@@ -7,12 +7,6 @@
   font-family: Arial, sans-serif;
 }
 
-.cards-container .authored-content {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
 /* Carousel Wrapper */
 .cards-carousel {
   position: relative;
@@ -108,22 +102,4 @@
   height: 100%;
   object-fit: contain;
   filter: invert(1); /* Makes white icons visible on black background */
-}
-
-/* CTA Button */
-.cta-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background: white;
-  color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.cta-button:hover {
-  background: gray;
-  transform: scale(1.05);
 }
