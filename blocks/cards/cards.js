@@ -20,10 +20,10 @@ export default function decorate(block) {
   cardsContainer.className = 'cards-cards';
 
   // Populate the cards
-  cardData.forEach(({ 
-    cardImage, 
-    cardHeading, 
-    cardDescription,
+  cardData.forEach(({
+    cardImage,
+    cardHeading,
+    cardDescription
   }) => {
     const card = document.createElement('div');
     card.className = 'cards-card';
