@@ -38,6 +38,7 @@ function generatePayload(form) {
 }
 
 /**
+ * TO IMPLEMENT
  * Handles form submission, sends the form data as a JSON payload via a POST request.
  * @param {HTMLFormElement} form - The form element being submitted.
  */
@@ -59,7 +60,7 @@ async function handleSubmit(form) {
 
     if (form.dataset.confirmation) window.location.href = form.dataset.confirmation;
   } catch (e) {
-    console.error(e);
+
   } finally {
     form.dataset.submitting = 'false';
     submit.disabled = false;
@@ -78,7 +79,10 @@ export default async function decorate(block) {
 
   // List of valid sections
   const validSections = ['contact-us', 'feedback', 'featurerequest', 'bugreport'];
-  const hash = window.location.hash.substring(1) || (window.location.pathname === '/draft/support' ? 'contact-us' : '');
+  const lastPathSegment = window.location.pathname.split('/').filter(Boolean).pop(); 
+  const hash = window.location.hash.substring(1) || (lastPathSegment === 'support' ? 'contact-us' : lastPathSegment);
+
+
   if (!validSections.includes(hash) || !formLink.includes(hash)) {
     block.textContent = '';
     return;
