@@ -13,6 +13,19 @@ export default async function decorate(block) {
   let hasMedia = false;
   let hasContent = false;
 
+  function createVideoElement(videoSrc) {
+    const videoElement = document.createElement('video');
+    videoElement.src = videoSrc;
+    videoElement.muted = true;
+    videoElement.loop = true;
+    videoElement.classList.add('video');
+    
+    videoElement.addEventListener('mouseenter', () => videoElement.play()); // Play on hover
+    videoElement.addEventListener('mouseleave', () => videoElement.pause()); // Pause when cursor leaves
+    
+    return videoElement;
+  }
+
   // Loop through each feature block child
   [...block.children].forEach((feature, index) => {
     // Create and set up the feature header
@@ -37,22 +50,16 @@ export default async function decorate(block) {
     }
     featureMedia.setAttribute('data-index', index);
 
-    // Create and set up the video container
+    // Create and set up  video container
     const videoHref = feature.querySelector('a')?.getAttribute('href') || '';
-    const videoContainer = document.createElement('div');
-    videoContainer.classList.add('video-container');
-
-    const videoElement = document.createElement('video');
-    videoElement.setAttribute('playsinline', '');
-    videoElement.setAttribute('controls', '');
-
-    const sourceElement = document.createElement('source');
-    sourceElement.setAttribute('src', videoHref);
-    sourceElement.setAttribute('type', 'video/mp4');
-
-    videoElement.appendChild(sourceElement);
-    videoContainer.appendChild(videoElement);
-    featureDescription.appendChild(videoContainer);
+    if (videoHref) {
+      const videoContainer = document.createElement('div');
+      videoContainer.classList.add('video-container');
+      const videoElement = createVideoElement(videoHref);
+      videoContainer.appendChild(videoElement);
+      featureDescription.appendChild(videoContainer);
+      hasContent = true;
+    }
 
     // Append the feature header to the text container
     textContainer.appendChild(featureHeader);
@@ -62,33 +69,7 @@ export default async function decorate(block) {
       mediaContainer.appendChild(featureMedia);
     } else if (videoHref) {
       contentContainer.appendChild(featureDescription);
-      hasContent = true;
     }
-
-    // Add click event listener to the feature header
-    featureHeader.addEventListener('click', () => {
-      document.querySelectorAll('.feature-description').forEach((description, contentIndex) => {
-        if (contentIndex === index) {
-          description.style.display = 'block';
-          const video = description.querySelector('video');
-          if (video) {
-            video.play();
-          }
-        } else {
-          description.style.display = 'none';
-          const video = description.querySelector('video');
-          if (video) {
-            video.pause();
-            video.currentTime = 0;
-          }
-        }
-      });
-
-      document.querySelectorAll('.feature-header').forEach((header) => {
-        header.classList.remove('active');
-      });
-      featureHeader.classList.add('active');
-    });
   });
 
   // Clear the original block content and append new containers
