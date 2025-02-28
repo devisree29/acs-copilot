@@ -1,0 +1,113 @@
+.product-hero-container .product-hero-wrapper {
+    margin: 20px;
+}
+
+.product-hero > div {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    background: rgba(0 0 0 ); /* #000000e4 updated to rgba with 90% opacity */
+    padding: 50px;
+    border-radius: 15px;
+    color: white;
+    gap: 20px;
+    font-size: 1.8rem;
+}
+
+.product-hero h2 {
+    font-size: 60px;
+}
+
+.product-hero > div > div {
+    flex: 2;
+}
+
+.product-hero.left > div {
+    flex-direction: row;
+}
+
+.product-hero.right > div {
+    flex-direction: row-reverse;
+}
+
+/* Product Hero Centre - Container */
+.product-hero.centre {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px;
+    overflow: hidden; /* Prevents content spill */
+    border-radius: 15px;
+    width: 97%;
+}
+
+.product-hero.centre > div {
+    background: transparent;
+}
+
+
+.product-hero > div > div:last-of-type {
+    flex: 1;
+}
+
+/* Background Image or Video - Set as Full Background */
+.product-hero.centre > div > div:first-of-type {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Box around image */
+.product-hero picture, .product-hero video {
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #1f0c2e, #3b1442, #7b2653, #a23744, #d6543e);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Ensure Image and Video Cover the Entire Background */
+.product-hero.centre picture,
+.product-hero.centre img,
+.product-hero.centre video {
+    width: 98%;
+    height: 98%;
+    object-fit: cover;
+    filter: brightness(70%); /* Darkens the background for text readability */
+    border-radius: 15px;
+}
+
+/* Content Box - Ensures Text is Visible Over the Background */
+.product-hero.centre > div > div:last-of-type {
+    z-index: 1;
+    color: white;
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+}
+
+/* Hover effect */
+.product-hero picture:hover, .product-hero video:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0 0 0);
+}
+
+a.button:any-link {
+    background-color: #a63bfb1f;
+    box-shadow: 0 0 10px rgba(255 0 255 );
+}
+
+a.button:hover {
+    background-color: rgba(144 0 255);
+    border-color: #80f;
+    box-shadow: 0 0 20px rgba(157 0 255);
+}
+
