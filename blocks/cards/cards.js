@@ -5,6 +5,7 @@ export default function decorate(block) {
     cardHeading: card.querySelector('h3')?.textContent || card.querySelector('p')?.textContent || '',
     cardDescription: card.querySelector('p:nth-of-type(2)')?.textContent || '',
     cardLink: card.querySelector('a')?.href || '#', // Retrieve link from block data
+    cardText: card.querySelector('a')?.textContent || '', // Retrieve text from link
   }));
 
   // Create the main container
@@ -24,14 +25,20 @@ export default function decorate(block) {
     cardImage,
     cardHeading,
     cardDescription,
+    cardLink,
+    cardText,
   }) => {
     const card = document.createElement('div');
     card.className = 'cards-card';
 
     const image = document.createElement('img');
     image.src = cardImage;
-    image.alt = cardHeading;
+    image.alt = cardText;
     image.className = 'card-image'; // Apply CSS class instead of inline styles
+    image.style.cursor = 'pointer';
+    image.addEventListener('click', () => {
+      window.location.href = cardLink;
+    });
 
     const heading = document.createElement('h3');
     heading.textContent = cardHeading;
