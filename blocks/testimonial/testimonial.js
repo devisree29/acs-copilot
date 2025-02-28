@@ -7,7 +7,7 @@ export default function decorate(block) {
     const imgElement = pictureElement ? pictureElement.querySelector('img') : null;
 
     // Extract title
-    const titleElement = row.querySelector('h5');
+    const titleElement = row.querySelector(':scope > div:nth-child(2)').firstElementChild;
     const testimonialTitle = titleElement ? titleElement.textContent.trim() : '';
 
     // Extract paragraphs

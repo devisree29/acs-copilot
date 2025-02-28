@@ -2,8 +2,8 @@ export default function decorate(block) {
   // Gather all slide data from the initial block content
   const slidesData = Array.from(block.querySelectorAll(':scope > div')).map((slide) => ({
     picture: slide.querySelector('picture'),
-    heading: slide.querySelector('h2'),
-    subHeading: slide.querySelector('h3'),
+    heading: slide.querySelector(':scope > div:nth-child(2)').firstElementChild,
+    subHeading: slide.querySelector(':scope > div:nth-child(2) > *:nth-child(3)'),
     paragraphs: Array.from(slide.querySelectorAll('p')),
     icons: Array.from(slide.querySelectorAll('span.icon')),
   }));

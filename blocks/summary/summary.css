@@ -1,6 +1,4 @@
 .summary {
-  background-color:grey;
-  color:black;
   padding: 20px;
   border-radius: 5px;
   margin-bottom: 20px;
@@ -15,21 +13,17 @@
 .summary-description {
   margin-top: 10px;
   font-style: italic;
-  color: darkgrey;
 }
  
 /* Specific styles for summary positions */
 .summary-container .summary-wrapper .summary.centre {
-  background-color:grey;
   text-align: center;
 }
  
 .summary-container .summary-wrapper .summary.left {
-  background-color:grey; 
   text-align: left;
 }
  
 .summary-container .summary-wrapper .summary.right {
-  background-color: grey; 
   text-align: right;
 }

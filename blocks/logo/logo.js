@@ -1,6 +1,6 @@
 export default function decorate(block) {
   // Get the heading element inside the block
-  const logoTitle = block.querySelector('h2');
+  const logoTitle = block.querySelector(':scope > div > div').firstElementChild;
 
   // Extract all logo images from <picture> elements
   const logoImages = [...block.querySelectorAll('picture')].map((picture) => ({
@@ -8,19 +8,25 @@ export default function decorate(block) {
     alt: picture.querySelector('img').alt || 'Logo', // Set alt text or default to 'Logo'
   }));
 
-  // Reconstruct the block's inner HTML with structured layout
-  block.innerHTML = `
-    <div class="logo-content">
-      ${logoTitle.outerHTML} <!-- Retains the heading element -->
-      <div class="logo-slideshow">
-        ${logoImages.map((logo) => `
-          <div class="logo-card">
-            <img src="${logo.src}" alt="${logo.alt}">
-          </div>
-        `).join('')} <!-- Generates logo cards dynamically -->
-      </div>
-    </div>
-  `;
+  const logoSlides = document.createElement('div');
+  logoSlides.className = 'logo-slideshow';
+
+  // Create logo cards efficiently using `map` and `append`
+  logoSlides.append(...logoImages.map(({ src, alt }) => {
+    const logoCard = document.createElement('div');
+    logoCard.className = 'logo-card';
+
+    const logoImage = Object.assign(document.createElement('img'), { src, alt });
+    logoCard.append(logoImage);
+
+    return logoCard;
+  }));
+
+  const logoContent = document.createElement('div');
+  logoContent.className = 'logo-content';
+  logoContent.append(logoTitle, logoSlides);
+
+  block.replaceChildren(logoContent);
 
   // Get the newly created slideshow container
   const slideshow = block.querySelector('.logo-slideshow');

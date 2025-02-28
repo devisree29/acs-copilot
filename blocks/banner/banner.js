@@ -3,7 +3,7 @@ import { decorateButtons } from '../../scripts/aem.js';
 // Main decorate function
 export default function decorate(block) {
   // Extract content from the block
-  const titleElement = block.querySelector('h1');
+  const titleElement = block.querySelector(':scope > div > div').firstElementChild;
   const descriptionElement = block.querySelector('p:nth-of-type(1)');
   const buttonElement = block.querySelector('p:nth-of-type(2) a');
   const bannerTitle = titleElement?.innerHTML || '';

@@ -2,7 +2,7 @@ export default function decorate(block) {
   // Extract card data from the block
   const cardData = Array.from(block.querySelectorAll(':scope > div')).map((card) => ({
     cardImage: card.querySelector('picture source')?.srcset || card.querySelector('img')?.src || '',
-    cardHeading: card.querySelector('h3')?.textContent || card.querySelector('p')?.textContent || '',
+    cardHeading: card.querySelector('p')?.textContent || '',
     cardDescription: card.querySelector('p:nth-of-type(2)')?.textContent || '',
     cardLink: card.querySelector('a')?.href || '#', // Retrieve link from block data
     cardText: card.querySelector('a')?.textContent || '', // Retrieve text from link
