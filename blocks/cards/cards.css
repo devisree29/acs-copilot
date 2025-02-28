@@ -13,11 +13,16 @@
   margin-bottom: 20px;
 }
 
-.cards .cards-carousel {
+/* Carousel Wrapper */
+.cards-carousel {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.cards .cards-cards {
+/* Cards Container */
+.cards-cards {
   display: flex;
   gap: 20px;
   justify-content: center;
@@ -25,7 +30,8 @@
   overflow: hidden;
 }
 
-.cards .cards-card {
+/* Individual Card */
+.cards-card {
   background: black;
   padding: 20px;
   border-radius: 10px;
@@ -35,46 +41,39 @@
   transition: transform 0.3s ease;
 }
 
-.cards .cards-card:hover {
+.cards-card:hover {
   transform: scale(1.05);
 }
 
-/* Navigation button styles - Moved above to avoid specificity error */
-.cards .carousel-prev img,
-.cards .carousel-next img {
-  width: 100%;  /* Match the image size to the button size */
-  height: 100%;
-  object-fit: contain;
-  filter: invert(1);  /* Makes white icons visible on black background */
-}
-
-/* Glow effect for image border */
-.cards .cards-card img {
+/* Card Image */
+.card-image {
   width: 100%;
   border-radius: 10px;
   border: 3px solid transparent;
-  box-shadow: 0 0 15px 3px color(display-p3 0.61 0.19 1 / 80%);
+  box-shadow: 0 0 15px 3px rgba(156 49 255 0.8);
   transition: box-shadow 0.3s ease;
 }
 
-.cards .cards-card img:hover {
-  box-shadow: 0 0 25px 5px color(display-p3 0.61 0.19 1 / 100%);
+.card-image:hover {
+  box-shadow: 0 0 25px 5px rgba(156 49 255 1);
 }
 
-.cards .cards-card h3 {
+/* Card Title */
+.cards-card h3 {
   font-size: 18px;
   font-weight: bold;
   margin: 10px 0;
 }
 
-.cards .cards-card p {
+/* Card Description */
+.cards-card p {
   font-size: 14px;
   color: #d3d3d3;
 }
 
-/* Navigation buttons */
-.cards .carousel-prev,
-.cards .carousel-next {
+/* Navigation Buttons */
+.carousel-prev,
+.carousel-next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -87,15 +86,44 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 10px color(display-p3 1 1 1 / 50%);
+  box-shadow: 0 0 10px rgba(255 255 255 0.5);
   transition: background 0.3s ease, transform 0.3s ease;
   padding: 0;
 }
 
-.cards .carousel-prev {
+/* Previous Button */
+.carousel-prev {
   left: -40px;
 }
 
-.cards .carousel-next {
+/* Next Button */
+.carousel-next {
   right: -40px;
+}
+
+/* Navigation Button Images */
+.carousel-prev-icon,
+.carousel-next-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: invert(1); /* Makes white icons visible on black background */
+}
+
+/* CTA Button */
+.cta-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+  background: gray;
+  transform: scale(1.05);
 }

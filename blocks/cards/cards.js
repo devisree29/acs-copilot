@@ -4,25 +4,12 @@ export default function decorate(block) {
     cardImage: card.querySelector('picture source')?.srcset || card.querySelector('img')?.src || '',
     cardHeading: card.querySelector('h3')?.textContent || card.querySelector('p')?.textContent || '',
     cardDescription: card.querySelector('p:nth-of-type(2)')?.textContent || '',
+    cardLink: card.querySelector('a')?.href || '#' // Retrieve link from block data
   }));
-
-  // Get authored content from <h2>
-  const cardTitle = block.querySelector('h2')?.textContent || '';
-
-  // Get CTA content (but don't store unused variables)
-  block.querySelector('.cta-button');
 
   // Create the main container
   const container = document.createElement('div');
   container.className = 'cards-container';
-
-  // Add the authored content as a heading inside the container
-  if (cardTitle) {
-    const authoredContentElement = document.createElement('h2');
-    authoredContentElement.className = 'authored-content';
-    authoredContentElement.textContent = cardTitle;
-    container.appendChild(authoredContentElement);
-  }
 
   // Create the main carousel wrapper
   const carouselWrapper = document.createElement('div');
@@ -33,18 +20,28 @@ export default function decorate(block) {
   cardsContainer.className = 'cards-cards';
 
   // Populate the cards
-  cardData.forEach(({ cardImage, cardHeading, cardDescription }) => {
+  cardData.forEach(({ cardImage, cardHeading, cardDescription, cardLink }) => {
     const card = document.createElement('div');
     card.className = 'cards-card';
 
-    card.innerHTML = `
-      <a href="#">
-        <img src="${cardImage}" alt="${cardHeading}" />
-      </a>
-      <h3>${cardHeading}</h3>
-      <p>${cardDescription}</p>
-    `;
+    const link = document.createElement('a');
+    link.href = cardLink; // Use the retrieved link
 
+    const image = document.createElement('img');
+    image.src = cardImage;
+    image.alt = cardHeading;
+    image.className = 'card-image'; // Apply CSS class instead of inline styles
+    link.appendChild(image);
+
+    const heading = document.createElement('h3');
+    heading.textContent = cardHeading;
+
+    const description = document.createElement('p');
+    description.textContent = cardDescription;
+
+    card.appendChild(link);
+    card.appendChild(heading);
+    card.appendChild(description);
     cardsContainer.appendChild(card);
   });
 
@@ -54,8 +51,9 @@ export default function decorate(block) {
   prevButton.setAttribute('aria-label', 'Previous');
 
   const prevImg = document.createElement('img');
-  prevImg.src = '/icons/left-arrow.svg'; // Make sure the path is correct
+  prevImg.src = '/icons/left-arrow.svg';
   prevImg.alt = 'Previous';
+  prevImg.className = 'carousel-prev-icon'; // Apply CSS class
   prevButton.appendChild(prevImg);
 
   // Create next button dynamically
@@ -64,8 +62,9 @@ export default function decorate(block) {
   nextButton.setAttribute('aria-label', 'Next');
 
   const nextImg = document.createElement('img');
-  nextImg.src = '/icons/right-arrow.svg'; // Make sure the path is correct
+  nextImg.src = '/icons/right-arrow.svg';
   nextImg.alt = 'Next';
+  nextImg.className = 'carousel-next-icon'; // Apply CSS class
   nextButton.appendChild(nextImg);
 
   // Append elements to the carousel wrapper
