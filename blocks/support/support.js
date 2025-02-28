@@ -60,7 +60,7 @@ async function handleSubmit(form) {
 
     if (form.dataset.confirmation) window.location.href = form.dataset.confirmation;
   } catch (e) {
-
+    // eslint-disable-next-line no-empty
   } finally {
     form.dataset.submitting = 'false';
     submit.disabled = false;
@@ -79,9 +79,8 @@ export default async function decorate(block) {
 
   // List of valid sections
   const validSections = ['contact-us', 'feedback', 'featurerequest', 'bugreport'];
-  const lastPathSegment = window.location.pathname.split('/').filter(Boolean).pop(); 
+  const lastPathSegment = window.location.pathname.split('/').filter(Boolean).pop();
   const hash = window.location.hash.substring(1) || (lastPathSegment === 'support' ? 'contact-us' : lastPathSegment);
-
 
   if (!validSections.includes(hash) || !formLink.includes(hash)) {
     block.textContent = '';
