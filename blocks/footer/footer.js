@@ -29,4 +29,15 @@ export default async function decorate(block) {
       </span>
     `);
   }
+
+  // Forcing the window reload for footer links for the support block as
+  // # is not reloading the window
+  const footerLinks = block.querySelector(':scope .default-content-wrapper > ul');
+
+  footerLinks?.querySelectorAll(':scope > li > a[href*="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      window.open(link.href, '_blank'); // Open in a new tab
+    });
+  });
 }
