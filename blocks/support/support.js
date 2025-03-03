@@ -78,7 +78,7 @@ export default async function decorate(block) {
   if (!formLink || !submitLink) return;
 
   // List of valid sections
-  const validSections = ['contact-us', 'feedback', 'featurerequest', 'bugreport'];
+  const validSections = ['contact-us', 'feedback', 'feature-request', 'bug-report'];
   const lastPathSegment = window.location.pathname.split('/').filter(Boolean).pop();
   const hash = window.location.hash.substring(1) || (lastPathSegment === 'support' ? 'contact-us' : lastPathSegment);
 
