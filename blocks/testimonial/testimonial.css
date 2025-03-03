@@ -101,13 +101,11 @@
   word-wrap: break-word;
   margin-top: 10px;
 }
-
 /* Scroll Animation Containers */
 .testimonial-scroll .testimonial-content-wrapper {
   display: flex;
   animation: scroll-left 35s linear infinite;
 }
-
 .testimonial-scroll.bottom .testimonial-content-wrapper {
   animation: scroll-right 35s linear infinite;
 }

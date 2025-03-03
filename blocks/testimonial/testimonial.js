@@ -51,7 +51,7 @@ export default function decorate(block) {
       )
       .join('');
 
-  // Update block content
+  // Updated block content
   block.innerHTML = `
     <div class="testimonial-wrapper">
       <div class="testimonial-scroll top">
