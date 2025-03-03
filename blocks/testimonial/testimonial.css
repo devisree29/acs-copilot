@@ -105,11 +105,11 @@
 /* Scroll Animation Containers */
 .testimonial-scroll .testimonial-content-wrapper {
   display: flex;
-  animation: scroll-left 15s linear infinite;
+  animation: scroll-left 50s linear infinite;
 }
 
 .testimonial-scroll.bottom .testimonial-content-wrapper {
-  animation: scroll-right 15s linear infinite;
+  animation: scroll-right 50s linear infinite;
 }
 
 /* Smooth Scrolling Animations */
