@@ -1,10 +1,10 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: black;
+  background-color: var(--background-color);
   width: 100%;
   z-index: 2;
   position: fixed;
-  color: white;
+  color: var(--text-color);
 }
 
 header nav {

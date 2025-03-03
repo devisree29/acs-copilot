@@ -1,29 +1,8 @@
-/* General styles */
-body {
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-/* Center the container */
-.section {
-    max-width: 500px;
-    width: 100%;
+.section.support-container {
     padding: 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.support .section.support-container {
-    display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;  /* Ensure the container takes the full height of the viewport */
@@ -104,6 +83,7 @@ button {
     font-size: 16px;
     cursor: pointer;
     width: 100%;
+    margin: 12px;
 }
 
 button:hover {
