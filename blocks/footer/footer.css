@@ -1,6 +1,6 @@
 footer {
-  background-color: black;
-  color: white;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 footer .footer .default-content-wrapper ul {
