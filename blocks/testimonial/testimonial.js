@@ -14,7 +14,9 @@ export default function decorate(block) {
     const paragraphs = row.querySelectorAll('p');
     // Extract hyperlink from the first <p>
     const linkElement = paragraphs.length > 0 ? paragraphs[0].querySelector('a') : null;
-    const testimonialLink = linkElement ? `<a href="${linkElement.href}" class="testimonial-link">${linkElement.textContent}</a>` : '';
+    const testimonialLink = linkElement
+      ? `<a href="${linkElement.href}" class="testimonial-link">${linkElement.textContent}</a>`
+      : '';
 
     // Extract text from the second <p>
     const testimonialText = paragraphs.length > 1 ? paragraphs[1].textContent.trim() : '';
@@ -23,27 +25,31 @@ export default function decorate(block) {
       src: imgElement ? imgElement.getAttribute('src') : '',
       alt: imgElement ? imgElement.getAttribute('alt') : '',
       testimonialTitle,
-      testimonialLink, // Now properly formatted as an `<a>` tag
+      testimonialLink,
       testimonialText,
     };
   });
 
   // Generate HTML structure for testimonials
-  const createTestimonialHTML = (items) => items
-    .map((test) => `
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          ${test.src ? createOptimizedPicture(test.src, test.alt).outerHTML : ''}
-          <div class="testimonial-info">
-            <h5>${test.testimonialTitle}</h5>
-            ${test.testimonialLink ? `<p>${test.testimonialLink}</p>` : ''} <!-- Link inside <p> -->
+  const createTestimonialHTML = (items) =>
+    items
+      .map(
+        (test) => `
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            ${test.src ? createOptimizedPicture(test.src, test.alt).outerHTML : ''}
+            <div class="testimonial-info">
+              <h5>${test.testimonialTitle}</h5>
+              ${test.testimonialLink ? `<p>${test.testimonialLink}</p>` : ''}
+            </div>
+          </div>
+          <div class="testimonial-content">
+            <p>${test.testimonialText}</p>
           </div>
         </div>
-        <div class="testimonial-content">
-          <p>${test.testimonialText}</p>
-        </div>
-      </div>
-    `).join('');
+      `
+      )
+      .join('');
 
   // Update block content
   block.innerHTML = `
@@ -51,13 +57,13 @@ export default function decorate(block) {
       <div class="testimonial-scroll top">
         <div class="testimonial-content-wrapper">
           ${createTestimonialHTML(testimonialsData.slice(0, 4))}
-          ${createTestimonialHTML(testimonialsData.slice(0, 4))} <!-- Duplicate for smooth loop -->
+          ${createTestimonialHTML(testimonialsData.slice(0, 4))}
         </div>
       </div>
       <div class="testimonial-scroll bottom">
         <div class="testimonial-content-wrapper">
           ${createTestimonialHTML(testimonialsData.slice(4))}
-          ${createTestimonialHTML(testimonialsData.slice(4))} <!-- Duplicate for smooth loop -->
+          ${createTestimonialHTML(testimonialsData.slice(4))}
         </div>
       </div>
     </div>
