@@ -3,8 +3,8 @@
 :root {
   /* colors */
   --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
-  --background-color: #000;
+  --link-hover-color: #232b37;
+  --background-color: #000e22;
   --highlight-light-background-color: #f8f8f8;
   --highlight-dark-background-color: #efefef;
   --light-color: #f8f8f8;
@@ -14,6 +14,10 @@
   --footer-border-color: #e1e1e1;
   --box-back-drop-shadow: rgba(0 0 0 / 15%);
   --highlighted-text-color: rgb(255 255 0 / 20%);
+  --background-link-hover-color: linear-gradient(90deg,#f299ff,#b2a8ff 50%,#94afff);
+  --background-link-color: linear-gradient(90deg, #a000b8, #5724ff 50%, #003efa);
+  --link-amazon-color: #75cfff;
+  --rg-color-link-default: #09f;
 
   /* fonts */
   --body-font-family: "Adobe Clean", adobe-clean, "Source Sans Pro", -apple-system, system-ui, "Segoe UI", roboto,
@@ -355,7 +359,8 @@
   --box-shadow-2: 0px 8px 16px #0000001a;
 
   /* acs co-pilot default fonts definition - Mobile */
-  --acs-copilot-font-size-h1: var(--spectrum-heading-size-xl);
+  /* --acs-copilot-font-size-h1: var(--spectrum-heading-size-xl); */
+  --acs-copilot-font-size-h1: var(--spectrum-heading-size-xxl);
   --acs-copilot-font-size-h2: var(--spectrum-heading-size-l);
   --acs-copilot-font-size-h3: var(--spectrum-heading-size-m);
   --acs-copilot-font-size-h4: var(--spectrum-heading-size-s);
@@ -379,7 +384,7 @@ h1 {
   font-weight: var(--font-weight-bold);
   font-style: normal;
   line-height: var(--acs-copilot-line-height-h1);
-  color: var(--non-spectrum-grey);
+  color: var(--spectrum-gray-50);
   margin-top: 12px;
   margin-bottom: 16px;
 }
@@ -391,7 +396,7 @@ h2 {
   font-weight: var(--font-weight-bold);
   font-style: normal;
   line-height: var(--acs-copilot-line-height-h2);
-  color: var(--non-spectrum-grey);
+  color: var(--spectrum-gray-50);
   margin-top: 40px;
   margin-bottom: 7px;
 }
@@ -403,7 +408,7 @@ h3 {
   font-weight: var(--font-weight-bold);
   font-style: normal;
   line-height: var(--acs-copilot-line-height-h3);
-  color: var(--text-color);
+  color: var(--spectrum-gray-50);
   margin-top: 40px;
   margin-bottom: 5.5px;
 }
@@ -415,7 +420,7 @@ h4 {
   font-weight: var(--font-weight-bold);
   font-style: normal;
   line-height: var(--acs-copilot-line-height-h4);
-  color: var(--text-color);
+  color: var(--spectrum-gray-50);
   margin-top: 12px;
   margin-bottom: 7px;
 }
@@ -427,7 +432,7 @@ h5 {
   font-weight: var(--font-weight-bold);
   font-style: normal;
   line-height: var(--acs-copilot-line-height-h5);
-  color: var(--text-color);
+  color: var(--spectrum-gray-50);
   margin-top: 12px;
   margin-bottom: 7px;
 }
@@ -439,7 +444,7 @@ h6 {
   font-weight: var(--font-weight-bold);
   font-style: normal;
   line-height: var(--acs-copilot-line-height-h6);
-  color: var(--text-color);
+  color: var(--spectrum-gray-50);
   margin-top: 12px;
   margin-bottom: 7px;
 }
@@ -451,7 +456,7 @@ p {
   font-weight: var(--font-weight-normal);
   font-style: normal;
   line-height: var(--spectrum-line-height-l);
-  color: var(--spectrum-gray-800);
+  color: var(--spectrum-gray-50);
   margin-top: 0;
   margin-bottom: 16px;
 }
@@ -464,7 +469,7 @@ h3 + p {
   font-weight: var(--font-weight-normal);
   font-style: normal;
   line-height: var(--spectrum-line-height-l);
-  color: var(--spectrum-gray-800);
+  color: var(--spectrum-gray-50);
   margin-top: 12px;
   margin-bottom: 16px;
 }
@@ -476,7 +481,8 @@ a {
   font-weight: var(--font-weight-normal);
   font-style: normal;
   line-height: var(--spectrum-line-height-l);
-  color: var(--non-spectrum-link);
+  /* color: var(--non-spectrum-link); */
+  color: var(--rg-color-link-default, #006ce0);
   margin-top: 12px;
   margin-bottom: 16px;
   cursor: pointer;
@@ -484,11 +490,13 @@ a {
 }
 
 a:hover {
-  color: var(--non-spectrum-custom-dark);
+  /* color: var(--non-spectrum-custom-dark); */
+  color: var(--link-amazon-color, #003b8f);
+  /* animation: bodytext_module_linkSwipe__ca32720c .3s cubic-bezier(0,0,.2,1); */
 }
 
 strong:not(a strong) {
-  color: var(--non-spectrum-custom-dark);
+  color: var(--spectrum-gray-50);
 }
 
 @media (min-width: 1200px) {
@@ -504,6 +512,7 @@ strong:not(a strong) {
     --acs-copilot-line-height-h3: var(--spectrum-line-height-xxl);
     --acs-copilot-line-height-h4: var(--spectrum-line-height-xl);
     --acs-copilot-line-height-h5: 23.4px;
+    --acs-copilot-font-size-content: var(--spectrum-body-size-xl);
   }
 }
 
@@ -529,7 +538,8 @@ html {
 }
 
 body {
-  font-size: var(--spectrum-body-size-s);
+  /* font-size: var(--spectrum-body-size-s); */
+  font-size: var(--spectrum-body-size-xl);
   margin: 0;
   font-family: var(--body-font-family);
   line-height: 1.6;
@@ -667,7 +677,8 @@ a:any-link {
   font-weight: var(--font-weight-normal);
   font-style: normal;
   line-height: var(--spectrum-line-height-l);
-  color: var(--non-spectrum-link);
+  /* color: var(--non-spectrum-link); */
+  /* color: var(--rg-color-link-default, #006ce0); */
   margin-top: 12px;
   margin-bottom: 16px;
   cursor: pointer;
@@ -687,8 +698,10 @@ button {
   font-style: normal;
   font-weight: var(--font-weight-semi-bold);
   cursor: pointer;
-  color: var(--background-color);
-  background-color: var(--link-color);
+  /* color: var(--background-color); */
+  /* background-color: var(--link-color); */
+  color: var(--text-color);
+  background: var(--background-link-color);
   margin: 16px 0;
   white-space: nowrap;
   overflow: hidden;
@@ -700,7 +713,9 @@ a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-  background-color: var(--link-hover-color);
+  /* background-color: var(--link-hover-color); */
+  background: var(--background-link-hover-color);
+  color: var(--link-hover-color);
   cursor: pointer;
 }
 

@@ -8,8 +8,8 @@
 .accordion-main-header {
   font-size: var(--heading-font-size-xl);
   font-weight: bold;
-  color: var(--text-color);
-  background: var(--background-color);
+  /* color: var(--text-color); */
+  /* background: var(--background-color); */
   padding: 20px;
   text-align: center;
   border-radius: 8px;

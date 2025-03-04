@@ -6,8 +6,8 @@
 }
 
 .logo h2 {
-  font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-l);
+  /* font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-l); */
   position: relative;
   cursor: pointer;
 }

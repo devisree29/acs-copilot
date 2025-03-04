@@ -5,13 +5,6 @@
   text-align: center;
 }
 
-.testimonial h2 {
-  font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-xl);
-  color: #fff;
-  margin-bottom: 30px;
-}
-
 /* Scroll Wrapper */
 .testimonial-wrapper {
   overflow: hidden;
@@ -71,7 +64,7 @@
 
 .testimonial-info h5 {
   margin: 0;
-  font-size: 14px;
+  /* font-size: 14px; */
   color: #333;
 }
 
@@ -81,9 +74,9 @@
 }
 
 .testimonial-info a {
-  color: lightskyblue; /* Standard hyperlink color */
+  /*color: lightskyblue; /* Standard hyperlink color */
   text-decoration: none; /* Remove default underline */
-  font-size: 12px;
+  /* font-size: 12px; */
 }
 
 .testimonial-info a:hover {
@@ -92,7 +85,7 @@
 
 /* Description Below */
 .testimonial-content p {
-  font-size: 14px;
+  /* font-size: 14px; */
   line-height: 1.5;
   color: #333;
   white-space: normal;

@@ -10,7 +10,7 @@
 
 .feature {
   align-items: center;
-  margin: 60px 0 40px;
+  margin: 60px 50px 40px;
 }
 
 /* Video styling */
@@ -53,13 +53,11 @@ media position for even-numbered feature sections */
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #f8f8f8;
 }
 
 .feature-content p {
   font-size: 1.3em;
   line-height: 1.8;
-  color: #ccc;
   font-style: italic;
 }
 
@@ -80,13 +78,13 @@ media position for even-numbered feature sections */
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  gap: 70px;
+  gap: 45px;
 }
 
 .feature.video-right {
   display: flex;
   justify-content: space-between;
-  gap: 70px;
+  gap: 45px;
 }
 
 /* Media alignment classes */
@@ -115,4 +113,14 @@ media position for even-numbered feature sections */
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.text-container {
+  flex: 1;
+  padding: 20px;
+}
+
+.content-container {
+  flex: 1;
+  padding: 20px;
 }

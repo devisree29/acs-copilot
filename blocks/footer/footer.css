@@ -10,9 +10,9 @@ footer .footer .default-content-wrapper ul {
   justify-content: flex-start;
 }
 
-footer .footer a {
+/* footer .footer a {
   color: white;
-}
+} */
 
 footer .footer p {
   display: flex;
@@ -50,7 +50,7 @@ footer .footer .default-content-wrapper > ul li:hover::before {
   background-repeat: no-repeat;
   width: 45px; /* Expand width on hover */
   height: 40px;
-  border-radius: 50%;
+  border-radius: 50%; 
 }
 
 footer .footer .back-to-top-link {
