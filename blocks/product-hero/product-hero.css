@@ -10,7 +10,7 @@
 }
 
 .product-hero h2 {
-    font-size: 60px;
+    font-size: var(--acs-copilot-font-size-h2);
 }
 
 .product-hero > div > div {

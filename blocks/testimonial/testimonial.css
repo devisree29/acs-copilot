@@ -1,6 +1,6 @@
 /* Testimonial Section - Background */
 .testimonial {
-  background: linear-gradient(135deg, #380a6b 30%, #4a0a46 70%);
+  /* background: linear-gradient(135deg, #380a6b 30%, #4a0a46 70%); */
   padding: 30px 15px;
   text-align: center;
 }
@@ -74,9 +74,8 @@
 }
 
 .testimonial-info a {
-  /*color: lightskyblue; /* Standard hyperlink color */
+  color: var(--dark-color); /* Standard hyperlink color */
   text-decoration: none; /* Remove default underline */
-  /* font-size: 12px; */
 }
 
 .testimonial-info a:hover {

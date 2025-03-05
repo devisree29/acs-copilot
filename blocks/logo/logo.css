@@ -1,19 +1,13 @@
 .logo {
-  padding: 20px;
+  padding: 0;
   text-align: center;
   overflow: hidden;
   white-space: nowrap;
 }
 
 .logo h2 {
-  /* font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-l); */
   position: relative;
-  cursor: pointer;
-}
-
-.logo h2:hover {
-  text-decoration: underline;
+  margin-bottom: 60px;
 }
 
 .logo .logo-slideshow {
@@ -27,10 +21,11 @@
 .logo .logo-card {
   flex: 0 0 auto;
   margin: 0 10px;
+  background-color: var(--light-color);
 }
 
 .logo .logo-card img {
-  width: 100px;
+  width: 80px;
   height: 100px;
   object-fit: contain;
 }
