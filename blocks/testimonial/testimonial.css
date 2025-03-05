@@ -104,6 +104,11 @@
   animation: scroll-right 50s linear infinite;
 }
 
+.testimonial-scroll .testimonial-content-wrapper:hover {
+  display: flex;
+  animation: none;
+}
+
 /* Smooth Scrolling Animations */
 @keyframes scroll-left {
   from { transform: translateX(0); }
