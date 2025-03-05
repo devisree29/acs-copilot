@@ -19,7 +19,6 @@
   display: block;
 }
 
-
 @media (width >= 900px) {
   .columns > div {
     align-items: center;
