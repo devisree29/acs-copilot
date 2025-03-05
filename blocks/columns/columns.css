@@ -19,29 +19,6 @@
   display: block;
 }
 
-.section.columns-container:has(.metric) > .default-content-wrapper h1{
-  text-align: center;
-} 
-
-.columns.metric > div > div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
-.columns.metric > div > div > h3,
-.columns.metric > div > div > h4 {
-  display: inline-block;
-  white-space: nowrap;
-  font-size: var(--heading-font-size-l);
-}
-
-.columns.metric > div > div > p {
-  width: 100%;
-  text-align: center;
-}
-
 
 @media (width >= 900px) {
   .columns > div {
