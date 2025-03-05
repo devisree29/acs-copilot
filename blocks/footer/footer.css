@@ -1,18 +1,9 @@
-footer {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
 footer .footer .default-content-wrapper ul {
   display: flex;
   flex-direction: column;
   gap: 4%;
   justify-content: flex-start;
 }
-
-/* footer .footer a {
-  color: white;
-} */
 
 footer .footer p {
   display: flex;
@@ -31,26 +22,7 @@ footer .footer p a {
 footer .footer .default-content-wrapper > ul li {
   position: relative; /* Ensures ::before is positioned relative to each <li> */
   padding-left: 25px; /* Add space for the background image */
-}
-
-footer .footer .default-content-wrapper > ul li::before {
-  content: '';
-  position: absolute;
-  left: -30px;  /* Align to the left of the li */
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0; /* Initially no width */
-  height: 40px;
-  transition: width 0.3s ease-in-out;
-}
-
-footer .footer .default-content-wrapper > ul li:hover::before {
-  background-image: url('../../icons/arrow.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 45px; /* Expand width on hover */
-  height: 40px;
-  border-radius: 50%; 
+  list-style: none;
 }
 
 footer .footer .back-to-top-link {
@@ -83,19 +55,22 @@ footer .footer .back-to-top-link {
   }
 
   footer .footer .default-content-wrapper > ul li {
-    padding-left: 2%;
+    padding: 0 0 2%;
+    margin: 0;
+    border-bottom: 2px solid var(--text-color);
   }
 
   footer .footer p {
     margin-top: 2%;
     display: block;
     font-size: 1.6rem;
+    text-align: center;
   }
 
   footer .footer .back-to-top-link {
     width: 24px;
     height: 24px;
-    top: 4px;
+    top: 20px;
     left: auto;
   }
 }
