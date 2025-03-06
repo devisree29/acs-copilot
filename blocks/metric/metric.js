@@ -8,14 +8,16 @@ export function makeCounter(el, target, textBefore = '', textAfter = '', duratio
 }
 
 export default function decorate(block) {
-  [...block.children].forEach((row) => [...row.children].forEach((col) => {
-    const counter = col.firstElementChild;
-    const number = counter?.textContent.match(/\d+/);
-    if (number) {
-      const target = parseInt(number[0], 10);
-      const textBefore = counter.textContent.split(number[0])[0];
-      const textAfter = counter.textContent.split(number[0])[1];
-      makeCounter(counter, target, textBefore, textAfter);
-    }
-  }));
+  block.addEventListener(('mouseenter'), () => {
+    [...block.children].forEach((row) => [...row.children].forEach((col) => {
+      const counter = col.firstElementChild;
+      const number = counter?.textContent.match(/\d+/);
+      if (number) {
+        const target = parseInt(number[0], 10);
+        const textBefore = counter.textContent.split(number[0])[0];
+        const textAfter = counter.textContent.split(number[0])[1];
+        makeCounter(counter, target, textBefore, textAfter);
+      }
+    }));
+  });
 }
