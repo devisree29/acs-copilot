@@ -51,8 +51,8 @@ export default function decorate(block) {
     // Split questions into three separate containers
     const splitQuestions = [
       allQuestions.slice(0, Math.ceil(allQuestions.length / 3)),
-      allQuestions.slice(Math.ceil(allQuestions.length / 3), 2 * Math.ceil(allQuestions.length / 3)),
-      allQuestions.slice(2 * Math.ceil(allQuestions.length / 3))
+      allQuestions.slice(Math.ceil(allQuestions.length / 3),2 * Math.ceil(allQuestions.length / 3)),
+      allQuestions.slice(2 * Math.ceil(allQuestions.length / 3)),
     ];
 
     categories.push({ title: categoryTitleText, questionsGroup: splitQuestions });
