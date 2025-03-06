@@ -1,20 +1,20 @@
 export default function decorate(block) {
   // Create the main FAQ container
-  const faqContainer = document.createElement("div");
-  faqContainer.classList.add("faq-container");
+  const faqContainer = document.createElement('div');
+  faqContainer.classList.add('faq-container');
 
   // Main title (placed on the left)
-  const mainTitle = document.createElement("h2");
-  mainTitle.classList.add("faq-title");
-  mainTitle.textContent = block.children[0]?.textContent.trim() || "";
+  const mainTitle = document.createElement('h2');
+  mainTitle.classList.add('faq-title');
+  mainTitle.textContent = block.children[0]?.textContent.trim() || '';
 
   // Left side: Categories
-  const categoryList = document.createElement("div");
-  categoryList.classList.add("faq-category-list");
+  const categoryList = document.createElement('div');
+  categoryList.classList.add('faq-category-list');
 
   // Right side: Questions + Answers
-  const questionList = document.createElement("div");
-  questionList.classList.add("faq-content-display");
+  const questionList = document.createElement('div');
+  questionList.classList.add('faq-content-display');
 
   const categories = [];
 
@@ -22,23 +22,23 @@ export default function decorate(block) {
   Array.from(block.children).forEach((child, index) => {
     if (index === 0) return; // Skip the title
 
-    const categoryTitleText = child.children[0]?.textContent.trim() || "";
+    const categoryTitleText = child.children[0]?.textContent.trim() || '';
     const allQuestions = [];
 
     Array.from(child.children).forEach((section, secIndex) => {
       if (secIndex > 0) {
-        const questionText = section.children[0]?.innerHTML || "";
+        const questionText = section.children[0]?.innerHTML || '';
 
-        if (section.children[0]?.tagName === "H3") {
+        if (section.children[0]?.tagName === 'H3') {
           allQuestions.push({ question: questionText.trim(), answers: [] });
         }
 
         // Collect multiple answers and ensure questions are not mixed up
         Array.from(section.children).forEach((ans, ansIndex) => {
           if (ansIndex > 0) {
-            if (ans.tagName === "H3") {
+            if (ans.tagName === 'H3') {
               allQuestions.push({ question: ans.innerHTML.trim(), answers: [] });
-            } else if (ans.tagName === "P") {
+            } else if (ans.tagName === 'P') {
               if (allQuestions.length > 0) {
                 allQuestions[allQuestions.length - 1].answers.push(ans.innerHTML.trim());
               }
@@ -60,69 +60,69 @@ export default function decorate(block) {
 
   // Process each category
   categories.forEach((category, index) => {
-    const categoryTitle = document.createElement("div");
-    categoryTitle.classList.add("faq-category-title");
+    const categoryTitle = document.createElement('div');
+    categoryTitle.classList.add('faq-category-title');
     categoryTitle.textContent = category.title;
     categoryTitle.dataset.index = index;
 
     // Add expand/collapse icon for category
-    const categoryIcon = document.createElement("span");
-    categoryIcon.classList.add("faq-category-icon");
-    categoryIcon.textContent = "+";
+    const categoryIcon = document.createElement('span');
+    categoryIcon.classList.add('faq-category-icon');
+    categoryIcon.textContent = '+';
     categoryTitle.appendChild(categoryIcon);
 
-    categoryTitle.addEventListener("click", () => {
-      const isExpanded = questionList.style.display === "block" && categoryTitle.classList.contains("active");
+    categoryTitle.addEventListener('click', () => {
+      const expanded = questionList.style.display === 'block' && categoryTitle.classList.contains('active');
 
-      document.querySelectorAll(".faq-category-title").forEach((el) => {
-        el.classList.remove("active");
-        el.querySelector(".faq-category-icon").textContent = "+";
+      document.querySelectorAll('.faq-category-title').forEach((el) => {
+        el.classList.remove('active');
+        el.querySelector('.faq-category-icon').textContent = '+';
       });
 
-      questionList.innerHTML = "";
-      questionList.style.display = "none";
+      questionList.innerHTML = '';
+      questionList.style.display = 'none';
 
-      if (!isExpanded) {
-        categoryTitle.classList.add("active");
-        categoryIcon.textContent = "-";
+      if (!expanded) {
+        categoryTitle.classList.add('active');
+        categoryIcon.textContent = '-';
 
         category.questionsGroup.forEach((questions) => {
-          const questionContainer = document.createElement("div");
-          questionContainer.classList.add("faq-question-container");
+          const questionContainer = document.createElement('div');
+          questionContainer.classList.add('faq-question-container');
 
           questions.forEach((qa) => {
-            const questionItem = document.createElement("div");
-            questionItem.classList.add("faq-header");
+            const questionItem = document.createElement('div');
+            questionItem.classList.add('faq-header');
             questionItem.innerHTML = `
-              <span class="faq-question">${qa.question}</span>
-              <span class="faq-icon">+</span>
+              <span class='faq-question'>${qa.question}</span>
+              <span class='faq-icon'>+</span>
             `;
 
-            const answerContainer = document.createElement("div");
-            answerContainer.classList.add("faq-answer-container");
-            answerContainer.style.display = "none";
+            const answerContainer = document.createElement('div');
+            answerContainer.classList.add('faq-answer-container');
+            answerContainer.style.display = 'none';
 
             qa.answers.forEach((ansText) => {
-              const answerItem = document.createElement("div");
-              answerItem.classList.add("faq-answer");
+              const answerItem = document.createElement('div');
+              answerItem.classList.add('faq-answer');
               answerItem.innerHTML = ansText;
               answerContainer.appendChild(answerItem);
             });
 
-            questionItem.addEventListener("click", () => {
-              const isExpanded = answerContainer.style.display === "block";
+            questionItem.addEventListener('click', () => {
+              const isAnswerExpanded = answerContainer.style.display === 'block';
 
-              document.querySelectorAll(".faq-answer-container").forEach((el) => {
-                el.style.display = "none";
+              document.querySelectorAll('.faq-answer-container').forEach((el) => {
+                el.style.display = 'none';
               });
 
-              document.querySelectorAll(".faq-icon").forEach((icon) => {
-                icon.textContent = "+";
+              document.querySelectorAll('.faq-icon').forEach((icon) => {
+                icon.textContent = '+';
               });
 
-              if (!isExpanded) {
-                answerContainer.style.display = "block";
-                questionItem.querySelector(".faq-icon").textContent = "-";
+              if (!isAnswerExpanded) {
+                answerContainer.style.display = 'block';
+                questionItem.querySelector('.faq-icon').textContent = '-';
               }
             });
 
@@ -133,7 +133,7 @@ export default function decorate(block) {
           questionList.appendChild(questionContainer);
         });
 
-        questionList.style.display = "block";
+        questionList.style.display = 'block';
       }
     });
 
@@ -143,7 +143,7 @@ export default function decorate(block) {
   faqContainer.appendChild(categoryList);
   faqContainer.appendChild(questionList);
 
-  block.innerHTML = "";
+  block.innerHTML = '';
   block.appendChild(mainTitle);
   block.appendChild(faqContainer);
 }
