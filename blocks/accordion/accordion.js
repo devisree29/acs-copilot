@@ -40,7 +40,9 @@ export default function decorate(block) {
               allQuestions.push({ question: ans.innerHTML.trim(), answers: [] });
             } else if (ans.tagName === 'P') {
               if (allQuestions.length > 0) {
-                allQuestions[allQuestions.length - 1].answers.push(ans.innerHTML.trim());
+                allQuestions[allQuestions.length - 1].answers.push(
+                  ans.innerHTML.trim()
+                );
               }
             }
           }
@@ -51,8 +53,11 @@ export default function decorate(block) {
     // Split questions into three separate containers
     const splitQuestions = [
       allQuestions.slice(0, Math.ceil(allQuestions.length / 3)),
-      allQuestions.slice(Math.ceil(allQuestions.length / 3), 2 * Math.ceil(allQuestions.length / 3)),
-      allQuestions.slice(2 * Math.ceil(allQuestions.length / 3)),
+      allQuestions.slice(
+        Math.ceil(allQuestions.length / 3),
+        2 * Math.ceil(allQuestions.length / 3)
+      ),
+      allQuestions.slice(2 * Math.ceil(allQuestions.length / 3))
     ];
 
     categories.push({ title: categoryTitleText, questionsGroup: splitQuestions });
@@ -72,7 +77,9 @@ export default function decorate(block) {
     categoryTitle.appendChild(categoryIcon);
 
     categoryTitle.addEventListener('click', () => {
-      const expanded = questionList.style.display === 'block' && categoryTitle.classList.contains('active');
+      const expanded =
+        questionList.style.display === 'block' &&
+        categoryTitle.classList.contains('active');
 
       document.querySelectorAll('.faq-category-title').forEach((el) => {
         el.classList.remove('active');
