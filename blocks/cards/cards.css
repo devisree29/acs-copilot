@@ -40,29 +40,16 @@
 }
 
 /* Card Image */
-.card-image {
-  width: 100%;
+.cards-card .card-image {
+  width: 300px;
+  height: 200px;
   border-radius: 10px;
-  border: 3px solid #9c31ff; /* Fixed RGBA syntax */
-  box-shadow: 0 0 15px 3px #9c31ff;
+  box-shadow: var(--box-shadow-neon);
   transition: box-shadow 0.3s ease;
 }
 
-.card-image:hover {
-  box-shadow: 0 0 25px 5px #9c31ff;
-}
-
-/* Card Title */
-.cards-card h3 {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-/* Card Description */
-.cards-card p {
-  font-size: 14px;
-  color: #d3d3d3;
+.cards-card .card-image:hover {
+  box-shadow: var(--box-shadow-neon-hover);
 }
 
 /* Navigation Buttons */
@@ -71,7 +58,6 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: black;
   border: none;
   border-radius: 50%;
   width: 50px;
@@ -80,9 +66,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 10px #9c31ff;
-  transition: background 0.3s ease, transform 0.3s ease;
-  padding: 0;
 }
 
 /* Previous Button */

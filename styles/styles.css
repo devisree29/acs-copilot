@@ -80,8 +80,9 @@
   /* Smooth effect */
 
   /* Box Shadows */
-  --box-shadow-1: 0 0.5em 1em -0.125em #0a0a0a1a, 0 0 0 1px #0a0a0a05;
-  --box-shadow-2: 0px 8px 16px #0000001a;
+  --box-shadow-1: 0px 0px 10px rgba(255, 255, 255, 0.8);
+  --box-shadow-neon: 0 10px 30px #c832fa80; /* Neon glow effect */
+  --box-shadow-neon-hover: 0 15px 40px #c832fab3;
 
   /* Primary Button (Solid & Bold) */
   --acs-copilot-primary-bg-color: #EB1000;
@@ -105,9 +106,9 @@
   --acs-copilot-button-font-weight: 700;
   --acs-copilot-button-line-height: 1.4;
   --acs-copilot-button-padding: 12px 24px;
-  --acs-copilot-button-border-radius: 6px;
+  --acs-copilot-button-border-radius: 30px;
   --acs-copilot-button-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
-  --acs-copilot-button-transition: 0.3s ease-in-out;
+  --acs-copilot-button-transition: 0.7s ease-in-out;
 
   /* List Elements */
   --acs-copilot-list-font-size: 18px;
@@ -129,6 +130,10 @@
   --light-color: #f8f8f8;
   --dark-color: #505050;
   --gradient-color: linear-gradient(90deg, #F24CB8, #C844DC, #9A47E2, #7155FA);
+
+  /* Max-width values  */
+  --default-max-width: 1280px;
+  --secondary-max-width: 1440px;
 
   /* Button Container Styles */
   --acs-copilot-button-container-font-size: 14px;
@@ -283,7 +288,8 @@
 
   a:hover {
     color: var(--acs-copilot-link-hover-color);
-    text-decoration: var(--acs-copilot-link-hover-decoration);
+    padding: 2px;
+    border-bottom: 2px solid var(--acs-copilot-link-hover-color);
   }
 
   strong:not(a strong) {
@@ -449,7 +455,6 @@
     display: inline-block;
     box-sizing: border-box;
     text-decoration: none;
-    border: 2px solid var(--acs-copilot-primary-border-color);
     padding: 5px 30px;
     text-align: center;
     font-style: normal;
@@ -458,8 +463,10 @@
     line-height: var(--acs-copilot-button-line-height);
     padding: var(--acs-copilot-button-padding);
     cursor: pointer;
-    color: var(--acs-copilot-primary-text-color);
-    background-color: var(--acs-copilot-primary-bg-color);
+    border: 3px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+              var(--gradient-color) border-box;
+    color: var(--dark-color);
     margin: 16px 0;
     white-space: nowrap;
     overflow: hidden;
@@ -474,7 +481,9 @@
   button:hover,
   button:focus {
     cursor: pointer;
-    background-color: var(--acs-copilot-primary-hover-bg-color);
+    background: var(--acs-copilot-primary-hover-bg-color);
+    color: var(--acs-copilot-primary-text-color);
+    box-shadow: var(--box-shadow-1);
   }
 
   a.button.secondary,
@@ -612,6 +621,7 @@
 
   .section {
     padding: 0 16px;
+    margin: 30px;
 
     /* section metadata */
   }

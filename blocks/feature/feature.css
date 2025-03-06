@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   padding: 50px 0;
-  background: radial-gradient(circle, #1c1c1c 30%, #000 100%);
   width: 100%;
   justify-content: center;
 }
@@ -18,7 +17,7 @@
   width: 100%;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 10px 30px #c832fa80; /* Neon glow effect */
+  box-shadow: var(--box-shadow-neon);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
@@ -27,7 +26,7 @@
   width: 100%;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 10px 30px #c832fa80; /* Neon glow effect */
+  box-shadow: var(--box-shadow-neon);
   position: relative;
   z-index: 2;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -64,13 +63,13 @@ media position for even-numbered feature sections */
 /* Hover effect on video */
 .feature video:hover {
   transform: scale(1.05);
-  box-shadow: 0 15px 40px #c832fab3;
+  box-shadow: var(--box-shadow-neon-hover);
 }
 
 /* Hover effect on image */
 .feature img:hover {
   transform: scale(1.05);
-  box-shadow: 0 15px 40px #c832fab3;
+  box-shadow: var(--box-shadow-neon-hover);
 }
 
 /* Video alignment classes */
@@ -115,12 +114,12 @@ media position for even-numbered feature sections */
   align-items: center;
 }
 
-.text-container {
+.feature .text-container {
   flex: 1;
   padding: 20px;
 }
 
-.content-container {
+.feature .content-container {
   flex: 1;
   padding: 20px;
 }

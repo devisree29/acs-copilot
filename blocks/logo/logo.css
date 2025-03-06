@@ -21,11 +21,10 @@
 .logo .logo-card {
   flex: 0 0 auto;
   margin: 0 10px;
-  background-color: var(--light-color);
 }
 
 .logo .logo-card img {
-  width: 80px;
+  width: 100px;
   height: 100px;
   object-fit: contain;
 }

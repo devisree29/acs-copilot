@@ -52,6 +52,7 @@ footer .footer .back-to-top-link {
     justify-content: center;
     align-items: center;
     gap: 5%;
+    margin-bottom: 0;
   }
 
   footer .footer .default-content-wrapper > ul li {
@@ -61,7 +62,6 @@ footer .footer .back-to-top-link {
   }
 
   footer .footer p {
-    margin-top: 2%;
     display: block;
     font-size: 1.6rem;
     text-align: center;

@@ -78,10 +78,6 @@
   text-decoration: none; /* Remove default underline */
 }
 
-.testimonial-info a:hover {
-  text-decoration: underline; /* Underline on hover */
-}
-
 /* Description Below */
 .testimonial-content p {
   /* font-size: 14px; */
@@ -102,11 +98,6 @@
 
 .testimonial-scroll.bottom .testimonial-content-wrapper {
   animation: scroll-right 50s linear infinite;
-}
-
-.testimonial-scroll .testimonial-content-wrapper:hover {
-  display: flex;
-  animation: none;
 }
 
 /* Smooth Scrolling Animations */

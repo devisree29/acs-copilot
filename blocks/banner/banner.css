@@ -22,32 +22,13 @@
   gap: 10px;
 }
 
-/* .banner .white-text {
-  color: #fff;
-} */
-
-.banner .multi-color-text {
-  background: linear-gradient(90deg, pink, blue);
-  background-clip: text;
-  color: transparent;
-}
-
 .banner p {
   font-size: 1em;
   margin: 0.5em 0;
 }
 
 .banner-link a {
-  text-decoration: none;
-  font-size: 0.9em;
-  border-radius: 8px;
-  /* background: linear-gradient(90deg, rgba(255 0 119), rgba(83 48 208)); */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
   position: relative;
-  transition: background 0.3s ease;
 }
 
 .banner-link a .cta-icon {

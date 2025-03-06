@@ -51,7 +51,7 @@ export default async function decorate(block) {
     }
     // Create CTA link
     const ctaLink = document.createElement('a');
-    ctaLink.className = 'cta-url';
+    ctaLink.classList.add('cta-url', 'button');
     // Find the second link in the second div - this contains your CTA text and link
     const ctaAnchor = tab.querySelectorAll('div[data-valign="middle"]')[1]?.querySelectorAll('p a')[1];
     if (ctaAnchor) {
