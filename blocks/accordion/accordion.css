@@ -98,13 +98,13 @@
   padding: 15px;
   border-radius: 5px;
   margin-top: 5px;
-  box-shadow: 0px 2px 4px #0000001a;
+  box-shadow: 0 2px 4px #0000001a; /* Removed 'px' from 0 */
   color: black;
   transition: all 0.3s ease-in-out;
 }
 
 /* Responsive Design */
-@media (max-width <= 768px) {
+@media (max-width: 768px) { /* Fixed invalid media query */
   .faq-container {
     flex-direction: column;
   }
