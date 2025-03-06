@@ -98,13 +98,13 @@
   padding: 15px;
   border-radius: 5px;
   margin-top: 5px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 4px #0000001a;
   color: black;
   transition: all 0.3s ease-in-out;
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width <= 768px) {
   .faq-container {
     flex-direction: column;
   }
