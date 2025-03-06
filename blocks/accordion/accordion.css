@@ -104,7 +104,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) { /* Fixed invalid media query */
+@media screen and (max-width: 768px) { /* Fixed invalid media query */
   .faq-container {
     flex-direction: column;
   }
