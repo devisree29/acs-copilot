@@ -82,7 +82,7 @@ export default async function decorate(block) {
   const lastPathSegment = window.location.pathname.split('/').filter(Boolean).pop();
   const hash = window.location.hash.substring(1) || (lastPathSegment === 'support' ? 'contact-us' : lastPathSegment);
 
-  if (!validSections.includes(hash) || !formLink.includes(hash)) {
+  if (!validSections.includes(hash) || !block.classList.contains(hash)) {
     block.textContent = '';
     return;
   }
