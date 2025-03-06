@@ -4,8 +4,8 @@ export default function decorate(block) {
     cardImage: card.querySelector('picture source')?.srcset || card.querySelector('img')?.src || '',
     cardHeading: card.querySelector('h3')?.textContent || card.querySelector('p')?.textContent || '',
     cardDescription: card.querySelector('p:nth-of-type(2)')?.textContent || '',
-    cardLink: card.querySelector('a')?.href || '#', // Retrieve link from block data
-    cardText: card.querySelector('a')?.textContent || '', // Retrieve text from link
+    cardLink: card.querySelector('a')?.href || '#',
+    cardText: card.querySelector('a')?.textContent || '',
   }));
 
   // Create the main container
@@ -34,7 +34,7 @@ export default function decorate(block) {
     const image = document.createElement('img');
     image.src = cardImage;
     image.alt = cardText;
-    image.className = 'card-image'; // Apply CSS class instead of inline styles
+    image.className = 'card-image';
     image.style.cursor = 'pointer';
     image.addEventListener('click', () => {
       window.location.href = cardLink;
@@ -52,27 +52,16 @@ export default function decorate(block) {
     cardsContainer.appendChild(card);
   });
 
-  // Create previous button dynamically
+  // Create previous and next buttons dynamically
   const prevButton = document.createElement('button');
   prevButton.className = 'carousel-prev';
   prevButton.setAttribute('aria-label', 'Previous');
+  prevButton.setAttribute('data-direction', 'prev');
 
-  const prevImg = document.createElement('img');
-  prevImg.src = '/icons/left-arrow.svg';
-  prevImg.alt = 'Previous';
-  prevImg.className = 'carousel-prev-icon'; // Apply CSS class
-  prevButton.appendChild(prevImg);
-
-  // Create next button dynamically
   const nextButton = document.createElement('button');
   nextButton.className = 'carousel-next';
   nextButton.setAttribute('aria-label', 'Next');
-
-  const nextImg = document.createElement('img');
-  nextImg.src = '/icons/right-arrow.svg';
-  nextImg.alt = 'Next';
-  nextImg.className = 'carousel-next-icon'; // Apply CSS class
-  nextButton.appendChild(nextImg);
+  nextButton.setAttribute('data-direction', 'next');
 
   // Append elements to the carousel wrapper
   carouselWrapper.appendChild(prevButton);
