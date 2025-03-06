@@ -104,13 +104,13 @@
 }
 
 /* Responsive Design */
-@media screen and (max-width: 768px) { /* Fixed invalid media query */
+/* @media (max-width: 768px) { ✅ Fixed media query
   .faq-container {
     flex-direction: column;
   }
 
   .faq-category-list {
-    width: 98%;
+    width: 100%;
   }
 
   .faq-category-title {
@@ -120,4 +120,4 @@
   .faq-content-display {
     width: 100%;
   }
-}
+} */
