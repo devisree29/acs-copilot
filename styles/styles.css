@@ -57,7 +57,6 @@
 
   /* Link Colors */
   --acs-copilot-link-color: var(--acs-copilot-body-text-color);
-  /* Default link color (Cyan) */
   --acs-copilot-link-hover-color: #9A47E2;
   /* Hover effect (Purple) */
 
@@ -122,7 +121,7 @@
   /* nav height */
   --nav-height: 64px;
 
-  /*Secttion Colors */
+  /*Section Colors */
   --highlight-light-background-color: #f8f8f8;
   --highlight-dark-background-color: #efefef;
 
@@ -434,19 +433,6 @@
     overflow: auto scroll;
     white-space: pre;
   }
-
-  /* a:any-link {
-    font-family: var(--body-font-family);
-    font-size: var(--acs-copilot-link-font-size);
-    font-weight: var(--acs-copilot-link-font-weight);
-    font-style: normal;
-    line-height: var(--acs-copilot-link-line-height);
-    color: var(--acs-copilot-link-color);
-    margin-top: 12px;
-    margin-bottom: 16px;
-    cursor: pointer;
-    text-decoration: var(--acs-copilot-link-text-decoration);
-  } */
 
   /* buttons */
   a.button:any-link,
